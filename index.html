@@ -1,0 +1,2959 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artificial Analysis 最新大模型基准数据看板</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --track-bg: #f1f5f9;
+      --bar-fill: linear-gradient(90deg, #cbd5e1, #94a3b8);
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1360px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1.5rem;
+    }
+
+    .brand-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6, #0284c7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    .update-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: var(--text-muted);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    a.update-tag:hover {
+      background: #e0e7ff !important;
+      border-color: #818cf8 !important;
+      color: #4f46e5 !important;
+    }
+
+    /* 浅色图例说明栏 */
+    .color-legend {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-sm);
+      border-radius: 0.75rem;
+      padding: 0.85rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: 0.875rem;
+    }
+
+    .legend-title {
+      font-weight: 700;
+      color: var(--text-main);
+      margin-right: 0.25rem;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .grid-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+      align-items: start;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .badge-icon {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: #64748b;
+    }
+
+    .subtitle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .bar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .bar-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .bar-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.825rem;
+      font-weight: 600;
+    }
+
+    .model-name-text {
+      font-weight: 600;
+    }
+
+    /* 极细浅色排行榜线条 */
+    .bar-track {
+      width: 100%;
+      height: 2px;
+      background: #f1f5f9;
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #cbd5e1, #94a3b8);
+      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .table-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-md);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .table-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    /* 紧凑版表格单元格内边距 */
+    th, td {
+      padding: 0.45rem 0.85rem;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.875rem;
+    }
+
+    th {
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      background: #f8fafc;
+      padding: 0.55rem 0.85rem;
+    }
+
+    /* 厂商分组卡片样式 */
+    .family-block {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .family-header {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .changelog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .changelog-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem;
+      background: #f8fafc;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      border: 1px solid #f1f5f9;
+    }
+
+    .changelog-date {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+
+    .effort-badge {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid #cbd5e1;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    /* 区分 3 大 Agent Harness 框架的专属背景色与边框色 */
+    .agent-harness-badge {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      border: 1px solid transparent;
+    }
+
+    /* 1. Codex Agent CLI 专属暖金黄色调 */
+    .harness-codex-agent {
+      background-color: #fefce8;
+      border-color: #fef08a;
+      color: #a16207;
+    }
+
+    /* 2. Claude Code 专属红粉色调 */
+    .harness-claude-code {
+      background-color: #fef2f2;
+      border-color: #fecaca;
+      color: #dc2626;
+    }
+
+    /* 3. Cursor Agent 专属天蓝色调 */
+    .harness-cursor-agent {
+      background-color: #f0f9ff;
+      border-color: #bae6fd;
+      color: #0284c7;
+    }
+
+    /* 4. Kimi Code CLI 专属淡灰绿/淡青色调 */
+    .harness-kimi-code {
+      background-color: #f0fdf4;
+      border-color: #bbf7d0;
+      color: #16a34a;
+    }
+
+    /* 5. OpenCode 专属淡紫/靛青色调 */
+    .harness-opencode {
+      background-color: #f5f3ff;
+      border-color: #ddd6fe;
+      color: #7c3aed;
+    }
+
+    /* 6. Gemini CLI 专属淡青/冰蓝色调 */
+    .harness-gemini-cli {
+      background-color: #ecfeff;
+      border-color: #a5f3fc;
+      color: #0891b2;
+    }
+
+    /* 7. Antigravity 专属深邃靛蓝/星空紫调 */
+    .harness-antigravity {
+      background-color: #eef2ff;
+      border-color: #c7d2fe;
+      color: #4338ca;
+    }
+
+    /* 8. Devin Fusion 专属暖珊瑚/橙色调 */
+    .harness-devin-fusion {
+      background-color: #fff7ed;
+      border-color: #fed7aa;
+      color: #ea580c;
+    }
+
+    /* 9. Muse Code 专属 Meta 蓝调 */
+    .harness-muse-code {
+      background-color: #eff6ff;
+      border-color: #bfdbfe;
+      color: #1d4ed8;
+    }
+
+    /* Harness 筛选栏控件 */
+    .filter-bar-wrapper {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.85rem;
+      margin-bottom: 1.15rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed #e2e8f0;
+    }
+
+    .filter-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-right: 0.25rem;
+      user-select: none;
+    }
+
+    .harness-filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.32rem 0.8rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+      outline: none;
+    }
+
+    .harness-filter-btn:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #1e293b;
+      transform: translateY(-1px);
+    }
+
+    .harness-filter-btn .filter-count {
+      font-size: 0.72rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 9999px;
+      background: #f1f5f9;
+      color: #64748b;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    /* 筛选激活态 */
+    .harness-filter-btn.active {
+      font-weight: 700;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
+    }
+
+    .harness-filter-btn.active[data-harness="ALL"] {
+      background: #0f172a;
+      border-color: #0f172a;
+      color: #ffffff;
+    }
+    .harness-filter-btn.active[data-harness="ALL"] .filter-count {
+      background: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+    }
+
+    .harness-filter-btn.active.harness-codex-agent {
+      background: #fefce8;
+      border-color: #facc15;
+      color: #a16207;
+    }
+    .harness-filter-btn.active.harness-codex-agent .filter-count {
+      background: #fef08a;
+      color: #854d0e;
+    }
+
+    .harness-filter-btn.active.harness-claude-code {
+      background: #fef2f2;
+      border-color: #f87171;
+      color: #dc2626;
+    }
+    .harness-filter-btn.active.harness-claude-code .filter-count {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .harness-filter-btn.active.harness-cursor-agent {
+      background: #f0f9ff;
+      border-color: #38bdf8;
+      color: #0284c7;
+    }
+    .harness-filter-btn.active.harness-cursor-agent .filter-count {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .harness-filter-btn.active.harness-kimi-code {
+      background: #f0fdf4;
+      border-color: #4ade80;
+      color: #16a34a;
+    }
+    .harness-filter-btn.active.harness-kimi-code .filter-count {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .harness-filter-btn.active.harness-opencode {
+      background: #f5f3ff;
+      border-color: #a78bfa;
+      color: #7c3aed;
+    }
+    .harness-filter-btn.active.harness-opencode .filter-count {
+      background: #ede9fe;
+      color: #6d28d9;
+    }
+
+    .harness-filter-btn.active.harness-gemini-cli {
+      background: #ecfeff;
+      border-color: #22d3ee;
+      color: #0891b2;
+    }
+    .harness-filter-btn.active.harness-gemini-cli .filter-count {
+      background: #cffafe;
+      color: #0e7490;
+    }
+
+    .harness-filter-btn.active.harness-antigravity {
+      background: #eef2ff;
+      border-color: #818cf8;
+      color: #4338ca;
+    }
+    .harness-filter-btn.active.harness-antigravity .filter-count {
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+
+    .harness-filter-btn.active.harness-devin-fusion {
+      background: #fff7ed;
+      border-color: #fb923c;
+      color: #ea580c;
+    }
+    .harness-filter-btn.active.harness-devin-fusion .filter-count {
+      background: #ffedd5;
+      color: #c2410c;
+    }
+
+    .harness-filter-btn.active.harness-muse-code {
+      background: #eff6ff;
+      border-color: #3b82f6;
+      color: #1d4ed8;
+    }
+    .harness-filter-btn.active.harness-muse-code .filter-count {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .rank-num {
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: #64748b;
+      display: inline-block;
+      width: 24px;
+      text-align: center;
+    }
+
+    .top-rank-1 { color: #d97706; }
+    .top-rank-2 { color: #64748b; }
+    .top-rank-3 { color: #b45309; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1 class="brand-title">Artificial Analysis 最新基准数据</h1>
+        <p style="color: var(--text-muted); margin-top: 0.3rem;">精选大语言模型（GPT>5.6, Claude≥4.6, Gemini≥3.1, Muse, Qwen≥3.8）与编码 Agent 组合能力榜单</p>
+      </div>
+      <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+        <a href="https://artificialanalysis.ai" target="_blank" class="update-tag" style="text-decoration: none; color: #4f46e5; border-color: #c7d2fe; background: #eef2ff;">
+          <svg style="width: 14px; height: 14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+          官方网站
+        </a>
+        <div class="update-tag">
+          <span style="width:8px; height:8px; background:#64748b; border-radius:50%; display:inline-block;"></span>
+          <span id="update-date-text">更新日期：2026-10-13</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 浅色图例说明栏 -->
+    <div class="color-legend">
+      <span class="legend-title">图例说明：</span>
+      <span class="legend-item" style="color: #ca8a04;"><span class="legend-dot" style="background:#ca8a04;"></span> 暖金色：GPT / Codex 系列 (OpenAI)</span>
+      <span class="legend-item" style="color: #dc2626;"><span class="legend-dot" style="background:#dc2626;"></span> 红色：Claude 系列 (Anthropic)</span>
+      <span class="legend-item" style="color: #0284c7;"><span class="legend-dot" style="background:#0284c7;"></span> 蓝色：Gemini 系列 (Google)</span>
+      <span class="legend-item" style="color: #1d4ed8;"><span class="legend-dot" style="background:#1d4ed8;"></span> 宝蓝色：Muse 系列 (Meta)</span>
+      <span class="legend-item" style="color: #1e293b;"><span class="legend-dot" style="background:#1e293b;"></span> 深灰/黑色：国内模型 (DeepSeek / Kimi / GLM / MiniMax / Qwen / MiMo)</span>
+    </div>
+
+    <!-- ⚡️ 编码 Agent 组合能力排行榜 -->
+    <div class="table-section" style="border-left: 4px solid #6366f1;">
+      <div class="table-title" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+        <span>🤖 编码 Agent 组合能力排行榜 (Coding Agent Leaderboard)</span>
+        <span style="font-size: 0.8rem; font-weight: 500; color: var(--text-muted); background: #f1f5f9; padding: 0.25rem 0.65rem; border-radius: 6px;">Artificial Analysis Coding Agent Index</span>
+      </div>
+      <div class="subtitle">主流编码 Agent 框架（Codex Agent CLI / Devin Fusion / Claude Code / Cursor Agent / Kimi Code CLI / OpenCode / Gemini CLI / Antigravity / Muse Code）结合各类大模型的官方评测组合（DeepSWE · Terminal-Bench v2 · SWE-Atlas-QnA）</div>
+      
+      <!-- Harness 筛选栏 -->
+      <div class="filter-bar-wrapper">
+        <span class="filter-label">
+          <svg style="width: 14px; height: 14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+          </svg>
+          按 Harness 筛选:
+        </span>
+        <div id="harness-filter-buttons" style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;"></div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 8%; text-align: center;">排名</th>
+            <th style="width: 22%;">Agent 框架 (Harness)</th>
+            <th style="width: 30%;">搭配底层模型 (LLM)</th>
+            <th style="width: 14%;">Coding Agent Index</th>
+            <th style="width: 13%;">平均耗时 / 任务</th>
+            <th style="width: 13%;">预估单任务成本</th>
+          </tr>
+        </thead>
+        <tbody id="agent-leaderboard-body"></tbody>
+      </table>
+    </div>
+
+    <!-- 四栏指标面板 -->
+    <div class="grid-metrics">
+      <!-- 1. 智能指数 -->
+      <div class="metric-card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="badge-icon"></span>
+            智力综合指数 (Intelligence)
+          </div>
+        </div>
+        <div class="subtitle">Intelligence Index v4.1 · 越高越好</div>
+        <div class="bar-list" id="intel-list"></div>
+      </div>
+
+      <!-- 2. 编程指数 -->
+      <div class="metric-card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="badge-icon"></span>
+            编程能力指数 (Coding Index)
+          </div>
+        </div>
+        <div class="subtitle">Terminal-Bench 4.0 · 越高越强</div>
+        <div class="bar-list" id="coding-list"></div>
+      </div>
+
+      <!-- 3. 推理速度 -->
+      <div class="metric-card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="badge-icon"></span>
+            输出速度 (Speed)
+          </div>
+        </div>
+        <div class="subtitle">Tokens per second · 越高越快</div>
+        <div class="bar-list" id="speed-list"></div>
+      </div>
+
+      <!-- 4. 任务成本 -->
+      <div class="metric-card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="badge-icon"></span>
+            单任务成本 (Cost / Task)
+          </div>
+        </div>
+        <div class="subtitle">标准测试任务美元成本 · 越低越省</div>
+        <div class="bar-list" id="cost-list"></div>
+      </div>
+    </div>
+
+    <!-- 专属分类列表展示区 (按合并模型单元格组进行交替斑马纹) -->
+    <div class="table-section">
+      <div class="table-title">厂商家族与 Effort 级别分类汇总一览</div>
+      <div class="subtitle">按模型家族归类展示所有精选模型及其 Effort (思考深度) 档位的完整评估参数</div>
+
+      <!-- 🟡 OpenAI -->
+      <div class="family-block">
+        <div class="family-header" style="color: #ca8a04;">
+          <span style="width:12px; height:12px; border-radius:50%; background:#ca8a04; display:inline-block;"></span>
+          OpenAI (GPT-6 及以上系列)
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 24%;">模型 / 架构</th>
+              <th style="width: 20%;">Effort 级别</th>
+              <th>智商指数 (Intelligence)</th>
+              <th>编程指数 (Coding)</th>
+              <th>输出速度 (Tokens/s)</th>
+              <th>预估单任务成本 (USD)</th>
+            </tr>
+          </thead>
+          <tbody id="gpt-family-body"></tbody>
+        </table>
+      </div>
+
+      <!-- 🔴 Anthropic -->
+      <div class="family-block">
+        <div class="family-header" style="color: #dc2626;">
+          <span style="width:12px; height:12px; border-radius:50%; background:#dc2626; display:inline-block;"></span>
+          Anthropic (Claude 系列)
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 24%;">模型 / 架构</th>
+              <th style="width: 20%;">Effort 级别</th>
+              <th>智商指数 (Intelligence)</th>
+              <th>编程指数 (Coding)</th>
+              <th>输出速度 (Tokens/s)</th>
+              <th>预估单任务成本 (USD)</th>
+            </tr>
+          </thead>
+          <tbody id="claude-family-body"></tbody>
+        </table>
+      </div>
+
+      <!-- 🔵 Google -->
+      <div class="family-block">
+        <div class="family-header" style="color: #0284c7;">
+          <span style="width:12px; height:12px; border-radius:50%; background:#0284c7; display:inline-block;"></span>
+          Google (Gemini 系列)
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 24%;">模型 / 架构</th>
+              <th style="width: 20%;">Effort 级别</th>
+              <th>智商指数 (Intelligence)</th>
+              <th>编程指数 (Coding)</th>
+              <th>输出速度 (Tokens/s)</th>
+              <th>预估单任务成本 (USD)</th>
+            </tr>
+          </thead>
+          <tbody id="gemini-family-body"></tbody>
+        </table>
+      </div>
+
+      <!-- 🔵 Meta (Muse 系列) -->
+      <div class="family-block">
+        <div class="family-header" style="color: #1d4ed8;">
+          <span style="width:12px; height:12px; border-radius:50%; background:#1d4ed8; display:inline-block;"></span>
+          Meta (Muse 系列)
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 24%;">模型 / 架构</th>
+              <th style="width: 20%;">Effort 级别</th>
+              <th>智商指数 (Intelligence)</th>
+              <th>编程指数 (Coding)</th>
+              <th>输出速度 (Tokens/s)</th>
+              <th>预估单任务成本 (USD)</th>
+            </tr>
+          </thead>
+          <tbody id="muse-family-body"></tbody>
+        </table>
+      </div>
+
+      <!-- ⚪ 国内模型 -->
+      <div class="family-block">
+        <div class="family-header" style="color: #1e293b;">
+          <span style="width:12px; height:12px; border-radius:50%; background:#1e293b; display:inline-block;"></span>
+          国内主流模型 (DeepSeek / Kimi / GLM / MiniMax / Qwen / MiMo)
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 24%;">模型名称</th>
+              <th style="width: 20%;">Effort 级别</th>
+              <th>智商指数 (Intelligence)</th>
+              <th>编程指数 (Coding)</th>
+              <th>输出速度 (Tokens/s)</th>
+              <th>预估单任务成本 (USD)</th>
+            </tr>
+          </thead>
+          <tbody id="cn-family-body"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- 最新评测动态 -->
+    <div class="table-section">
+      <div class="table-title">最新更新动态 (Changelog)</div>
+      <div class="changelog-list" id="changelog-container"></div>
+    </div>
+  </div>
+
+  <script>
+    // 过滤忽略模型：实现通用动态版本白名单机制，支持未来更新版本号
+    function isIgnoredModel(name) {
+      const n = String(name || '').toLowerCase();
+
+      // 1. 绝对排除的黑名单与非思考模型 (Non-reasoning)
+      if (
+        n.includes('non-reasoning') ||
+        n.includes('non reasoning') ||
+        n.includes('nonreasoning') ||
+        n.includes('nemotron') ||
+        n.includes('gpt-oss') ||
+        n.includes('grok') ||
+        n.includes('groq') ||
+        n.startsWith('o3') ||
+        n.includes('composer') ||
+        n.includes('mistral') ||
+        n.includes('ministral') ||
+        n.includes('magistral') ||
+        n.includes('solar') ||
+        n.includes('step') ||
+        n.includes('celeris') ||
+        n.includes('inkling') ||
+        n.includes('quasar')
+      ) {
+        return true;
+      }
+
+      // 2. Claude 系列 (>= 4.6，动态兼容 5.x, 6.x 等更新版本)
+      if (n.includes('claude') || n.includes('sonnet') || n.includes('opus') || n.includes('fable')) {
+        if (n.includes('haiku')) return true;
+        const vMatch = n.match(/(?:claude|sonnet|opus|fable)\s*([0-9]+(?:\.[0-9]+)?)/) ||
+                       n.match(/([0-9]+(?:\.[0-9]+)?)\s*(?:sonnet|opus|fable|claude)/);
+        if (vMatch) {
+          const ver = parseFloat(vMatch[1]);
+          if (ver >= 4.6) return false;
+          return true;
+        }
+        if (n.includes('fable') || n.includes('opus') || n.includes('sonnet')) {
+          const numMatch = n.match(/([0-9]+\.[0-9]+)/);
+          if (numMatch && parseFloat(numMatch[1]) < 4.6) return true;
+          return false;
+        }
+        return true;
+      }
+
+      // 3. GPT 系列 (> 5.6，即 >= 5.7，动态兼容 GPT-6, GPT-6.x 等更新版本，全局排除 <= 5.6)
+      if (n.includes('gpt') || /\b(sol|terra|luna|astra)\b/.test(n)) {
+        if (n.includes('instant')) return true;
+        const vMatch = n.match(/gpt-?([0-9]+(?:\.[0-9]+)?)/);
+        if (vMatch) {
+          const ver = parseFloat(vMatch[1]);
+          return ver <= 5.6; // 排除 5.6 及以下
+        }
+        const anyNumMatch = n.match(/([0-9]+(?:\.[0-9]+)?)/);
+        if (anyNumMatch) {
+          const ver = parseFloat(anyNumMatch[1]);
+          return ver <= 5.6;
+        }
+        return true;
+      }
+
+      // 4. Gemini 系列 (>= 3.1，动态兼容 3.8, 4.x 等更新版本)
+      if (n.includes('gemini')) {
+        const vMatch = n.match(/gemini\s*([0-9]+(?:\.[0-9]+)?)/);
+        if (vMatch) {
+          const ver = parseFloat(vMatch[1]);
+          if (ver >= 3.1) return false;
+          return true;
+        }
+        return true;
+      }
+
+      // 5. 国内精选主流模型 (动态兼容更高版本)
+      // Kimi 系列 (>= K3)
+      if (n.includes('kimi')) {
+        const kMatch = n.match(/k([0-9]+(?:\.[0-9]+)?)/);
+        if (kMatch) {
+          return parseFloat(kMatch[1]) < 3;
+        }
+        return false;
+      }
+
+      // DeepSeek 系列 (>= V4.1，动态兼容 V4.2, V5 等更高版本)
+      if (n.includes('deepseek')) {
+        const dMatch = n.match(/v([0-9]+(?:[\.-][0-9]+)?)/);
+        if (dMatch) {
+          const ver = parseFloat(dMatch[1].replace('-', '.'));
+          if (ver >= 4.1) return false;
+          return true;
+        }
+        return true;
+      }
+
+      // GLM 系列 (>= 5.2)
+      if (n.includes('glm')) {
+        const gMatch = n.match(/glm-?([0-9]+(?:\.[0-9]+)?)/);
+        if (gMatch) {
+          if (parseFloat(gMatch[1]) >= 5.2) return false;
+          return true;
+        }
+        return true;
+      }
+
+      // MiniMax 系列 (>= M3)
+      if (n.includes('minimax')) {
+        const mMatch = n.match(/m([0-9]+(?:\.[0-9]+)?)/);
+        if (mMatch) {
+          if (parseFloat(mMatch[1]) >= 3) return false;
+          return true;
+        }
+        return false;
+      }
+
+      // Qwen 系列 (>= 3.8，动态兼容 3.8, 3.9, 4.x 等更高版本)
+      if (n.includes('qwen')) {
+        const qMatch = n.match(/qwen\s*([0-9]+(?:\.[0-9]+)?)/) || n.match(/qwen-?([0-9]+(?:\.[0-9]+)?)/);
+        if (qMatch) {
+          return parseFloat(qMatch[1]) < 3.8;
+        }
+        return true;
+      }
+
+      // MiMo 系列 (>= V2.6 及 Flash 系列全系)
+      if (n.includes('mimo')) {
+        if (n.includes('flash')) return false;
+        const mMatch = n.match(/mimo[^\d]*([0-9]+(?:[\.-][0-9]+)?)/);
+        if (mMatch) {
+          const ver = parseFloat(mMatch[1].replace('-', '.'));
+          return ver < 2.6;
+        }
+        return true;
+      }
+
+      // 6. Meta (Muse 系列)
+      if (n.includes('muse')) {
+        return false;
+      }
+
+      return true;
+    }
+
+    // 按模型家族分配专属浅色系文字颜色：
+    function getModelColor(name) {
+      const n = name.toLowerCase();
+      if (n.includes('kimi') || n.includes('glm') || n.includes('deepseek') || n.includes('minimax') || n.includes('qwen') || n.includes('mimo')) {
+        return '#1e293b';
+      }
+
+      if (n.includes('claude') || n.includes('opus') || n.includes('fable') || n.includes('sonnet')) return '#dc2626';   // 红色
+      if (n.includes('gpt') || n.includes('sol') || n.includes('terra') || n.includes('luna') || n.includes('astra')) return '#ca8a04';      // 暖金黄色
+      if (n.includes('gemini')) return '#0284c7';   // 天蓝色
+      if (n.includes('muse')) return '#1d4ed8';     // 宝蓝色 (Meta Muse)
+
+      return '#1e293b';
+    }
+
+    // Agent Harness 专属 Badge 样式类判定
+    function getHarnessClass(harness) {
+      const h = harness.toLowerCase();
+      if (h.includes('claude code')) return 'harness-claude-code';
+      if (h.includes('devin') || h.includes('fusion')) return 'harness-devin-fusion';
+      if (h.includes('codex')) return 'harness-codex-agent';
+      if (h.includes('cursor')) return 'harness-cursor-agent';
+      if (h.includes('kimi code')) return 'harness-kimi-code';
+      if (h.includes('opencode')) return 'harness-opencode';
+      if (h.includes('gemini cli')) return 'harness-gemini-cli';
+      if (h.includes('antigravity')) return 'harness-antigravity';
+      if (h.includes('muse')) return 'harness-muse-code';
+      return '';
+    }
+
+    // 解析模型名称与 Effort 级别
+    function parseModelAndEffort(fullName) {
+      const match = fullName.match(/^(.+?)\s*\((.+?)\)$/);
+      if (match) {
+        return { model: match[1].trim(), effort: match[2].trim() };
+      }
+      return { model: fullName.trim(), effort: 'Standard' };
+    }
+
+
+    // 全局状态：当前选中的 Harness 框架与全部 Agent 列表
+    let currentHarnessFilter = 'ALL';
+    let allCodingAgents = [];
+    const HARNESS_ORDER = ['Codex Agent CLI', 'Devin Fusion', 'Claude Code', 'Cursor Agent', 'Kimi Code CLI', 'OpenCode', 'Gemini CLI', 'Antigravity', 'Muse Code'];
+
+    // 渲染 Harness 筛选栏按钮组
+    function renderHarnessFilterBar(agentList) {
+      const counts = { ALL: agentList.length };
+      agentList.forEach(item => {
+        counts[item.agent_harness] = (counts[item.agent_harness] || 0) + 1;
+      });
+
+      const availableHarnesses = [];
+      HARNESS_ORDER.forEach(h => {
+        if (counts[h] !== undefined) availableHarnesses.push(h);
+      });
+      Object.keys(counts).forEach(k => {
+        if (k !== 'ALL' && !availableHarnesses.includes(k)) {
+          availableHarnesses.push(k);
+        }
+      });
+
+      let html = `
+        <button class="harness-filter-btn ${currentHarnessFilter === 'ALL' ? 'active' : ''}" data-harness="ALL" onclick="selectHarnessFilter('ALL')">
+          全部
+          <span class="filter-count">${counts.ALL || 0}</span>
+        </button>
+      `;
+
+      availableHarnesses.forEach(h => {
+        const hClass = getHarnessClass(h);
+        const isActive = currentHarnessFilter === h;
+        html += `
+          <button class="harness-filter-btn ${hClass} ${isActive ? 'active' : ''}" data-harness="${h}" onclick="selectHarnessFilter('${h}')">
+            ${h}
+            <span class="filter-count">${counts[h] || 0}</span>
+          </button>
+        `;
+      });
+
+      const filterContainer = document.getElementById('harness-filter-buttons');
+      if (filterContainer) filterContainer.innerHTML = html;
+    }
+
+    // 切换 Harness 筛选
+    function selectHarnessFilter(harness) {
+      currentHarnessFilter = harness;
+      const buttons = document.querySelectorAll('#harness-filter-buttons .harness-filter-btn');
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-harness') === harness) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      const filteredList = harness === 'ALL'
+        ? allCodingAgents
+        : allCodingAgents.filter(item => item.agent_harness === harness);
+      renderAgentLeaderboard('agent-leaderboard-body', filteredList);
+    }
+
+    // 渲染编码 Agent 排行榜表格 (独立背景色样式，支持 null 缺省值渲染及空数据提示)
+    function renderAgentLeaderboard(containerId, agentList) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+
+      if (!agentList || agentList.length === 0) {
+        container.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2.5rem 1rem; font-size: 0.9rem;">
+              暂无该 Harness 框架相关的官方评测组合
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      agentList.forEach((item, index) => {
+        const rank = index + 1;
+        let rankClass = '';
+        if (rank === 1) rankClass = 'top-rank-1';
+        else if (rank === 2) rankClass = 'top-rank-2';
+        else if (rank === 3) rankClass = 'top-rank-3';
+
+        const modelColor = getModelColor(item.model);
+        const harnessClass = getHarnessClass(item.agent_harness);
+
+        const solveRateStr = item.solve_rate !== null && item.solve_rate !== undefined ? item.solve_rate.toFixed(1) : '-';
+        const avgTimeStr = item.avg_time_min !== null && item.avg_time_min !== undefined ? `${item.avg_time_min.toFixed(1)} min` : '-';
+        const costStr = item.cost_usd !== null && item.cost_usd !== undefined ? `$${item.cost_usd.toFixed(2)}` : '-';
+
+        container.innerHTML += `
+          <tr style="background-color: ${index % 2 === 1 ? '#f8fafc' : '#ffffff'};">
+            <td style="text-align: center;"><span class="rank-num ${rankClass}">#${rank}</span></td>
+            <td><span class="agent-harness-badge ${harnessClass}">${item.agent_harness}</span></td>
+            <td style="color: ${modelColor}; font-weight: 700;">${item.model}</td>
+            <td style="font-weight: 800; color: #0f172a;">${solveRateStr}</td>
+            <td style="color: var(--text-muted); font-weight: 600;">${avgTimeStr}</td>
+            <td style="color: var(--text-muted); font-weight: 600;">${costStr}</td>
+          </tr>
+        `;
+      });
+    }
+
+    // 渲染带有 rowspan (跨行合并) 的模型表格，单元格文字保留在第一行 (vertical-align: top)，按合并单元格组交替斑马底色
+    function renderGroupedTable(containerId, items) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+
+      // Group items by base model name
+      const groups = [];
+      const map = {};
+
+      items.forEach(item => {
+        const parsed = parseModelAndEffort(item.fullName);
+        if (!map[parsed.model]) {
+          map[parsed.model] = [];
+          groups.push({ model: parsed.model, rows: map[parsed.model] });
+        }
+        map[parsed.model].push({
+          effort: parsed.effort,
+          color: item.color,
+          intel: item.intel,
+          coding: item.coding,
+          speed: item.speed,
+          cost: item.cost
+        });
+      });
+
+      groups.forEach((g, gIdx) => {
+        const rowCount = g.rows.length;
+        const bgStyle = gIdx % 2 === 1 ? 'background-color: #f8fafc;' : 'background-color: #ffffff;';
+
+        g.rows.forEach((r, idx) => {
+          let tr = `<tr style="${bgStyle}">`;
+          if (idx === 0) {
+            tr += `<td rowspan="${rowCount}" style="vertical-align: top; border-right: 1px solid #e2e8f0; ${bgStyle} padding-top: 0.5rem;"><strong style="color: ${r.color}; font-size: 0.95rem; font-weight: 700;">${g.model}</strong></td>`;
+          }
+          tr += `
+            <td style="color: ${r.color}; font-weight: 500;"><span class="effort-badge" style="color: ${r.color};">${r.effort}</span></td>
+            <td style="color: ${r.color}; font-weight: 600;">${r.intel}</td>
+            <td style="color: ${r.color}; font-weight: 600;">${r.coding}</td>
+            <td style="color: ${r.color}; font-weight: 600;">${r.speed}</td>
+            <td style="color: ${r.color}; font-weight: 600;">${r.cost}</td>
+          </tr>`;
+          container.innerHTML += tr;
+        });
+      });
+    }
+
+    function renderDashboard(rawData) {
+      if (rawData.updated_at) {
+        const dateEl = document.getElementById('update-date-text');
+        if (dateEl) dateEl.textContent = `更新日期：${rawData.updated_at}`;
+      }
+
+      // 0. Render Agent Leaderboard & Filter Bar
+      allCodingAgents = rawData.coding_agent_leaderboard || [];
+      renderHarnessFilterBar(allCodingAgents);
+      selectHarnessFilter(currentHarnessFilter);
+
+      // 按规则过滤模型
+      const data = {
+        intelligence_index: rawData.intelligence_index.filter(item => !isIgnoredModel(item.model)),
+        coding_index: (rawData.coding_index || []).filter(item => !isIgnoredModel(item.model)),
+        speed_tokens_per_sec: rawData.speed_tokens_per_sec.filter(item => !isIgnoredModel(item.model)),
+        cost_per_task_usd: rawData.cost_per_task_usd.filter(item => !isIgnoredModel(item.model)),
+        recent_updates: rawData.recent_updates
+      };
+
+      // 1. Render Intelligence (Top 30)
+      const intelContainer = document.getElementById('intel-list');
+      intelContainer.innerHTML = '';
+      const intelList = data.intelligence_index.slice(0, 30);
+      const maxIntel = intelList.length > 0 ? Math.max(...intelList.map(d => d.score)) : 1;
+      intelList.forEach(item => {
+        const pct = (item.score / maxIntel) * 100;
+        const color = getModelColor(item.model);
+        intelContainer.innerHTML += `
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span class="model-name-text" style="color: ${color};">${item.model}</span>
+              <span style="color: ${color}; font-weight: 700;">${item.score.toFixed(1)}</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: ${pct}%;"></div>
+            </div>
+          </div>
+        `;
+      });
+
+      // 2. Render Coding Index (Top 30)
+      const codingContainer = document.getElementById('coding-list');
+      codingContainer.innerHTML = '';
+      const codingList = data.coding_index.slice(0, 30);
+      const maxCoding = codingList.length > 0 ? Math.max(...codingList.map(d => d.coding_score)) : 1;
+      codingList.forEach(item => {
+        const pct = (item.coding_score / maxCoding) * 100;
+        const color = getModelColor(item.model);
+        codingContainer.innerHTML += `
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span class="model-name-text" style="color: ${color};">${item.model}</span>
+              <span style="color: ${color}; font-weight: 700;">${item.coding_score.toFixed(1)}</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: ${pct}%;"></div>
+            </div>
+          </div>
+        `;
+      });
+
+      // 3. Render Speed (Top 30)
+      const speedContainer = document.getElementById('speed-list');
+      speedContainer.innerHTML = '';
+      const speedList = data.speed_tokens_per_sec.slice(0, 30);
+      const maxSpeed = speedList.length > 0 ? Math.max(...speedList.map(d => d.speed_tps)) : 1;
+      speedList.forEach(item => {
+        const pct = (item.speed_tps / maxSpeed) * 100;
+        const color = getModelColor(item.model);
+        speedContainer.innerHTML += `
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span class="model-name-text" style="color: ${color};">${item.model}</span>
+              <span style="color: ${color}; font-weight: 700;">${item.speed_tps.toFixed(1)} t/s</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: ${pct}%;"></div>
+            </div>
+          </div>
+        `;
+      });
+
+      // 4. Render Cost (Lowest 30)
+      const costContainer = document.getElementById('cost-list');
+      costContainer.innerHTML = '';
+      const costList = data.cost_per_task_usd.slice(0, 30);
+      const maxCost = costList.length > 0 ? Math.max(...costList.map(d => d.cost_usd)) : 1;
+      costList.forEach(item => {
+        const pct = (item.cost_usd / maxCost) * 100;
+        const color = getModelColor(item.model);
+        costContainer.innerHTML += `
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span class="model-name-text" style="color: ${color};">${item.model}</span>
+              <span style="color: ${color}; font-weight: 700;">$${item.cost_usd.toFixed(3)}</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: ${pct}%;"></div>
+            </div>
+          </div>
+        `;
+      });
+
+      // 5. Construct Structured Model Map
+      const modelMap = {};
+      data.intelligence_index.forEach(i => {
+        if (!modelMap[i.model]) modelMap[i.model] = {};
+        modelMap[i.model].intel = i.score;
+      });
+      data.coding_index.forEach(cd => {
+        if (!modelMap[cd.model]) modelMap[cd.model] = {};
+        modelMap[cd.model].coding = cd.coding_score;
+      });
+      data.speed_tokens_per_sec.forEach(s => {
+        if (!modelMap[s.model]) modelMap[s.model] = {};
+        modelMap[s.model].speed = s.speed_tps;
+      });
+      data.cost_per_task_usd.forEach(c => {
+        if (!modelMap[c.model]) modelMap[c.model] = {};
+        modelMap[c.model].cost = c.cost_usd;
+      });
+
+      const claudeList = [];
+      const gptList = [];
+      const geminiList = [];
+      const museList = [];
+      const cnList = [];
+
+      Object.keys(modelMap).forEach(fullName => {
+        const color = getModelColor(fullName);
+        const intel = modelMap[fullName].intel ? modelMap[fullName].intel.toFixed(1) : '-';
+        const coding = modelMap[fullName].coding ? modelMap[fullName].coding.toFixed(1) : '-';
+        const speed = modelMap[fullName].speed ? modelMap[fullName].speed.toFixed(1) + ' t/s' : '-';
+        const cost = modelMap[fullName].cost !== undefined ? '$' + modelMap[fullName].cost.toFixed(4) : '-';
+
+        const itemObj = { fullName, color, intel, coding, speed, cost };
+
+        const m = fullName.toLowerCase();
+        if (m.includes('claude') || m.includes('opus') || m.includes('fable') || m.includes('sonnet')) {
+          claudeList.push(itemObj);
+        } else if (m.includes('gpt') || m.includes('sol') || m.includes('terra') || m.includes('luna') || m.includes('astra')) {
+          gptList.push(itemObj);
+        } else if (m.includes('gemini')) {
+          geminiList.push(itemObj);
+        } else if (m.includes('muse')) {
+          museList.push(itemObj);
+        } else {
+          cnList.push(itemObj);
+        }
+      });
+
+      // 排序：各家族均按版本号及性能优先排序
+      claudeList.sort((a, b) => {
+        const getVer = (name) => {
+          const m = name.toLowerCase();
+          const match = m.match(/(?:claude|sonnet|opus|fable)\s*([\d.]+)/) || m.match(/([\d.]+)\s*(?:sonnet|opus|fable)/);
+          return match ? parseFloat(match[1]) : 0;
+        };
+        const verDiff = getVer(b.fullName) - getVer(a.fullName);
+        if (verDiff !== 0) return verDiff;
+        return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
+      });
+      renderGroupedTable('claude-family-body', claudeList);
+
+      gptList.sort((a, b) => {
+        const getVer = (name) => {
+          const match = name.match(/GPT-?([\d.]+)/i);
+          return match ? parseFloat(match[1]) : 0;
+        };
+        const verDiff = getVer(b.fullName) - getVer(a.fullName);
+        if (verDiff !== 0) return verDiff;
+        return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
+      });
+      renderGroupedTable('gpt-family-body', gptList);
+
+      geminiList.sort((a, b) => {
+        const getVer = (name) => {
+          const match = name.match(/Gemini\s*([\d.]+)/i);
+          return match ? parseFloat(match[1]) : 0;
+        };
+        const verDiff = getVer(b.fullName) - getVer(a.fullName);
+        if (verDiff !== 0) return verDiff;
+        return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
+      });
+      renderGroupedTable('gemini-family-body', geminiList);
+
+      museList.sort((a, b) => {
+        const getVer = (name) => {
+          const match = name.match(/Spark\s*([\d.]+)/i) || name.match(/Muse\s*([\d.]+)/i);
+          return match ? parseFloat(match[1]) : 0;
+        };
+        const verDiff = getVer(b.fullName) - getVer(a.fullName);
+        if (verDiff !== 0) return verDiff;
+        return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
+      });
+      renderGroupedTable('muse-family-body', museList);
+
+      cnList.sort((a, b) => {
+        return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
+      });
+      renderGroupedTable('cn-family-body', cnList);
+
+      // Render Changelog
+      const changelogContainer = document.getElementById('changelog-container');
+      changelogContainer.innerHTML = '';
+      data.recent_updates.forEach(upd => {
+        changelogContainer.innerHTML += `
+          <div class="changelog-item">
+            <span class="changelog-date">${upd.date}</span>
+            <span style="background:#e2e8f0; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; color:#475569; font-weight:600;">${upd.type}</span>
+            <span>${upd.title}</span>
+          </div>
+        `;
+      });
+    }
+
+    const latestData = {
+  "updated_at": "2026-10-13",
+  "source": "https://artificialanalysis.ai/leaderboards/models",
+  "agents_source": "https://artificialanalysis.ai/agents/coding-agents",
+  "coding_agent_leaderboard": [
+    {
+      "agent_harness": "Claude Code",
+      "model": "Sonnet 5.5 (max)",
+      "solve_rate": 68.35783373750832,
+      "avg_time_min": 87.41608954895489,
+      "cost_usd": 14.190800796369649,
+      "brand": "claude"
+    },
+    {
+      "agent_harness": "Muse Code",
+      "model": "Muse Wonder Full (max)",
+      "solve_rate": 68.03093740718634,
+      "avg_time_min": 10.855381114778163,
+      "cost_usd": 0.7046746644898908,
+      "brand": "muse"
+    },
+    {
+      "agent_harness": "Claude Code",
+      "model": "Opus 5.5 (max)",
+      "solve_rate": 65.9885802549234,
+      "avg_time_min": 64.45153901723504,
+      "cost_usd": 13.036383418426828,
+      "brand": "claude"
+    },
+    {
+      "agent_harness": "Antigravity",
+      "model": "Gemini 4 Argon",
+      "solve_rate": 63.7577603035782,
+      "avg_time_min": 34.50281005334807,
+      "cost_usd": 5.8439053894448145,
+      "brand": "gemini"
+    },
+    {
+      "agent_harness": "Muse Code",
+      "model": "Muse Wonder (max)",
+      "solve_rate": 63.49675266318143,
+      "avg_time_min": 22.44420209020898,
+      "cost_usd": 8.052232502530256,
+      "brand": "muse"
+    },
+    {
+      "agent_harness": "Codex Agent CLI",
+      "model": "GPT-6.1 Sol (xhigh)",
+      "solve_rate": 62.90776736822983,
+      "avg_time_min": 15.52303848551522,
+      "cost_usd": 1.0397081014409635,
+      "brand": "gpt"
+    },
+    {
+      "agent_harness": "Claude Code",
+      "model": "Sonnet 5.5 (xhigh)",
+      "solve_rate": 62.8713868151493,
+      "avg_time_min": 26.98355784745141,
+      "cost_usd": 3.3333865348734886,
+      "brand": "claude"
+    },
+    {
+      "agent_harness": "Claude Code",
+      "model": "Fable 5.1 (max) (with fallback)",
+      "solve_rate": 62.22249615769457,
+      "avg_time_min": 34.831668756875715,
+      "cost_usd": 12.388092375137534,
+      "brand": "claude"
+    },
+    {
+      "agent_harness": "Devin Fusion",
+      "model": "Claude Fable 5.1 XHigh + SWE-2 Medium",
+      "solve_rate": 61.68255492406223,
+      "avg_time_min": 35.78320149431607,
+      "cost_usd": 7.897126985217273,
+      "brand": "claude"
+    },
+    {
+      "agent_harness": "Codex Agent CLI",
+      "model": "GPT-6 Astra (max)",
+      "solve_rate": 61.64504498789397,
+      "avg_time_min": 29.36721710671066,
+      "cost_usd": 7.46709735138597,
+      "brand": "gpt"
+    },
+    {
+      "agent_harness": "Codex Agent CLI",
+      "model": "GPT-6.1 Sol (high)",
+      "solve_rate": 60.14923716179784,
+      "avg_time_min": 13.329420205353875,
+      "cost_usd": 0.8892413135295484,
+      "brand": "gpt"
+    },
+    {
+      "agent_harness": "Codex Agent CLI",
+      "model": "GPT-6.1 Sol (max)",
+      "solve_rate": 60.14750704302517,
+      "avg_time_min": 24.384107040704063,
+      "cost_usd": 1.554119528390054,
+      "brand": "gpt"
+    },
+    {
+      "agent_harness": "Claude Code",
+      "model": "Opus 5 (max)",
+      "solve_rate": 59.726367298448366,
+      "avg_time_min": 41.92567059955995,
+      "cost_usd": 10.789154699257413,
+      "brand": "claude"
+    },
+    {
+      "agent_harness": "Devin Fusion",
+      "model": "GPT-6 Astra XHigh + SWE-2 Medium",
+      "solve_rate": 58.8884131062264,
+      "avg_time_min": 24.698266336633665,
+      "cost_usd": 4.536492777821779,
+      "brand": "gpt"
+    },
+    {
+      "agent_harness": "Codex Agent CLI",
+      "model": "GPT-6.1 Sol (low)",
+      "solve_rate": 57.21634943016617,
+      "avg_time_min": 8.63023157315731,
+      "cost_usd": 0.49880364510270725,
+      "brand": "gpt"
+    },
+    {
+      "agent_harness": "Codex Agent CLI",
+      "model": "GPT-6 Sol (max)",
+      "solve_rate": 56.662591275779974,
+      "avg_time_min": 22.300878419508642,
+      "cost_usd": 2.989729004180416,
+      "brand": "gpt"
+    },
+    {
+      "agent_harness": "Claude Code",
+      "model": "Sonnet 5.5 (high)",
+      "solve_rate": 55.01249049636148,
+      "avg_time_min": 12.253016464979853,
+      "cost_usd": 1.235497127172719,
+      "brand": "claude"
+    },
+    {
+      "agent_harness": "Muse Code",
+      "model": "Muse Spark 1.3 (max)",
+      "solve_rate": 54.30273329930766,
+      "avg_time_min": 18.447555885588557,
+      "cost_usd": 3.977504096947204,
+      "brand": "muse"
+    },
+    {
+      "agent_harness": "OpenCode",
+      "model": "GLM-5.3",
+      "solve_rate": 53.55484140097326,
+      "avg_time_min": 48.13259420608729,
+      "cost_usd": 4.241385833751375,
+      "brand": "cn"
+    },
+    {
+      "agent_harness": "Kimi Code CLI",
+      "model": "Kimi K3",
+      "solve_rate": 51.9259105470924,
+      "avg_time_min": 61.48906991199121,
+      "cost_usd": 5.047195443300332,
+      "brand": "cn"
+    },
+    {
+      "agent_harness": "Muse Code",
+      "model": "Muse Spark 1.3 (xhigh)",
+      "solve_rate": 48.2993172759088,
+      "avg_time_min": 18.303381866519967,
+      "cost_usd": 3.467754041474145,
+      "brand": "muse"
+    },
+    {
+      "agent_harness": "Claude Code",
+      "model": "Sonnet 5.5 (medium)",
+      "solve_rate": 45.88397535157457,
+      "avg_time_min": 8.512869710304368,
+      "cost_usd": 0.6187507753025301,
+      "brand": "claude"
+    },
+    {
+      "agent_harness": "Claude Code",
+      "model": "Qwen3.8 Max",
+      "solve_rate": 43.26529641259874,
+      "avg_time_min": 63.073601228456205,
+      "cost_usd": 3.478965577837015,
+      "brand": "cn"
+    },
+    {
+      "agent_harness": "Claude Code",
+      "model": "Sonnet 5.5 (low)",
+      "solve_rate": 42.0593075103495,
+      "avg_time_min": 6.347602988632198,
+      "cost_usd": 0.48311011474147336,
+      "brand": "claude"
+    },
+    {
+      "agent_harness": "Antigravity",
+      "model": "Gemini 3.8 Flash (high)",
+      "solve_rate": 41.86315529449987,
+      "avg_time_min": 11.711850421708835,
+      "cost_usd": 2.4673922004125437,
+      "brand": "gemini"
+    },
+    {
+      "agent_harness": "Codex Agent CLI",
+      "model": "GPT-6 Luna (max)",
+      "solve_rate": 41.07438934016153,
+      "avg_time_min": 21.43211419141913,
+      "cost_usd": 0.17591172304455457,
+      "brand": "gpt"
+    }
+  ],
+  "intelligence_index": [
+    {
+      "model": "Claude Opus 5.5 (max with fallback)",
+      "score": 57.6223698102963
+    },
+    {
+      "model": "Claude Sonnet 5.5 (max with fallback)",
+      "score": 56.0001286580794
+    },
+    {
+      "model": "Claude Opus 5.5 (xhigh with fallback)",
+      "score": 55.9873505840139
+    },
+    {
+      "model": "Muse Wonder Full (max)",
+      "score": 55.8021199855616
+    },
+    {
+      "model": "Claude Opus 5.5 (high with fallback)",
+      "score": 53.5831959822067
+    },
+    {
+      "model": "Claude Fable 5.1 (max with fallback)",
+      "score": 53.3549259623252
+    },
+    {
+      "model": "Claude Fable 5.1 (xhigh with fallback)",
+      "score": 53.2032587538944
+    },
+    {
+      "model": "GPT-6 Astra (max)",
+      "score": 52.673669395513
+    },
+    {
+      "model": "Gemini 4 Argon (high)",
+      "score": 52.5605655745982
+    },
+    {
+      "model": "Muse Wonder (max)",
+      "score": 52.393894697293
+    },
+    {
+      "model": "GPT-6 Astra (xhigh)",
+      "score": 52.3863277108782
+    },
+    {
+      "model": "Claude Sonnet 5.5 (xhigh with fallback)",
+      "score": 51.8955544183089
+    },
+    {
+      "model": "GPT-6.1 Sol (max)",
+      "score": 51.8332597011541
+    },
+    {
+      "model": "Claude Opus 5.5 (medium with fallback)",
+      "score": 51.2434931792768
+    },
+    {
+      "model": "Claude Fable 5.1 (high with fallback)",
+      "score": 51.1515708852237
+    },
+    {
+      "model": "GPT-6.1 Sol (xhigh)",
+      "score": 51.0377679093761
+    },
+    {
+      "model": "GPT-6 Astra (high)",
+      "score": 50.9191471636152
+    },
+    {
+      "model": "Claude Opus 5 (max)",
+      "score": 50.7771115797629
+    },
+    {
+      "model": "GPT-6.1 Sol (high)",
+      "score": 50.2377777519769
+    },
+    {
+      "model": "Claude Opus 5 (xhigh)",
+      "score": 49.6773552926939
+    },
+    {
+      "model": "Claude Fable 5 (with fallback)",
+      "score": 49.6258202733378
+    },
+    {
+      "model": "GPT-6 Astra (medium)",
+      "score": 49.5704363034369
+    },
+    {
+      "model": "Claude Fable 5.1 (medium with fallback)",
+      "score": 48.9206162609523
+    },
+    {
+      "model": "Claude Opus 5 (high)",
+      "score": 48.1219182595908
+    },
+    {
+      "model": "Muse Spark 1.3 (max)",
+      "score": 48.0923107719685
+    },
+    {
+      "model": "GPT-6.1 Sol (medium)",
+      "score": 47.7833271274065
+    },
+    {
+      "model": "GPT-6 Sol (max)",
+      "score": 47.6305176437724
+    },
+    {
+      "model": "Claude Fable 5.1 (low with fallback)",
+      "score": 46.8163422014862
+    },
+    {
+      "model": "Claude Sonnet 5.5 (high with fallback)",
+      "score": 46.7533528066958
+    },
+    {
+      "model": "MiMo-V2.6-Pro",
+      "score": 46.3242065310383
+    },
+    {
+      "model": "GPT-6 Astra (low)",
+      "score": 45.7819243120341
+    },
+    {
+      "model": "Qwen3.8 Max (0902)",
+      "score": 45.4152084980521
+    },
+    {
+      "model": "Muse Spark 1.3 (xhigh)",
+      "score": 45.0732966922226
+    },
+    {
+      "model": "Claude Opus 5 (medium)",
+      "score": 44.8253265420613
+    },
+    {
+      "model": "GLM-5.3 (max)",
+      "score": 44.777392385614
+    },
+    {
+      "model": "GPT-6 Sol (xhigh)",
+      "score": 44.2448955516407
+    },
+    {
+      "model": "Kimi K3 (max)",
+      "score": 43.5938229518782
+    },
+    {
+      "model": "GPT-6 Sol (high)",
+      "score": 42.4004513642985
+    },
+    {
+      "model": "Claude Opus 5.5 (low with fallback)",
+      "score": 42.3077781466168
+    },
+    {
+      "model": "GPT-6.1 Sol (low)",
+      "score": 42.0835618555848
+    },
+    {
+      "model": "GLM-5.3-Flash",
+      "score": 41.807466113455
+    },
+    {
+      "model": "Claude Opus 4.8 (max)",
+      "score": 41.7899103794639
+    },
+    {
+      "model": "Gemini 3.8 Flash (high)",
+      "score": 40.9262321765904
+    },
+    {
+      "model": "Claude Sonnet 5.5 (medium with fallback)",
+      "score": 40.838652287929
+    },
+    {
+      "model": "Claude Opus 4.7 (max)",
+      "score": 40.6897928205908
+    },
+    {
+      "model": "Qwen3.8 Max",
+      "score": 40.1528623585941
+    },
+    {
+      "model": "Qwen3.8 2.4T A95B",
+      "score": 39.8861723105325
+    },
+    {
+      "model": "Qwen3.8-Flash-Next",
+      "score": 39.8223021864741
+    },
+    {
+      "model": "GPT-6 Sol (medium)",
+      "score": 39.8118971749522
+    },
+    {
+      "model": "Gemini 3.8 Flash (medium)",
+      "score": 39.7740187061926
+    },
+    {
+      "model": "Gemini 3.7 Flash (medium)",
+      "score": 39.617751842555
+    },
+    {
+      "model": "Muse Spark 1.2 (xhigh)",
+      "score": 39.5758607970943
+    },
+    {
+      "model": "DeepSeek V4.1 Flash (max)",
+      "score": 39.456167472527
+    },
+    {
+      "model": "Claude Opus 5 (low)",
+      "score": 39.3543357992936
+    },
+    {
+      "model": "Gemini 3.7 Flash (high)",
+      "score": 39.0594566404896
+    },
+    {
+      "model": "Claude Sonnet 5 (max)",
+      "score": 38.1638712882576
+    },
+    {
+      "model": "GPT-6 Luna (max)",
+      "score": 38.1245186869738
+    },
+    {
+      "model": "MiMo-V2.6-Flash",
+      "score": 37.8843590141754
+    },
+    {
+      "model": "Gemini 3.7 Flash (low)",
+      "score": 36.9459114891198
+    },
+    {
+      "model": "Claude Sonnet 5.5 (low with fallback)",
+      "score": 35.8681594577587
+    },
+    {
+      "model": "GPT-6 Luna (xhigh)",
+      "score": 34.5587320217785
+    },
+    {
+      "model": "Claude Sonnet 5 (xhigh)",
+      "score": 34.384211557212
+    },
+    {
+      "model": "GLM-5.3 (low)",
+      "score": 34.2990078159643
+    },
+    {
+      "model": "GPT-6 Sol (low)",
+      "score": 34.1548755585733
+    },
+    {
+      "model": "Gemini 3.6 Flash (high)",
+      "score": 33.9785928920714
+    },
+    {
+      "model": "Muse Spark 1.1 (xhigh)",
+      "score": 33.7298425919846
+    },
+    {
+      "model": "GLM-5.2 (max)",
+      "score": 33.7054572377545
+    },
+    {
+      "model": "Qwen3.8 27B (xhigh)",
+      "score": 33.6962858057476
+    },
+    {
+      "model": "Gemini 3.5 Flash (medium)",
+      "score": 33.6325871590289
+    },
+    {
+      "model": "Gemini 3.8 Flash (low)",
+      "score": 33.4548106699132
+    },
+    {
+      "model": "GPT-6 Luna (high)",
+      "score": 32.9282054150837
+    },
+    {
+      "model": "Gemini 3.5 Flash (high)",
+      "score": 32.5983283695905
+    },
+    {
+      "model": "Claude Opus 4.6 (max)",
+      "score": 31.9457397504366
+    },
+    {
+      "model": "Claude Sonnet 5 (high)",
+      "score": 31.6623246664651
+    },
+    {
+      "model": "Muse Spark",
+      "score": 31.2991113054345
+    },
+    {
+      "model": "Kimi K3 (low)",
+      "score": 30.0666987529068
+    },
+    {
+      "model": "Claude Sonnet 4.6 (max)",
+      "score": 30.0575611117644
+    },
+    {
+      "model": "GPT-6 Luna (medium)",
+      "score": 29.9251773515762
+    },
+    {
+      "model": "Gemini 3.1 Pro Preview",
+      "score": 29.7185656132261
+    },
+    {
+      "model": "MiniMax-M3",
+      "score": 29.2202932236316
+    },
+    {
+      "model": "Claude Sonnet 5 (medium)",
+      "score": 28.0531468379456
+    },
+    {
+      "model": "Qwen3.8 27B (medium)",
+      "score": 27.5508228231586
+    },
+    {
+      "model": "Qwen3.8 27B (low)",
+      "score": 26.2047978189896
+    },
+    {
+      "model": "Claude Sonnet 5 (low)",
+      "score": 24.2638393579597
+    },
+    {
+      "model": "Gemini 3.5 Flash (minimal)",
+      "score": 23.848790860577
+    },
+    {
+      "model": "MiMo-V2-Flash (Feb 2026)",
+      "score": 22.4406462861731
+    },
+    {
+      "model": "Gemini 3.5 Flash-Lite",
+      "score": 22.1685424839812
+    },
+    {
+      "model": "GPT-6 Luna (low)",
+      "score": 21.5261980080866
+    },
+    {
+      "model": "MiMo-V2-Flash",
+      "score": 20.8177287591331
+    },
+    {
+      "model": "Muse Glimmer (high)",
+      "score": 17.4754176089465
+    },
+    {
+      "model": "Gemini 3.1 Flash-Lite",
+      "score": 15.554288713025
+    }
+  ],
+  "coding_index": [
+    {
+      "model": "Claude Sonnet 5.5 (max with fallback)",
+      "coding_score": 63.636363636363605
+    },
+    {
+      "model": "GPT-6 Astra (xhigh)",
+      "coding_score": 59.5959595959596
+    },
+    {
+      "model": "Claude Opus 5.5 (max with fallback)",
+      "coding_score": 59.5959595959596
+    },
+    {
+      "model": "Claude Opus 5.5 (xhigh with fallback)",
+      "coding_score": 59.5959595959596
+    },
+    {
+      "model": "GPT-6 Astra (max)",
+      "coding_score": 59.09090909090911
+    },
+    {
+      "model": "Claude Sonnet 5.5 (xhigh with fallback)",
+      "coding_score": 57.07070707070711
+    },
+    {
+      "model": "Gemini 4 Argon (high)",
+      "coding_score": 57.07070707070711
+    },
+    {
+      "model": "Muse Wonder Full (max)",
+      "coding_score": 57.07070707070711
+    },
+    {
+      "model": "Claude Opus 5.5 (high with fallback)",
+      "coding_score": 56.565656565656596
+    },
+    {
+      "model": "GPT-6.1 Sol (max)",
+      "coding_score": 56.0606060606061
+    },
+    {
+      "model": "Claude Fable 5.1 (xhigh with fallback)",
+      "coding_score": 55.050505050505
+    },
+    {
+      "model": "GPT-6.1 Sol (xhigh)",
+      "coding_score": 54.040404040404
+    },
+    {
+      "model": "GPT-6 Astra (high)",
+      "coding_score": 54.040404040404
+    },
+    {
+      "model": "Claude Opus 5.5 (medium with fallback)",
+      "coding_score": 52.5252525252525
+    },
+    {
+      "model": "Claude Fable 5.1 (max with fallback)",
+      "coding_score": 52.020202020202
+    },
+    {
+      "model": "Claude Fable 5.1 (high with fallback)",
+      "coding_score": 52.020202020202
+    },
+    {
+      "model": "Muse Wonder (max)",
+      "coding_score": 52.020202020202
+    },
+    {
+      "model": "GPT-6.1 Sol (high)",
+      "coding_score": 51.5151515151515
+    },
+    {
+      "model": "GPT-6 Astra (medium)",
+      "coding_score": 49.494949494949495
+    },
+    {
+      "model": "Claude Opus 5 (max)",
+      "coding_score": 48.989898989899
+    },
+    {
+      "model": "GPT-6.1 Sol (medium)",
+      "coding_score": 47.979797979798
+    },
+    {
+      "model": "Claude Opus 5 (xhigh)",
+      "coding_score": 46.4646464646465
+    },
+    {
+      "model": "Claude Opus 5 (high)",
+      "coding_score": 45.959595959596
+    },
+    {
+      "model": "Claude Fable 5.1 (medium with fallback)",
+      "coding_score": 44.949494949495
+    },
+    {
+      "model": "Claude Sonnet 5.5 (high with fallback)",
+      "coding_score": 43.9393939393939
+    },
+    {
+      "model": "GPT-6 Sol (max)",
+      "coding_score": 43.9393939393939
+    },
+    {
+      "model": "Claude Fable 5 (with fallback)",
+      "coding_score": 42.4242424242424
+    },
+    {
+      "model": "GPT-6 Astra (low)",
+      "coding_score": 41.9191919191919
+    },
+    {
+      "model": "GLM-5.3 (max)",
+      "coding_score": 41.9191919191919
+    },
+    {
+      "model": "Claude Fable 5.1 (low with fallback)",
+      "coding_score": 40.4040404040404
+    },
+    {
+      "model": "Qwen3.8 Max (0902)",
+      "coding_score": 38.8888888888889
+    },
+    {
+      "model": "MiMo-V2.6-Pro",
+      "coding_score": 34.8484848484849
+    },
+    {
+      "model": "GLM-5.3 (low)",
+      "coding_score": 34.8484848484849
+    },
+    {
+      "model": "Claude Opus 5 (medium)",
+      "coding_score": 34.343434343434296
+    },
+    {
+      "model": "Muse Spark 1.3 (max)",
+      "coding_score": 33.3333333333333
+    },
+    {
+      "model": "GLM-5.3-Flash",
+      "coding_score": 32.8282828282828
+    },
+    {
+      "model": "Claude Opus 5.5 (low with fallback)",
+      "coding_score": 31.313131313131297
+    },
+    {
+      "model": "GPT-6.1 Sol (low)",
+      "coding_score": 30.808080808080803
+    },
+    {
+      "model": "GPT-6 Sol (xhigh)",
+      "coding_score": 30.303030303030297
+    },
+    {
+      "model": "Claude Sonnet 5.5 (medium with fallback)",
+      "coding_score": 29.7979797979798
+    },
+    {
+      "model": "DeepSeek V4.1 Flash (max)",
+      "coding_score": 26.7676767676768
+    },
+    {
+      "model": "Claude Opus 5 (low)",
+      "coding_score": 26.2626262626263
+    },
+    {
+      "model": "GPT-6 Sol (high)",
+      "coding_score": 26.2626262626263
+    },
+    {
+      "model": "Qwen3.8-Flash-Next",
+      "coding_score": 25.2525252525253
+    },
+    {
+      "model": "MiMo-V2.6-Flash",
+      "coding_score": 22.727272727272698
+    },
+    {
+      "model": "Claude Opus 4.8 (max)",
+      "coding_score": 21.7171717171717
+    },
+    {
+      "model": "Claude Sonnet 5.5 (low with fallback)",
+      "coding_score": 20.7070707070707
+    },
+    {
+      "model": "Gemini 3.8 Flash (medium)",
+      "coding_score": 19.6969696969697
+    },
+    {
+      "model": "Gemini 3.8 Flash (high)",
+      "coding_score": 19.6969696969697
+    },
+    {
+      "model": "Qwen3.8 Max",
+      "coding_score": 18.6868686868687
+    },
+    {
+      "model": "GPT-6 Sol (medium)",
+      "coding_score": 18.6868686868687
+    },
+    {
+      "model": "Muse Spark 1.3 (xhigh)",
+      "coding_score": 16.6666666666667
+    },
+    {
+      "model": "Claude Sonnet 5 (max)",
+      "coding_score": 14.1414141414141
+    },
+    {
+      "model": "Gemini 3.7 Flash (high)",
+      "coding_score": 13.6363636363636
+    },
+    {
+      "model": "Kimi K3 (low)",
+      "coding_score": 12.6262626262626
+    },
+    {
+      "model": "GPT-6 Luna (max)",
+      "coding_score": 12.6262626262626
+    },
+    {
+      "model": "Kimi K3 (max)",
+      "coding_score": 12.6262626262626
+    },
+    {
+      "model": "Qwen3.8 2.4T A95B",
+      "coding_score": 11.1111111111111
+    },
+    {
+      "model": "Gemini 3.8 Flash (low)",
+      "coding_score": 10.1010101010101
+    },
+    {
+      "model": "GPT-6 Sol (low)",
+      "coding_score": 9.09090909090909
+    },
+    {
+      "model": "GPT-6 Luna (xhigh)",
+      "coding_score": 8.08080808080808
+    },
+    {
+      "model": "Muse Spark 1.2 (xhigh)",
+      "coding_score": 7.07070707070707
+    },
+    {
+      "model": "Gemini 3.6 Flash (high)",
+      "coding_score": 7.07070707070707
+    },
+    {
+      "model": "Claude Sonnet 5 (xhigh)",
+      "coding_score": 7.07070707070707
+    },
+    {
+      "model": "Gemini 3.5 Flash (high)",
+      "coding_score": 6.56565656565657
+    },
+    {
+      "model": "Muse Spark 1.1 (xhigh)",
+      "coding_score": 6.06060606060606
+    },
+    {
+      "model": "Qwen3.8 27B (xhigh)",
+      "coding_score": 5.55555555555556
+    },
+    {
+      "model": "Qwen3.8 27B (medium)",
+      "coding_score": 5.05050505050505
+    },
+    {
+      "model": "Claude Sonnet 5 (high)",
+      "coding_score": 5.05050505050505
+    },
+    {
+      "model": "GPT-6 Luna (high)",
+      "coding_score": 4.545454545454549
+    },
+    {
+      "model": "Gemini 3.1 Pro Preview",
+      "coding_score": 4.04040404040404
+    },
+    {
+      "model": "Claude Sonnet 4.6 (max)",
+      "coding_score": 3.03030303030303
+    },
+    {
+      "model": "Claude Sonnet 5 (low)",
+      "coding_score": 2.52525252525253
+    },
+    {
+      "model": "GPT-6 Luna (medium)",
+      "coding_score": 2.52525252525253
+    },
+    {
+      "model": "Qwen3.8 27B (low)",
+      "coding_score": 2.52525252525253
+    },
+    {
+      "model": "MiniMax-M3",
+      "coding_score": 2.02020202020202
+    },
+    {
+      "model": "Claude Sonnet 5 (medium)",
+      "coding_score": 2.02020202020202
+    },
+    {
+      "model": "Gemini 3.5 Flash-Lite",
+      "coding_score": 1.01010101010101
+    },
+    {
+      "model": "GLM-5.2 (max)",
+      "coding_score": 1.01010101010101
+    },
+    {
+      "model": "Muse Glimmer (high)",
+      "coding_score": 0.505050505050505
+    },
+    {
+      "model": "Gemini 3.1 Flash-Lite",
+      "coding_score": 0.505050505050505
+    },
+    {
+      "model": "GPT-6 Luna (low)",
+      "coding_score": 0
+    }
+  ],
+  "speed_tokens_per_sec": [
+    {
+      "model": "Gemini 3.5 Flash-Lite",
+      "speed_tps": 407.621696761576
+    },
+    {
+      "model": "Gemini 3.1 Flash-Lite",
+      "speed_tps": 360.71795114707
+    },
+    {
+      "model": "Gemini 3.7 Flash (low)",
+      "speed_tps": 333.563813468736
+    },
+    {
+      "model": "Gemini 3.7 Flash (medium)",
+      "speed_tps": 320.625307421298
+    },
+    {
+      "model": "Gemini 3.7 Flash (high)",
+      "speed_tps": 317.887754394737
+    },
+    {
+      "model": "Muse Spark 1.2 (xhigh)",
+      "speed_tps": 268.332795665978
+    },
+    {
+      "model": "Muse Spark 1.3 (xhigh)",
+      "speed_tps": 244.684537878454
+    },
+    {
+      "model": "DeepSeek V4.1 Flash (max)",
+      "speed_tps": 197.289516374987
+    },
+    {
+      "model": "Gemini 3.6 Flash (high)",
+      "speed_tps": 193.091446943026
+    },
+    {
+      "model": "Gemini 3.5 Flash (medium)",
+      "speed_tps": 190.539387940514
+    },
+    {
+      "model": "Gemini 3.5 Flash (high)",
+      "speed_tps": 189.373239981596
+    },
+    {
+      "model": "Gemini 3.5 Flash (minimal)",
+      "speed_tps": 181.349317099322
+    },
+    {
+      "model": "Gemini 3.8 Flash (high)",
+      "speed_tps": 141.424195720541
+    },
+    {
+      "model": "Gemini 3.1 Pro Preview",
+      "speed_tps": 135.493623472208
+    },
+    {
+      "model": "Claude Sonnet 5.5 (max with fallback)",
+      "speed_tps": 135.248346288551
+    },
+    {
+      "model": "GPT-6 Luna (max)",
+      "speed_tps": 134.247449696612
+    },
+    {
+      "model": "Muse Glimmer (high)",
+      "speed_tps": 133.769348488553
+    },
+    {
+      "model": "GPT-6 Luna (high)",
+      "speed_tps": 132.015905244342
+    },
+    {
+      "model": "GPT-6 Luna (low)",
+      "speed_tps": 129.031687095161
+    },
+    {
+      "model": "GPT-6 Luna (xhigh)",
+      "speed_tps": 125.768977212353
+    },
+    {
+      "model": "Muse Spark 1.3 (max)",
+      "speed_tps": 123.941101011389
+    },
+    {
+      "model": "GPT-6 Sol (max)",
+      "speed_tps": 120.045365344199
+    },
+    {
+      "model": "GPT-6 Sol (xhigh)",
+      "speed_tps": 111.976093329175
+    },
+    {
+      "model": "MiniMax-M3",
+      "speed_tps": 107.19006956131
+    },
+    {
+      "model": "GPT-6 Sol (high)",
+      "speed_tps": 106.854437324071
+    },
+    {
+      "model": "Muse Spark 1.1 (xhigh)",
+      "speed_tps": 103.350055523005
+    },
+    {
+      "model": "Claude Sonnet 5.5 (xhigh with fallback)",
+      "speed_tps": 103.280797639664
+    },
+    {
+      "model": "Muse Wonder (max)",
+      "speed_tps": 101.421067267363
+    },
+    {
+      "model": "Claude Sonnet 5.5 (low with fallback)",
+      "speed_tps": 100.266636621246
+    },
+    {
+      "model": "GPT-6 Sol (low)",
+      "speed_tps": 98.4936320932597
+    },
+    {
+      "model": "Claude Sonnet 5.5 (high with fallback)",
+      "speed_tps": 95.9714956350915
+    },
+    {
+      "model": "Claude Opus 5.5 (max with fallback)",
+      "speed_tps": 95.231870886232
+    },
+    {
+      "model": "Claude Sonnet 5.5 (medium with fallback)",
+      "speed_tps": 94.7939513965125
+    },
+    {
+      "model": "GLM-5.2 (max)",
+      "speed_tps": 85.9284929503927
+    },
+    {
+      "model": "Claude Opus 5.5 (high with fallback)",
+      "speed_tps": 82.2892678507432
+    },
+    {
+      "model": "Claude Opus 5.5 (xhigh with fallback)",
+      "speed_tps": 81.4739072610647
+    },
+    {
+      "model": "Claude Sonnet 5 (max)",
+      "speed_tps": 81.4189600826848
+    },
+    {
+      "model": "Claude Opus 5.5 (low with fallback)",
+      "speed_tps": 79.9622682013363
+    },
+    {
+      "model": "Claude Opus 5.5 (medium with fallback)",
+      "speed_tps": 78.8147269579086
+    },
+    {
+      "model": "GLM-5.3 (low)",
+      "speed_tps": 72.6958344113233
+    },
+    {
+      "model": "Claude Sonnet 5 (xhigh)",
+      "speed_tps": 69.5638770047078
+    },
+    {
+      "model": "Claude Fable 5.1 (max with fallback)",
+      "speed_tps": 68.2591589451894
+    },
+    {
+      "model": "GLM-5.3 (max)",
+      "speed_tps": 66.9424514893597
+    },
+    {
+      "model": "Claude Sonnet 5 (high)",
+      "speed_tps": 66.2576620642993
+    },
+    {
+      "model": "Claude Sonnet 5 (medium)",
+      "speed_tps": 65.4360254099849
+    },
+    {
+      "model": "GPT-6.1 Sol (max)",
+      "speed_tps": 64.7799975961384
+    },
+    {
+      "model": "Claude Fable 5 (with fallback)",
+      "speed_tps": 64.6819200096793
+    },
+    {
+      "model": "GLM-5.3-Flash",
+      "speed_tps": 64.2981027047834
+    },
+    {
+      "model": "GPT-6 Astra (max)",
+      "speed_tps": 62.5352881123523
+    },
+    {
+      "model": "Claude Fable 5.1 (xhigh with fallback)",
+      "speed_tps": 61.6900933721077
+    },
+    {
+      "model": "Claude Sonnet 5 (low)",
+      "speed_tps": 60.6521524117351
+    },
+    {
+      "model": "GPT-6 Astra (xhigh)",
+      "speed_tps": 58.8720029026318
+    },
+    {
+      "model": "GPT-6.1 Sol (xhigh)",
+      "speed_tps": 58.6485280764704
+    },
+    {
+      "model": "Claude Opus 4.8 (max)",
+      "speed_tps": 58.622862994187
+    },
+    {
+      "model": "Claude Sonnet 4.6 (max)",
+      "speed_tps": 57.3353838396545
+    },
+    {
+      "model": "GPT-6.1 Sol (high)",
+      "speed_tps": 56.9732904928591
+    },
+    {
+      "model": "Claude Fable 5.1 (low with fallback)",
+      "speed_tps": 55.6934366392188
+    },
+    {
+      "model": "Claude Opus 5 (max)",
+      "speed_tps": 55.6236776589233
+    },
+    {
+      "model": "Claude Opus 5 (low)",
+      "speed_tps": 55.5925937264817
+    },
+    {
+      "model": "GPT-6 Astra (medium)",
+      "speed_tps": 55.1927019647535
+    },
+    {
+      "model": "GPT-6 Astra (high)",
+      "speed_tps": 54.9583644212133
+    },
+    {
+      "model": "GPT-6 Astra (low)",
+      "speed_tps": 54.8458833707884
+    },
+    {
+      "model": "GPT-6.1 Sol (medium)",
+      "speed_tps": 54.3645536795343
+    },
+    {
+      "model": "Claude Fable 5.1 (medium with fallback)",
+      "speed_tps": 54.2122220220996
+    },
+    {
+      "model": "Claude Opus 5 (xhigh)",
+      "speed_tps": 53.4084480944959
+    },
+    {
+      "model": "Claude Opus 5 (high)",
+      "speed_tps": 52.9958045551684
+    },
+    {
+      "model": "Claude Opus 5 (medium)",
+      "speed_tps": 52.8612667168534
+    },
+    {
+      "model": "Qwen3.8 27B (low)",
+      "speed_tps": 52.431083679607
+    },
+    {
+      "model": "Claude Fable 5.1 (high with fallback)",
+      "speed_tps": 52.2296354621585
+    },
+    {
+      "model": "GPT-6.1 Sol (low)",
+      "speed_tps": 51.6173901682098
+    },
+    {
+      "model": "Qwen3.8-Flash-Next",
+      "speed_tps": 50.8533253646748
+    },
+    {
+      "model": "Claude Opus 4.7 (max)",
+      "speed_tps": 50.4221475120504
+    },
+    {
+      "model": "Qwen3.8 27B (medium)",
+      "speed_tps": 49.6167594922751
+    },
+    {
+      "model": "MiMo-V2.6-Flash",
+      "speed_tps": 49.2101773726677
+    },
+    {
+      "model": "MiMo-V2.6-Pro",
+      "speed_tps": 47.9135334927924
+    },
+    {
+      "model": "Qwen3.8 27B (xhigh)",
+      "speed_tps": 45.883779098902
+    },
+    {
+      "model": "Kimi K3 (low)",
+      "speed_tps": 45.5696602619795
+    },
+    {
+      "model": "Kimi K3 (max)",
+      "speed_tps": 43.0381911621898
+    },
+    {
+      "model": "Qwen3.8 Max (0902)",
+      "speed_tps": 40.5525217931736
+    },
+    {
+      "model": "Claude Opus 4.6 (max)",
+      "speed_tps": 39.9878993019569
+    },
+    {
+      "model": "Qwen3.8 2.4T A95B",
+      "speed_tps": 39.3552227958237
+    },
+    {
+      "model": "Qwen3.8 Max",
+      "speed_tps": 36.887897233324
+    }
+  ],
+  "cost_per_task_usd": [
+    {
+      "model": "GPT-6 Luna (low)",
+      "cost_usd": 0.004516607569410252
+    },
+    {
+      "model": "GPT-6 Luna (medium)",
+      "cost_usd": 0.017476906067835942
+    },
+    {
+      "model": "GPT-6 Luna (high)",
+      "cost_usd": 0.02903157640372802
+    },
+    {
+      "model": "GPT-6 Luna (xhigh)",
+      "cost_usd": 0.042183547923951084
+    },
+    {
+      "model": "Muse Glimmer (high)",
+      "cost_usd": 0.05670634665029995
+    },
+    {
+      "model": "Gemini 3.1 Flash-Lite",
+      "cost_usd": 0.06018072627659897
+    },
+    {
+      "model": "MiMo-V2.6-Flash",
+      "cost_usd": 0.06237567475410205
+    },
+    {
+      "model": "GPT-6 Luna (max)",
+      "cost_usd": 0.06782295669812205
+    },
+    {
+      "model": "GPT-6.1 Sol (low)",
+      "cost_usd": 0.13075190869859377
+    },
+    {
+      "model": "GPT-6 Sol (low)",
+      "cost_usd": 0.1327768361714764
+    },
+    {
+      "model": "MiMo-V2.6-Pro",
+      "cost_usd": 0.13322318937213493
+    },
+    {
+      "model": "Gemini 3.5 Flash-Lite",
+      "cost_usd": 0.1927430131409478
+    },
+    {
+      "model": "GPT-6.1 Sol (medium)",
+      "cost_usd": 0.21370088267875537
+    },
+    {
+      "model": "GPT-6 Sol (medium)",
+      "cost_usd": 0.24728577052042386
+    },
+    {
+      "model": "DeepSeek V4.1 Flash (max)",
+      "cost_usd": 0.26522527009606844
+    },
+    {
+      "model": "GLM-5.3-Flash",
+      "cost_usd": 0.2835948232103717
+    },
+    {
+      "model": "GPT-6.1 Sol (high)",
+      "cost_usd": 0.31914442375664703
+    },
+    {
+      "model": "Claude Sonnet 5.5 (low with fallback)",
+      "cost_usd": 0.3451610270666562
+    },
+    {
+      "model": "Qwen3.8-Flash-Next",
+      "cost_usd": 0.3721760025302965
+    },
+    {
+      "model": "GPT-6 Sol (high)",
+      "cost_usd": 0.3728406839161857
+    },
+    {
+      "model": "GPT-6.1 Sol (xhigh)",
+      "cost_usd": 0.39286117158850653
+    },
+    {
+      "model": "Claude Sonnet 5.5 (medium with fallback)",
+      "cost_usd": 0.48326378260543096
+    },
+    {
+      "model": "MiniMax-M3",
+      "cost_usd": 0.5076126905781733
+    },
+    {
+      "model": "Claude Sonnet 5 (low)",
+      "cost_usd": 0.5087545600633299
+    },
+    {
+      "model": "GPT-6 Sol (xhigh)",
+      "cost_usd": 0.5208098524368193
+    },
+    {
+      "model": "Claude Opus 5.5 (low with fallback)",
+      "cost_usd": 0.551180473909146
+    },
+    {
+      "model": "GPT-6.1 Sol (max)",
+      "cost_usd": 0.7241670655535033
+    },
+    {
+      "model": "GPT-6 Astra (low)",
+      "cost_usd": 0.8175139285656057
+    },
+    {
+      "model": "GLM-5.3 (low)",
+      "cost_usd": 0.8522174973386498
+    },
+    {
+      "model": "Claude Sonnet 5.5 (high with fallback)",
+      "cost_usd": 0.8844498581005511
+    },
+    {
+      "model": "Gemini 3.7 Flash (high)",
+      "cost_usd": 0.9253359372385677
+    },
+    {
+      "model": "Gemini 3.8 Flash (medium)",
+      "cost_usd": 0.9310379374376306
+    },
+    {
+      "model": "Muse Spark 1.2 (xhigh)",
+      "cost_usd": 0.9746948879931989
+    },
+    {
+      "model": "Claude Sonnet 5 (medium)",
+      "cost_usd": 0.9991061406688175
+    },
+    {
+      "model": "Qwen3.8 27B (xhigh)",
+      "cost_usd": 1.0073149536565944
+    },
+    {
+      "model": "GPT-6 Sol (max)",
+      "cost_usd": 1.0446616686054255
+    },
+    {
+      "model": "Qwen3.8 27B (low)",
+      "cost_usd": 1.0482225365160391
+    },
+    {
+      "model": "Claude Opus 5 (low)",
+      "cost_usd": 1.098302324514437
+    },
+    {
+      "model": "Qwen3.8 27B (medium)",
+      "cost_usd": 1.133063774030521
+    },
+    {
+      "model": "Kimi K3 (low)",
+      "cost_usd": 1.1463056165227514
+    },
+    {
+      "model": "Gemini 3.8 Flash (high)",
+      "cost_usd": 1.2427947606950427
+    },
+    {
+      "model": "Gemini 3.1 Pro Preview",
+      "cost_usd": 1.2985855086120641
+    },
+    {
+      "model": "Claude Opus 5.5 (medium with fallback)",
+      "cost_usd": 1.3360093438976588
+    },
+    {
+      "model": "Muse Spark 1.3 (xhigh)",
+      "cost_usd": 1.3677936514692752
+    },
+    {
+      "model": "Muse Spark 1.1 (xhigh)",
+      "cost_usd": 1.3802453886670354
+    },
+    {
+      "model": "GLM-5.2 (max)",
+      "cost_usd": 1.4726179494034382
+    },
+    {
+      "model": "GPT-6 Astra (medium)",
+      "cost_usd": 1.5406493220021167
+    },
+    {
+      "model": "Gemini 3.6 Flash (high)",
+      "cost_usd": 1.600530533263267
+    },
+    {
+      "model": "Muse Spark 1.3 (max)",
+      "cost_usd": 1.6048932100125866
+    },
+    {
+      "model": "GPT-6 Astra (high)",
+      "cost_usd": 1.7252530861048456
+    },
+    {
+      "model": "Claude Sonnet 5 (high)",
+      "cost_usd": 1.7924692244111728
+    },
+    {
+      "model": "Claude Opus 5.5 (high with fallback)",
+      "cost_usd": 1.822504718771704
+    },
+    {
+      "model": "Gemini 4 Argon (high)",
+      "cost_usd": 1.990322379299008
+    },
+    {
+      "model": "Kimi K3 (max)",
+      "cost_usd": 2.0001323004425493
+    },
+    {
+      "model": "GLM-5.3 (max)",
+      "cost_usd": 2.0056375150449584
+    },
+    {
+      "model": "Claude Sonnet 5.5 (xhigh with fallback)",
+      "cost_usd": 2.0120345801545785
+    },
+    {
+      "model": "Qwen3.8 2.4T A95B",
+      "cost_usd": 2.1559170502434677
+    },
+    {
+      "model": "Claude Opus 5 (medium)",
+      "cost_usd": 2.1894793086538695
+    },
+    {
+      "model": "GPT-6 Astra (xhigh)",
+      "cost_usd": 2.308795912269076
+    },
+    {
+      "model": "Claude Fable 5.1 (low with fallback)",
+      "cost_usd": 2.371025320183763
+    },
+    {
+      "model": "Claude Sonnet 4.6 (max)",
+      "cost_usd": 2.4858655963942224
+    },
+    {
+      "model": "Qwen3.8 Max",
+      "cost_usd": 2.6699848505343478
+    },
+    {
+      "model": "Claude Sonnet 5 (xhigh)",
+      "cost_usd": 2.8720437784323134
+    },
+    {
+      "model": "Claude Fable 5.1 (medium with fallback)",
+      "cost_usd": 2.982597436096585
+    },
+    {
+      "model": "GPT-6 Astra (max)",
+      "cost_usd": 3.2575003134834164
+    },
+    {
+      "model": "Claude Opus 5.5 (xhigh with fallback)",
+      "cost_usd": 3.459110175822289
+    },
+    {
+      "model": "Claude Opus 5 (high)",
+      "cost_usd": 3.6132670078004714
+    },
+    {
+      "model": "Gemini 3.5 Flash (high)",
+      "cost_usd": 3.6936902127611133
+    },
+    {
+      "model": "Claude Fable 5.1 (high with fallback)",
+      "cost_usd": 3.912526554325558
+    },
+    {
+      "model": "Claude Opus 4.8 (max)",
+      "cost_usd": 4.080976976477826
+    },
+    {
+      "model": "Muse Wonder (max)",
+      "cost_usd": 4.515677444063016
+    },
+    {
+      "model": "Claude Opus 5 (xhigh)",
+      "cost_usd": 4.877843772646787
+    },
+    {
+      "model": "Claude Sonnet 5 (max)",
+      "cost_usd": 5.091163584815694
+    },
+    {
+      "model": "Qwen3.8 Max (0902)",
+      "cost_usd": 5.408509428374016
+    },
+    {
+      "model": "Claude Sonnet 5.5 (max with fallback)",
+      "cost_usd": 5.4608525948098325
+    },
+    {
+      "model": "Claude Opus 5 (max)",
+      "cost_usd": 5.858396237036018
+    },
+    {
+      "model": "Claude Fable 5.1 (xhigh with fallback)",
+      "cost_usd": 5.978304247388257
+    },
+    {
+      "model": "Claude Opus 5.5 (max with fallback)",
+      "cost_usd": 5.982012019521066
+    },
+    {
+      "model": "Claude Fable 5.1 (max with fallback)",
+      "cost_usd": 7.629706364004841
+    },
+    {
+      "model": "Claude Fable 5 (with fallback)",
+      "cost_usd": 8.745961651687406
+    }
+  ],
+  "recent_updates": [
+    {
+      "date": "2026-10-13",
+      "title": "调整模型过滤规则：所有 Non-reasoning（非思考/无思维链）模型及各思考级别全局不再显示",
+      "type": "Filter"
+    },
+    {
+      "date": "2026-10-13",
+      "title": "调整 OpenAI 模型过滤规则：GPT-5.6 及以下型号全局不再显示，仅保留 GPT-5.7 / GPT-6 及以上旗舰版本",
+      "type": "Filter"
+    },
+    {
+      "date": "2026-10-13",
+      "title": "调整 DeepSeek 模型过滤规则：仅保留 V4.1 及以上版本（过滤低于 4.1 的历史型号）",
+      "type": "Filter"
+    },
+    {
+      "date": "2026-10-13",
+      "title": "调整通义千问模型过滤规则：仅保留 Qwen 3.8 及以上版本（过滤低于 3.8 的历史型号）",
+      "type": "Filter"
+    },
+    {
+      "date": "2026-10-13",
+      "title": "模型白名单新增小米 MiMo 系列支持（MiMo-V2.6 及以上旗舰版本、MiMo Flash 系列全系），全量同步官方最新实测指标（含 MiMo-V2.6-Pro 及 MiMo-V2.6-Flash）",
+      "type": "Feature"
+    },
+    {
+      "date": "2026-10-13",
+      "title": "升级编程能力指数评测基准为官方最新高难评测 Terminal-Bench 4.0，全面展现最新旗舰大模型（GPT-6 Astra, Claude Opus 5.5 等）的断代代码能力与深层思考梯度，避免旧版 v2.1 饱和引发的档位微小方差倒挂",
+      "type": "Update"
+    },
+    {
+      "date": "2026-10-13",
+      "title": "重新纳入 Meta (Muse 系列) 与阿里通义千问 Qwen（>= 3.0）系列评测，编码 Agent 榜新增 Muse Code 框架及 Qwen3.8 Max 组合",
+      "type": "Feature"
+    },
+    {
+      "date": "2026-10-13",
+      "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 91 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 26 组组合）",
+      "type": "Update"
+    },
+    {
+      "date": "2026-10-13",
+      "title": "编码 Agent 榜新增 Devin Fusion 框架支持，同步 Cognition 官方最新评测组合（Claude Fable 5.1 与 GPT-6 Astra）",
+      "type": "Feature"
+    },
+    {
+      "date": "2026-10-13",
+      "title": "编码 Agent 榜新增 Antigravity（Google Antigravity SDK）框架，同步官方最新实测组合",
+      "type": "Feature"
+    },
+    {
+      "date": "2026-09-05",
+      "title": "同步官网全量最新评测：Claude Fable 5.1 与 GPT-6 Astra 登榜，全面覆盖主流 Agent 框架实测组合",
+      "type": "Update"
+    },
+    {
+      "date": "2026-09-01",
+      "title": "新增 OpenCode Agent 框架支持，并同步全量官方数据（模型指标 + Coding Agent Index）",
+      "type": "Feature"
+    }
+  ]
+};
+    renderDashboard(latestData);
+  </script>
+</body>
+</html>
