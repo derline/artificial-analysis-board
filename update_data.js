@@ -197,42 +197,55 @@ function getBrand(model) {
   return 'cn';
 }
 
-function parseModelsPage(html) {
-  const key = '\\"models\\":[';
-  let pos1 = html.indexOf(key);
-  let pos2 = html.indexOf(key, pos1 + 10);
+function extractJsonArray(html, keyPatterns) {
+  let pos = -1;
+  for (const k of keyPatterns) {
+    pos = html.indexOf(k);
+    if (pos !== -1) break;
+  }
+  if (pos === -1) return null;
 
-  function parseArray(startPos) {
-    if (startPos < 0) return [];
-    let inString = false, escapeNext = false, depth = 0, arrayEnd = -1;
-    for (let i = startPos; i < html.length; i++) {
-      const c = html[i];
-      if (escapeNext) { escapeNext = false; continue; }
-      if (c === '\\') { escapeNext = true; continue; }
-      if (c === '"') { inString = !inString; continue; }
-      if (!inString) {
-        if (c === '[') depth++;
-        else if (c === ']') {
-          depth--;
-          if (depth === 0) { arrayEnd = i; break; }
-        }
+  const startPos = html.indexOf('[', pos);
+  if (startPos === -1) return null;
+
+  let inString = false, escapeNext = false, depth = 0, arrayEnd = -1;
+  for (let i = startPos; i < html.length; i++) {
+    const c = html[i];
+    if (escapeNext) { escapeNext = false; continue; }
+    if (c === '\\') { escapeNext = true; continue; }
+    if (c === '"') { inString = !inString; continue; }
+    if (!inString) {
+      if (c === '[') depth++;
+      else if (c === ']') {
+        depth--;
+        if (depth === 0) { arrayEnd = i; break; }
       }
-    }
-    if (arrayEnd === -1) return [];
-    const rawStr = html.substring(startPos, arrayEnd + 1);
-    try {
-      return JSON.parse(rawStr.replace(/\\"/g, '"').replace(/\\\\/g, '\\'));
-    } catch (e) {
-      console.error('解析 RSC 数组异常:', e.message);
-      return [];
     }
   }
 
-  const infoList = parseArray(pos1 > -1 ? html.indexOf('[', pos1) : -1);
-  const metricsList = parseArray(pos2 > -1 ? html.indexOf('[', pos2) : -1);
+  if (arrayEnd === -1) return null;
+  const rawStr = html.substring(startPos, arrayEnd + 1);
+  try {
+    return JSON.parse(rawStr.replace(/\\"/g, '"').replace(/\\\\/g, '\\'));
+  } catch (e) {
+    console.error('JSON 数组解析异常:', e.message);
+    return null;
+  }
+}
 
-  const infoMap = new Map();
-  infoList.forEach(m => infoMap.set(m.slug, m));
+function parseModelsPage(html) {
+  // 支持新版 initialModels 与旧版 models 键名
+  const modelsList = extractJsonArray(html, [
+    '"initialModels":[',
+    '\\"initialModels\\":[',
+    '"models":[',
+    '\\"models\\":['
+  ]);
+
+  if (!modelsList || !Array.isArray(modelsList)) {
+    console.error('未能在 models 页面中找到模型数组数据');
+    return { intelList: [], codList: [], speedList: [], costList: [] };
+  }
 
   const intelList = [];
   const codList = [];
@@ -240,22 +253,17 @@ function parseModelsPage(html) {
   const costList = [];
   const seenModels = new Set();
 
-  metricsList.forEach(m => {
-    const info = infoMap.get(m.slug);
-    const fullName = info ? info.name : m.shortName;
+  modelsList.forEach(m => {
+    // 过滤非 reasoning 模型（全局排除）
+    if (m.isReasoning === false) return;
+
+    const fullName = m.name || m.shortName;
     const cleanFullName = (fullName || '').replace(/\s*\(based on [^)]+\)/i, '');
 
     // 白名单过滤
     if (isIgnoredModel(cleanFullName) && isIgnoredModel(m.shortName)) return;
 
-    // 模型规范名称：优先使用 shortName，如果未带 effort 且官方元数据有 effort，则补充以方便按组分类
     let displayName = m.shortName || fullName;
-    if (!displayName.includes('(') && info?.effort?.label && info.effort.label !== 'undefined') {
-      displayName = `${displayName} (${info.effort.label})`;
-    }
-
-    if (isIgnoredModel(displayName)) return;
-
     if (seenModels.has(displayName)) return;
     seenModels.add(displayName);
 
@@ -264,8 +272,11 @@ function parseModelsPage(html) {
       intelList.push({ model: displayName, score: m.intelligenceIndex });
     }
 
-    // 2. 编程能力指数 (官方最新高难评测 Terminal-Bench 4.0 百分制实测数据，如 0.596 -> 59.6)
-    const terminalScore = typeof m.terminalBench40 === 'number' ? m.terminalBench40 : (typeof m.terminalbenchV40 === 'number' ? m.terminalbenchV40 : null);
+    // 2. 编程能力指数 (Terminal-Bench 4.0 百分制实测数据)
+    const terminalScore =
+      typeof m.terminalBench40 === 'number'
+        ? m.terminalBench40
+        : (typeof m.terminalbenchV40 === 'number' ? m.terminalbenchV40 : null);
     if (typeof terminalScore === 'number') {
       codList.push({ model: displayName, coding_score: terminalScore * 100 });
     }
@@ -296,35 +307,45 @@ function parseModelsPage(html) {
 }
 
 function parseAgentsPage(html) {
-  const text = html.replace(/\\"/g, '"');
+  // 支持新版 rows 数组
+  const rows = extractJsonArray(html, [
+    '"rows":[',
+    '\\"rows\\":['
+  ]);
+
+  if (!rows || !Array.isArray(rows)) {
+    console.error('未能在 coding-agents 页面中找到 rows 数组');
+    return [];
+  }
+
   const liveEntries = [];
   const seen = new Set();
 
-  const re =
-    // 兼容官网在 id 与 agentName 之间插入新字段（如 isDefault/isHighlighted）：用惰性匹配代替直连
-    /\{"id":"[a-f0-9]+",[\s\S]*?"agentName":"([^"]+)","provider":"[^"]+","hostModelSlug":"[^"]+","display":\{"agent":"([^"]+)","model":"([^"]+)"[\s\S]*?"indexScore":([0-9.eE+-]+)[\s\S]*?"mean":\{"reward":[0-9.eE+-]+,"costUsd":([0-9.eE+-]+),"agentWallTimeSec":([0-9.eE+-]+)/g;
+  rows.forEach(r => {
+    const rawHarness = r.display?.agent || r.agentName;
+    const harness = normalizeHarness(rawHarness);
+    const model = r.display?.model || '';
 
-  let m;
-  while ((m = re.exec(text))) {
-    const harness = normalizeHarness(m[2] || m[1]);
-    const model = m[3];
-    if (!harness || !isAllowedAgentModel(model)) continue;
+    if (!harness || !isAllowedAgentModel(model)) return;
 
     const key = `${harness}||${model}`;
-    if (seen.has(key)) continue;
+    if (seen.has(key)) return;
     seen.add(key);
+
+    const solveRate = typeof r.indexScore === 'number' ? r.indexScore * 100 : 0;
+    const avgTimeMin = typeof r.mean?.agentWallTimeSec === 'number' ? r.mean.agentWallTimeSec / 60 : null;
+    const costUsd = typeof r.mean?.costUsd === 'number' ? r.mean.costUsd : null;
 
     liveEntries.push({
       agent_harness: harness,
       model,
-      solve_rate: parseFloat(m[4]) * 100,
-      avg_time_min: parseFloat(m[6]) / 60,
-      cost_usd: parseFloat(m[5]),
+      solve_rate: solveRate,
+      avg_time_min: avgTimeMin,
+      cost_usd: costUsd,
       brand: getBrand(model)
     });
-  }
+  });
 
-  // 严格使用官网最新基准评测实测数据，确保所有分数 100% 为当日最新评测标准，避免混入过期尺度引发倒挂
   liveEntries.sort((a, b) => b.solve_rate - a.solve_rate);
   return liveEntries;
 }
@@ -365,6 +386,14 @@ async function main() {
 
   console.log('正在解析编码 Agent RSC Payload...');
   const codingAgentLeaderboard = parseAgentsPage(agentsHtml);
+
+  // 核心安全熔断保护 (Data Safety Guardrail)
+  if (intelList.length < 5 || codingAgentLeaderboard.length === 0) {
+    console.error(`\n🚨 [安全熔断] 数据解析结果异常：模型数 (${intelList.length}) 或 Agent 组合数 (${codingAgentLeaderboard.length}) 严重低于正常阈值！`);
+    console.error('可能原因：Artificial Analysis 官网前端发生改版。');
+    console.error('已触发安全熔断保护：终止更新并拒绝覆盖 index.html 与 latest_data.json，确保线上已有展示数据绝对安全！\n');
+    process.exit(1);
+  }
 
   const today = new Date().toISOString().split('T')[0];
   const latestData = {
