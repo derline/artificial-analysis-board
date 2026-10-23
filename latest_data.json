@@ -1,63 +1,63 @@
 {
-  "updated_at": "2026-10-22",
+  "updated_at": "2026-10-23",
   "source": "https://artificialanalysis.ai/leaderboards/models",
   "agents_source": "https://artificialanalysis.ai/agents/coding-agents",
   "coding_agent_leaderboard": [
     {
       "agent_harness": "Claude Code",
-      "model": "Sonnet 5.5 (max)",
-      "solve_rate": 68.35783373750832,
-      "avg_time_min": 87.41608954895489,
-      "cost_usd": 14.190800796369649,
+      "model": "Opus 5.5 (max)",
+      "solve_rate": 61.6528649505811,
+      "avg_time_min": 61.020203550360165,
+      "cost_usd": 11.4227202144224,
       "brand": "claude"
     },
     {
       "agent_harness": "Claude Code",
-      "model": "Opus 5.5 (max)",
-      "solve_rate": 65.9885802549234,
-      "avg_time_min": 64.45153901723504,
-      "cost_usd": 13.036383418426828,
+      "model": "Sonnet 5.5 (max)",
+      "solve_rate": 59.3374426631911,
+      "avg_time_min": 79.744021687629,
+      "cost_usd": 13.3015082635468,
       "brand": "claude"
-    },
-    {
-      "agent_harness": "Antigravity",
-      "model": "Gemini 4 Argon",
-      "solve_rate": 63.7577603035782,
-      "avg_time_min": 34.50281005334807,
-      "cost_usd": 5.84390538944481,
-      "brand": "gemini"
     },
     {
       "agent_harness": "Muse Code",
-      "model": "Muse Wonder (max)",
-      "solve_rate": 63.6651028315316,
-      "avg_time_min": 22.427746846351265,
-      "cost_usd": 8.040007295049511,
+      "model": "Muse Wonder Full (max)",
+      "solve_rate": 58.8804489084392,
+      "avg_time_min": 34.938068428605,
+      "cost_usd": null,
       "brand": "muse"
-    },
-    {
-      "agent_harness": "Claude Code",
-      "model": "Fable 5.1 (max) (with fallback)",
-      "solve_rate": 62.22249615769457,
-      "avg_time_min": 34.831668756875715,
-      "cost_usd": 12.388092375137534,
-      "brand": "claude"
     },
     {
       "agent_harness": "Codex Agent CLI",
       "model": "GPT-6 Astra (max)",
-      "solve_rate": 61.64504498789397,
-      "avg_time_min": 29.35446701503483,
-      "cost_usd": 7.497231868004842,
+      "solve_rate": 54.66356905615291,
+      "avg_time_min": 24.778124659842167,
+      "cost_usd": 7.03615822479963,
       "brand": "gpt"
     },
     {
       "agent_harness": "Codex Agent CLI",
       "model": "GPT-6.1 Sol (max)",
-      "solve_rate": 60.14750704302517,
-      "avg_time_min": 24.384107040704063,
-      "cost_usd": 1.554119528390054,
+      "solve_rate": 54.1279798631476,
+      "avg_time_min": 23.69048088693383,
+      "cost_usd": 1.5046389983744,
       "brand": "gpt"
+    },
+    {
+      "agent_harness": "Antigravity",
+      "model": "Gemini 4 Argon",
+      "solve_rate": 53.2462665363311,
+      "avg_time_min": 34.689929108803,
+      "cost_usd": 5.86148606882067,
+      "brand": "gemini"
+    },
+    {
+      "agent_harness": "Muse Code",
+      "model": "Muse Wonder (max)",
+      "solve_rate": 51.9768236993592,
+      "avg_time_min": 24.541807091361665,
+      "cost_usd": 8.04811220428196,
+      "brand": "muse"
     }
   ],
   "intelligence_index": [
@@ -515,211 +515,215 @@
   "speed_tokens_per_sec": [
     {
       "model": "Gemini 3.5 Flash-Lite",
-      "speed_tps": 403.713103295682
+      "speed_tps": 456.604426700718
     },
     {
       "model": "DeepSeek V4.1 Flash 1017 (max)",
-      "speed_tps": 203.375246024107
+      "speed_tps": 206.142839513949
     },
     {
       "model": "Muse Wonder (max)",
-      "speed_tps": 145.137944782008
+      "speed_tps": 148.643617904862
     },
     {
       "model": "Muse Spark Open (xhigh)",
-      "speed_tps": 137.19950418786
+      "speed_tps": 142.325036557937
     },
     {
       "model": "Gemini 3.8 Flash (high)",
-      "speed_tps": 136.580472648858
+      "speed_tps": 141.521760096549
     },
     {
       "model": "Claude Sonnet 5.5 (max with fallback)",
-      "speed_tps": 133.818391860326
+      "speed_tps": 132.86432220917
     },
     {
       "model": "Gemini 3.1 Pro Preview",
-      "speed_tps": 124.616496706808
+      "speed_tps": 132.074459498771
     },
     {
       "model": "GPT-6 Luna (high)",
-      "speed_tps": 121.868030025416
-    },
-    {
-      "model": "GPT-6 Luna (xhigh)",
-      "speed_tps": 118.083758922534
-    },
-    {
-      "model": "GPT-6 Luna (low)",
-      "speed_tps": 115.822635005103
+      "speed_tps": 124.508841951389
     },
     {
       "model": "GPT-6 Luna (max)",
-      "speed_tps": 115.470688266048
+      "speed_tps": 124.243295617977
     },
     {
       "model": "Muse Glimmer (high)",
-      "speed_tps": 110.705704821962
+      "speed_tps": 123.877478617861
+    },
+    {
+      "model": "GPT-6 Luna (xhigh)",
+      "speed_tps": 123.38164128531
+    },
+    {
+      "model": "GPT-6 Luna (low)",
+      "speed_tps": 117.198425718793
     },
     {
       "model": "Claude Sonnet 5.5 (xhigh with fallback)",
-      "speed_tps": 105.836236920801
-    },
-    {
-      "model": "MiniMax-M3.1-Flash",
-      "speed_tps": 104.680922396914
-    },
-    {
-      "model": "Claude Sonnet 5.5 (low with fallback)",
-      "speed_tps": 104.239985927156
-    },
-    {
-      "model": "Claude Sonnet 5.5 (medium with fallback)",
-      "speed_tps": 102.15659233807
+      "speed_tps": 108.912493837491
     },
     {
       "model": "Claude Sonnet 5.5 (high with fallback)",
-      "speed_tps": 102.108322678532
+      "speed_tps": 106.428550874039
+    },
+    {
+      "model": "Claude Sonnet 5.5 (medium with fallback)",
+      "speed_tps": 105.821924944992
+    },
+    {
+      "model": "Claude Sonnet 5.5 (low with fallback)",
+      "speed_tps": 104.969000218484
     },
     {
       "model": "Claude Opus 5.5 (max with fallback)",
-      "speed_tps": 95.1253312388383
+      "speed_tps": 96.404611872682
     },
     {
-      "model": "MiniMax-M3",
-      "speed_tps": 87.113129630159
+      "model": "MiniMax-M3.1-Flash",
+      "speed_tps": 92.5116396198929
     },
     {
-      "model": "Claude Opus 5.5 (xhigh with fallback)",
-      "speed_tps": 82.9863079674678
+      "model": "GPT-6 Luna (medium)",
+      "speed_tps": 91.5429083178543
     },
     {
       "model": "GLM-5.3 (low)",
-      "speed_tps": 82.5983257308629
+      "speed_tps": 87.6145240361261
     },
     {
-      "model": "Gemini 4 Argon (high)",
-      "speed_tps": 81.6235959873527
+      "model": "MiniMax-M3",
+      "speed_tps": 87.2192481475474
     },
     {
-      "model": "Claude Opus 5.5 (low with fallback)",
-      "speed_tps": 79.4720642960718
+      "model": "Claude Opus 5.5 (xhigh with fallback)",
+      "speed_tps": 83.6358023056662
     },
     {
       "model": "Claude Opus 5.5 (medium with fallback)",
-      "speed_tps": 77.6776379673227
+      "speed_tps": 81.3619399839269
+    },
+    {
+      "model": "Claude Opus 5.5 (low with fallback)",
+      "speed_tps": 80.8933038166774
+    },
+    {
+      "model": "Gemini 4 Argon (high)",
+      "speed_tps": 79.4289396049186
     },
     {
       "model": "Claude Opus 5.5 (high with fallback)",
-      "speed_tps": 77.5251442342745
+      "speed_tps": 77.9379841661706
     },
     {
       "model": "GLM-5.3 (max)",
-      "speed_tps": 74.3712638780692
+      "speed_tps": 77.7247128275094
     },
     {
       "model": "Claude Fable 5.1 (max with fallback)",
-      "speed_tps": 68.8493769689273
+      "speed_tps": 68.4576696869576
     },
     {
       "model": "GLM-5.3-Flash",
-      "speed_tps": 68.5290879674535
+      "speed_tps": 66.9542896454689
     },
     {
       "model": "Claude Fable 5.1 (xhigh with fallback)",
-      "speed_tps": 63.8335420278859
-    },
-    {
-      "model": "GPT-6 Astra (max)",
-      "speed_tps": 56.7399029920059
-    },
-    {
-      "model": "Claude Fable 5.1 (low with fallback)",
-      "speed_tps": 55.9168685122322
+      "speed_tps": 66.0408546097725
     },
     {
       "model": "Claude Fable 5.1 (medium with fallback)",
-      "speed_tps": 55.7209590662701
+      "speed_tps": 60.7120157956372
+    },
+    {
+      "model": "Claude Fable 5.1 (low with fallback)",
+      "speed_tps": 58.8789191613616
     },
     {
       "model": "Claude Fable 5.1 (high with fallback)",
-      "speed_tps": 55.4900393124207
-    },
-    {
-      "model": "GPT-6.1 Sol (max)",
-      "speed_tps": 54.1285943968268
-    },
-    {
-      "model": "GPT-6 Astra (high)",
-      "speed_tps": 52.613564856357
-    },
-    {
-      "model": "GPT-6 Astra (xhigh)",
-      "speed_tps": 52.5255222574163
-    },
-    {
-      "model": "GPT-6 Astra (low)",
-      "speed_tps": 52.0574824137076
-    },
-    {
-      "model": "Qwen3.8-Flash-Next",
-      "speed_tps": 51.513857139104
-    },
-    {
-      "model": "GPT-6 Astra (medium)",
-      "speed_tps": 51.4262768098787
-    },
-    {
-      "model": "GPT-6.1 Sol (xhigh)",
-      "speed_tps": 49.984900015628
-    },
-    {
-      "model": "MiMo-V2.6-Pro",
-      "speed_tps": 48.9657379421759
+      "speed_tps": 58.6504572633919
     },
     {
       "model": "MiMo-V2.6-Flash",
-      "speed_tps": 46.8192440570948
+      "speed_tps": 56.9560317582743
     },
     {
-      "model": "GPT-6.1 Sol (medium)",
-      "speed_tps": 45.8868975868874
+      "model": "GPT-6 Astra (max)",
+      "speed_tps": 56.4825166993174
     },
     {
-      "model": "Qwen3.8 27B (medium)",
-      "speed_tps": 45.8602437703031
+      "model": "GPT-6.1 Sol (max)",
+      "speed_tps": 54.7853181484417
     },
     {
-      "model": "GPT-6.1 Sol (high)",
-      "speed_tps": 45.0418010849226
+      "model": "Qwen3.8-Flash-Next",
+      "speed_tps": 54.0798781171175
     },
     {
-      "model": "GPT-6.1 Sol (low)",
-      "speed_tps": 43.0685501204559
+      "model": "GPT-6 Astra (xhigh)",
+      "speed_tps": 53.3358197092181
+    },
+    {
+      "model": "GPT-6 Astra (high)",
+      "speed_tps": 53.0639823310158
+    },
+    {
+      "model": "GPT-6 Astra (low)",
+      "speed_tps": 52.6883189697832
+    },
+    {
+      "model": "MiMo-V2.6-Pro",
+      "speed_tps": 52.2861352326125
     },
     {
       "model": "Qwen3.8 27B (low)",
-      "speed_tps": 41.8680809133556
+      "speed_tps": 51.3248545689209
+    },
+    {
+      "model": "GPT-6 Astra (medium)",
+      "speed_tps": 51.1537388234585
+    },
+    {
+      "model": "GPT-6.1 Sol (xhigh)",
+      "speed_tps": 50.1400202180303
+    },
+    {
+      "model": "Qwen3.8 27B (medium)",
+      "speed_tps": 49.236722560572
+    },
+    {
+      "model": "GPT-6.1 Sol (high)",
+      "speed_tps": 49.0324958435188
+    },
+    {
+      "model": "GPT-6.1 Sol (medium)",
+      "speed_tps": 48.2838092688802
+    },
+    {
+      "model": "GPT-6.1 Sol (low)",
+      "speed_tps": 46.3704168391029
     },
     {
       "model": "Qwen3.8 27B (xhigh)",
-      "speed_tps": 40.3026950667572
+      "speed_tps": 42.1198081418443
+    },
+    {
+      "model": "Qwen3.8 2.4T A95B",
+      "speed_tps": 40.298924884464
     },
     {
       "model": "Qwen3.8 Max (0902)",
       "speed_tps": 40.2871380794536
     },
     {
-      "model": "Qwen3.8 2.4T A95B",
-      "speed_tps": 40.0024555145583
-    },
-    {
       "model": "Kimi K3 (max)",
-      "speed_tps": 38.6768577570558
+      "speed_tps": 37.149693672692
     },
     {
       "model": "Kimi K3 (low)",
-      "speed_tps": 38.2813375890987
+      "speed_tps": 36.9227933706414
     }
   ],
   "cost_per_task_usd": [
@@ -817,7 +821,7 @@
     },
     {
       "model": "Muse Spark Open (xhigh)",
-      "cost_usd": 0.8435187802958677
+      "cost_usd": 0.8441853713458678
     },
     {
       "model": "GLM-5.3 (low)",
@@ -942,52 +946,52 @@
   ],
   "recent_updates": [
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "title": "调整模型过滤规则：所有 Non-reasoning（非思考/无思维链）模型及各思考级别全局不再显示",
       "type": "Filter"
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "title": "调整 OpenAI 模型过滤规则：GPT-5.6 及以下型号全局不再显示，仅保留 GPT-5.7 / GPT-6 及以上旗舰版本",
       "type": "Filter"
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "title": "调整 DeepSeek 模型过滤规则：仅保留 V4.1 及以上版本（过滤低于 4.1 的历史型号）",
       "type": "Filter"
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "title": "调整通义千问模型过滤规则：仅保留 Qwen 3.8 及以上版本（过滤低于 3.8 的历史型号）",
       "type": "Filter"
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "title": "模型白名单新增小米 MiMo 系列支持（MiMo-V2.6 及以上旗舰版本、MiMo Flash 系列全系），全量同步官方最新实测指标（含 MiMo-V2.6-Pro 及 MiMo-V2.6-Flash）",
       "type": "Feature"
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "title": "升级编程能力指数评测基准为官方最新高难评测 Terminal-Bench 4.0，全面展现最新旗舰大模型（GPT-6 Astra, Claude Opus 5.5 等）的断代代码能力与深层思考梯度，避免旧版 v2.1 饱和引发的档位微小方差倒挂",
       "type": "Update"
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "title": "重新纳入 Meta (Muse 系列) 与阿里通义千问 Qwen（>= 3.0）系列评测，编码 Agent 榜新增 Muse Code 框架及 Qwen3.8 Max 组合",
       "type": "Feature"
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 56 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 7 组组合）",
       "type": "Update"
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "title": "编码 Agent 榜新增 Devin Fusion 框架支持，同步 Cognition 官方最新评测组合（Claude Fable 5.1 与 GPT-6 Astra）",
       "type": "Feature"
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "title": "编码 Agent 榜新增 Antigravity（Google Antigravity SDK）框架，同步官方最新实测组合",
       "type": "Feature"
     },
