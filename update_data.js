@@ -274,9 +274,17 @@ function parseModelsPage(html) {
 
     // 2. 编程能力指数 (Terminal-Bench 4.0 百分制实测数据)
     const terminalScore =
-      typeof m.terminalBench40 === 'number'
-        ? m.terminalBench40
-        : (typeof m.terminalbenchV40 === 'number' ? m.terminalbenchV40 : null);
+      typeof m.scores?.['terminalbench-4-0'] === 'number'
+        ? m.scores['terminalbench-4-0']
+        : (typeof m.scores?.['terminalBench40'] === 'number'
+            ? m.scores['terminalBench40']
+            : (typeof m.terminalBench40 === 'number'
+                ? m.terminalBench40
+                : (typeof m.terminalbenchV40 === 'number'
+                    ? m.terminalbenchV40
+                    : (typeof m.scores?.['terminalbench-hard'] === 'number'
+                        ? m.scores['terminalbench-hard']
+                        : null))));
     if (typeof terminalScore === 'number') {
       codList.push({ model: displayName, coding_score: terminalScore * 100 });
     }
@@ -388,8 +396,8 @@ async function main() {
   const codingAgentLeaderboard = parseAgentsPage(agentsHtml);
 
   // 核心安全熔断保护 (Data Safety Guardrail)
-  if (intelList.length < 5 || codingAgentLeaderboard.length === 0) {
-    console.error(`\n🚨 [安全熔断] 数据解析结果异常：模型数 (${intelList.length}) 或 Agent 组合数 (${codingAgentLeaderboard.length}) 严重低于正常阈值！`);
+  if (intelList.length < 5 || codList.length < 5 || codingAgentLeaderboard.length === 0) {
+    console.error(`\n🚨 [安全熔断] 数据解析结果异常：模型智商数 (${intelList.length})、代码指数数 (${codList.length}) 或 Agent 组合数 (${codingAgentLeaderboard.length}) 严重低于正常阈值！`);
     console.error('可能原因：Artificial Analysis 官网前端发生改版。');
     console.error('已触发安全熔断保护：终止更新并拒绝覆盖 index.html 与 latest_data.json，确保线上已有展示数据绝对安全！\n');
     process.exit(1);
