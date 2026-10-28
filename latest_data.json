@@ -29,14 +29,6 @@
     },
     {
       "agent_harness": "Codex Agent CLI",
-      "model": "GPT-6 Astra (Max)",
-      "solve_rate": 54.66356905615291,
-      "avg_time_min": 24.778124659842167,
-      "cost_usd": 7.03615822479963,
-      "brand": "gpt"
-    },
-    {
-      "agent_harness": "Codex Agent CLI",
       "model": "GPT-6.1 Sol (Max)",
       "solve_rate": 54.1279798631476,
       "avg_time_min": 23.69048088693383,
@@ -70,18 +62,6 @@
       "score": 56.9947060170507
     },
     {
-      "model": "GPT-6 Astra (max)",
-      "score": 56.8538559596797
-    },
-    {
-      "model": "GPT-6 Astra (xhigh)",
-      "score": 55.2557468569681
-    },
-    {
-      "model": "GPT-6 Astra (high)",
-      "score": 54.849838322506
-    },
-    {
       "model": "GPT-6.1 Sol (max)",
       "score": 54.5087338138148
     },
@@ -96,10 +76,6 @@
     {
       "model": "Claude Opus 5.5 (high with fallback)",
       "score": 51.6859958227294
-    },
-    {
-      "model": "GPT-6 Astra (medium)",
-      "score": 51.4548393864113
     },
     {
       "model": "GPT-6.1 Terra (max)",
@@ -118,24 +94,12 @@
       "score": 49.7272123627021
     },
     {
-      "model": "Claude Fable 5.1 (xhigh with fallback)",
-      "score": 49.6716384248632
-    },
-    {
       "model": "Claude Sonnet 5.5 (xhigh with fallback)",
       "score": 49.5740327787242
     },
     {
-      "model": "Claude Fable 5.1 (max with fallback)",
-      "score": 49.0102124158081
-    },
-    {
       "model": "Claude Opus 5.5 (medium with fallback)",
       "score": 48.0581024960691
-    },
-    {
-      "model": "Claude Fable 5.1 (high with fallback)",
-      "score": 47.024988245604
     },
     {
       "model": "GPT-6.1 Sol (medium)",
@@ -154,24 +118,12 @@
       "score": 43.3248225998431
     },
     {
-      "model": "GPT-6 Astra (low)",
-      "score": 43.0349823228524
-    },
-    {
-      "model": "Claude Fable 5.1 (medium with fallback)",
-      "score": 42.971597828284
-    },
-    {
       "model": "GPT-6.1 Terra (high)",
       "score": 42.3344508712563
     },
     {
       "model": "Claude Sonnet 5.5 (high with fallback)",
       "score": 41.115109087048
-    },
-    {
-      "model": "Claude Fable 5.1 (low with fallback)",
-      "score": 38.483648810734
     },
     {
       "model": "GPT-6.1 Terra (medium)",
@@ -288,20 +240,12 @@
       "coding_score": 63.636363636363605
     },
     {
-      "model": "GPT-6 Astra (xhigh)",
-      "coding_score": 59.5959595959596
-    },
-    {
       "model": "Claude Opus 5.5 (max with fallback)",
       "coding_score": 59.5959595959596
     },
     {
       "model": "Claude Opus 5.5 (xhigh with fallback)",
       "coding_score": 59.5959595959596
-    },
-    {
-      "model": "GPT-6 Astra (max)",
-      "coding_score": 59.09090909090911
     },
     {
       "model": "Claude Sonnet 5.5 (xhigh with fallback)",
@@ -328,28 +272,12 @@
       "coding_score": 55.5555555555556
     },
     {
-      "model": "Claude Fable 5.1 (xhigh with fallback)",
-      "coding_score": 55.050505050505
-    },
-    {
       "model": "GPT-6.1 Sol (xhigh)",
-      "coding_score": 54.040404040404
-    },
-    {
-      "model": "GPT-6 Astra (high)",
       "coding_score": 54.040404040404
     },
     {
       "model": "Claude Opus 5.5 (medium with fallback)",
       "coding_score": 52.5252525252525
-    },
-    {
-      "model": "Claude Fable 5.1 (max with fallback)",
-      "coding_score": 52.020202020202
-    },
-    {
-      "model": "Claude Fable 5.1 (high with fallback)",
-      "coding_score": 52.020202020202
     },
     {
       "model": "Muse Wonder (max)",
@@ -360,10 +288,6 @@
       "coding_score": 51.5151515151515
     },
     {
-      "model": "GPT-6 Astra (medium)",
-      "coding_score": 49.494949494949495
-    },
-    {
       "model": "GPT-6.1 Sol (medium)",
       "coding_score": 47.979797979798
     },
@@ -372,16 +296,8 @@
       "coding_score": 46.4646464646465
     },
     {
-      "model": "Claude Fable 5.1 (medium with fallback)",
-      "coding_score": 44.949494949495
-    },
-    {
       "model": "Claude Sonnet 5.5 (high with fallback)",
       "coding_score": 43.9393939393939
-    },
-    {
-      "model": "GPT-6 Astra (low)",
-      "coding_score": 41.9191919191919
     },
     {
       "model": "GLM-5.3 (max)",
@@ -390,10 +306,6 @@
     {
       "model": "GPT-6.1 Terra (high)",
       "coding_score": 41.9191919191919
-    },
-    {
-      "model": "Claude Fable 5.1 (low with fallback)",
-      "coding_score": 40.4040404040404
     },
     {
       "model": "Qwen3.8 Max (0902)",
@@ -654,10 +566,6 @@
       "speed_tps": 77.8240534211375
     },
     {
-      "model": "GPT-6 Astra (max)",
-      "speed_tps": 71.0280701481119
-    },
-    {
       "model": "GPT-6.1 Sol (high)",
       "speed_tps": 69.850163820213
     },
@@ -666,36 +574,8 @@
       "speed_tps": 69.6169265339977
     },
     {
-      "model": "GPT-6 Astra (xhigh)",
-      "speed_tps": 68.2291507734479
-    },
-    {
-      "model": "Claude Fable 5.1 (max with fallback)",
-      "speed_tps": 66.4195997419131
-    },
-    {
-      "model": "Claude Fable 5.1 (xhigh with fallback)",
-      "speed_tps": 66.2538204277907
-    },
-    {
-      "model": "GPT-6 Astra (high)",
-      "speed_tps": 62.7293834314959
-    },
-    {
       "model": "GPT-6.1 Sol (low)",
       "speed_tps": 60.8569900847741
-    },
-    {
-      "model": "Claude Fable 5.1 (medium with fallback)",
-      "speed_tps": 60.7195814423521
-    },
-    {
-      "model": "Claude Fable 5.1 (high with fallback)",
-      "speed_tps": 59.8429466647863
-    },
-    {
-      "model": "GPT-6 Astra (medium)",
-      "speed_tps": 59.0172812552323
     },
     {
       "model": "GPT-6.1 Sol (medium)",
@@ -704,10 +584,6 @@
     {
       "model": "MiMo-V2.6-Flash",
       "speed_tps": 58.1928865879356
-    },
-    {
-      "model": "Claude Fable 5.1 (low with fallback)",
-      "speed_tps": 57.4749884018031
     },
     {
       "model": "MiMo-V2.6-Pro",
@@ -720,10 +596,6 @@
     {
       "model": "Qwen3.8 27B (low)",
       "speed_tps": 48.4500801604654
-    },
-    {
-      "model": "GPT-6 Astra (low)",
-      "speed_tps": 48.3185847516423
     },
     {
       "model": "Qwen3.8 27B (medium)",
@@ -848,10 +720,6 @@
       "cost_usd": 1.2850974407373852
     },
     {
-      "model": "GPT-6 Astra (low)",
-      "cost_usd": 1.4237229635663595
-    },
-    {
       "model": "GLM-5.3 (low)",
       "cost_usd": 1.5749301149593384
     },
@@ -868,24 +736,12 @@
       "cost_usd": 2.4510894376611723
     },
     {
-      "model": "GPT-6 Astra (medium)",
-      "cost_usd": 2.732438933013427
-    },
-    {
-      "model": "GPT-6 Astra (high)",
-      "cost_usd": 3.2385719685518306
-    },
-    {
       "model": "Claude Opus 5.5 (high with fallback)",
       "cost_usd": 3.4646622820973185
     },
     {
       "model": "Qwen3.8 27B (xhigh)",
       "cost_usd": 3.5295494751410654
-    },
-    {
-      "model": "GPT-6 Astra (xhigh)",
-      "cost_usd": 3.6589264906126227
     },
     {
       "model": "Kimi K3.1 Pro",
@@ -900,24 +756,12 @@
       "cost_usd": 4.091984916321919
     },
     {
-      "model": "Claude Fable 5.1 (low with fallback)",
-      "cost_usd": 4.486736376258894
-    },
-    {
       "model": "GLM-5.3 (max)",
       "cost_usd": 5.009264601719954
     },
     {
-      "model": "Claude Fable 5.1 (medium with fallback)",
-      "cost_usd": 5.58053808023747
-    },
-    {
       "model": "Claude Opus 5.5 (xhigh with fallback)",
       "cost_usd": 6.047194490848774
-    },
-    {
-      "model": "GPT-6 Astra (max)",
-      "cost_usd": 6.244666943602518
     },
     {
       "model": "Gemini 3.8 Flash (medium)",
@@ -926,10 +770,6 @@
     {
       "model": "Muse Wonder (max)",
       "cost_usd": 6.9520364786062245
-    },
-    {
-      "model": "Claude Fable 5.1 (high with fallback)",
-      "cost_usd": 7.560794697580411
     },
     {
       "model": "Gemini 3.8 Flash (high)",
@@ -946,17 +786,14 @@
     {
       "model": "Claude Opus 5.5 (max with fallback)",
       "cost_usd": 10.036409719512749
-    },
-    {
-      "model": "Claude Fable 5.1 (xhigh with fallback)",
-      "cost_usd": 10.88545763790596
-    },
-    {
-      "model": "Claude Fable 5.1 (max with fallback)",
-      "cost_usd": 13.03926860806298
     }
   ],
   "recent_updates": [
+    {
+      "date": "2026-10-28",
+      "title": "调整模型过滤规则：移除 Claude Fable 5.1 及 GPT-6 Astra，后续若有新版本（Fable > 5.1、Astra > 6）将自动保留纳入",
+      "type": "Filter"
+    },
     {
       "date": "2026-10-28",
       "title": "调整模型过滤规则：所有 Non-reasoning（非思考/无思维链）模型及各思考级别全局不再显示",
@@ -984,7 +821,7 @@
     },
     {
       "date": "2026-10-28",
-      "title": "升级编程能力指数评测基准为官方最新高难评测 Terminal-Bench 4.0，全面展现最新旗舰大模型（GPT-6 Astra, Claude Opus 5.5 等）的断代代码能力与深层思考梯度，避免旧版 v2.1 饱和引发的档位微小方差倒挂",
+      "title": "升级编程能力指数评测基准为官方最新高难评测 Terminal-Bench 4.0，全面展现最新旗舰大模型（GPT-6.1 Sol, Claude Opus 5.5 等）的断代代码能力与深层思考梯度，避免旧版 v2.1 饱和引发的档位微小方差倒挂",
       "type": "Update"
     },
     {
@@ -994,12 +831,12 @@
     },
     {
       "date": "2026-10-28",
-      "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 54 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 7 组组合）",
+      "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 44 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 6 组组合）",
       "type": "Update"
     },
     {
       "date": "2026-10-28",
-      "title": "编码 Agent 榜新增 Devin Fusion 框架支持，同步 Cognition 官方最新评测组合（Claude Fable 5.1 与 GPT-6 Astra）",
+      "title": "编码 Agent 榜新增 Devin Fusion 框架支持，同步 Cognition 官方最新评测组合",
       "type": "Feature"
     },
     {

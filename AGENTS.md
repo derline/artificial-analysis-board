@@ -27,9 +27,11 @@
 
 ### ✅ 允许保留的精选模型 (Included Models) - 采用通用动态版本号白名单机制（$\ge$ 对应基准版本号）
 - **Anthropic (Claude 系列 $\ge 4.6$)**：
-  - 动态支持 Claude 4.6、4.7、4.8、5.x、6.x 及以上（包含 Fable、Opus、Sonnet 等架构和 Max / High / Med / Low 各 Effort 级别，排除 < 4.6 的旧版及 Haiku）。
+  - 动态支持 Claude 4.6、4.7、4.8、5.x、6.x 及以上（包含 Opus、Sonnet 等架构和 Max / High / Med / Low 各 Effort 级别，排除 < 4.6 的旧版及 Haiku）。
+  - **特别排除**：Claude Fable 5.1 及以下旧版；后续若有新版本（Fable > 5.1 如 Fable 5.2、6.x 等）自动保留纳入。
 - **OpenAI (GPT 系列 $> 5.6$，即 $\ge 5.7$)**：
-  - 动态支持 GPT-5.7、GPT-6、GPT-6.1 及以上（包含 Astra、Sol、Terra、Luna 等旗舰系列及 Pro 版本，全局排除 $\le 5.6$ 的旧版如 GPT-5.5、GPT-5.6 等以及 Instant 体验版）。
+  - 动态支持 GPT-5.7、GPT-6、GPT-6.1 及以上（包含 Sol、Terra、Luna 等旗舰系列及 Pro 版本，全局排除 $\le 5.6$ 的旧版如 GPT-5.5、GPT-5.6 等以及 Instant 体验版）。
+  - **特别排除**：GPT-6 Astra 及以下旧版；后续若有新版本（Astra > 6 如 GPT-6.1 Astra、GPT-7 Astra 等）自动保留纳入。
 - **Google (Gemini 系列 $\ge 3.1$)**：
   - 动态支持 Gemini 3.1、3.5、3.6、3.7、3.8、4.x 及以上（包含 Flash、Flash-Lite、Pro、Ultra 等各 Effort 级别，排除 < 3.1 的旧版）。
 - **Meta (Muse 系列)**：
@@ -130,3 +132,11 @@ node update_data.js
   - **核心铁律**：能一句话直击本质讲清楚的事情，坚决不写长篇大论。
   - **拒绝晦涩与过度技术铺陈**：遇到问题直接给出“本质原因”和“一句话结论”，严禁推诿、堆砌技术术语或防御性长篇论述。
   - **决策导向**：直接讲透核心差异与权衡，提供最简可行方案，让用户做最直接轻松的决策。
+---
+
+## 7. 部署与 Git 推送规范 (Git Push & Deployment Rules)
+
+- **修改即推送 (Push on Every Change)**：
+  - 以后每次修改（包括代码改动、规则调整或数据更新）后，**必须及时提交并推送至 GitHub 远端主分支 (`git push origin main`)**。
+- **触发 GitHub Actions 部署**：
+  - 推送至 `main` 分支将自动触发 `.github/workflows/update.yml` 流水线，完成 GitHub Pages 生产页面的自动构建与部署发布（在线地址：https://derline.github.io/artificial-analysis-board/）。

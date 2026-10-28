@@ -70,16 +70,31 @@ function isIgnoredModel(name) {
   }
 
   // 2. Claude 系列 (>= 4.6，动态兼容 5.x, 6.x 等更新版本)
+  // 特别规则：排除 Claude Fable 5.1 及以下旧版，后续新版本（> 5.1 如 Fable 5.2、6.x 等）保留
   if (n.includes('claude') || n.includes('sonnet') || n.includes('opus') || n.includes('fable')) {
     if (n.includes('haiku')) return true;
-    const vMatch = n.match(/(?:claude|sonnet|opus|fable)\s*([0-9]+(?:\.[0-9]+)?)/) ||
-                   n.match(/([0-9]+(?:\.[0-9]+)?)\s*(?:sonnet|opus|fable|claude)/);
+
+    // Fable 专有过滤：排除 Fable 5.1 及以下旧版，后续新版本（> 5.1）保留
+    if (n.includes('fable')) {
+      const fMatch = n.match(/fable[-_ ]*([0-9]+(?:[\.-][0-9]+)?)/) ||
+                     n.match(/([0-9]+(?:[\.-][0-9]+)?)[-_ ]*fable/) ||
+                     n.match(/([0-9]+(?:[\.-][0-9]+)?)/);
+      if (fMatch) {
+        const fVer = parseFloat(fMatch[1].replace('-', '.'));
+        if (fVer <= 5.1) return true; // 排除 Fable 5.1 及历史版本
+        return false; // 新版本保留
+      }
+      return true; // 无版本号默认排除
+    }
+
+    const vMatch = n.match(/(?:claude|sonnet|opus)\s*([0-9]+(?:\.[0-9]+)?)/) ||
+                   n.match(/([0-9]+(?:\.[0-9]+)?)\s*(?:sonnet|opus|claude)/);
     if (vMatch) {
       const ver = parseFloat(vMatch[1]);
       if (ver >= 4.6) return false;
       return true;
     }
-    if (n.includes('fable') || n.includes('opus') || n.includes('sonnet')) {
+    if (n.includes('opus') || n.includes('sonnet')) {
       const numMatch = n.match(/([0-9]+\.[0-9]+)/);
       if (numMatch && parseFloat(numMatch[1]) < 4.6) return true;
       return false;
@@ -88,8 +103,25 @@ function isIgnoredModel(name) {
   }
 
   // 3. GPT 系列 (> 5.6，即 >= 5.7，动态兼容 GPT-6, GPT-6.x 等更新版本，全局排除 <= 5.6)
+  // 特别规则：排除 GPT-6 Astra 及旧版，后续新版本（> 6 如 GPT-6.1 Astra、GPT-7 Astra 等）保留
   if (n.includes('gpt') || /\b(sol|terra|luna|astra)\b/.test(n)) {
     if (n.includes('instant')) return true;
+
+    // Astra 专有过滤：排除 GPT-6 Astra 及以下旧版，后续新版本（> 6）保留
+    if (n.includes('astra')) {
+      const aMatch = n.match(/gpt[-_ ]*([0-9]+(?:[\.-][0-9]+)?).*astra/) ||
+                     n.match(/astra[-_ ]*([0-9]+(?:[\.-][0-9]+)?)/) ||
+                     n.match(/([0-9]+(?:[\.-][0-9]+)?)[-_ ]*astra/) ||
+                     n.match(/gpt-?([0-9]+(?:\.[0-9]+)?)/) ||
+                     n.match(/([0-9]+(?:[\.-][0-9]+)?)/);
+      if (aMatch) {
+        const aVer = parseFloat(aMatch[1].replace('-', '.'));
+        if (aVer <= 6.0) return true; // 排除 GPT-6 Astra 及以下
+        return false; // 新版本保留
+      }
+      return true; // 无版本号默认排除
+    }
+
     const vMatch = n.match(/gpt-?([0-9]+(?:\.[0-9]+)?)/);
     if (vMatch) {
       const ver = parseFloat(vMatch[1]);
@@ -416,6 +448,11 @@ async function main() {
     recent_updates: [
       {
         date: today,
+        title: '调整模型过滤规则：移除 Claude Fable 5.1 及 GPT-6 Astra，后续若有新版本（Fable > 5.1、Astra > 6）将自动保留纳入',
+        type: 'Filter'
+      },
+      {
+        date: today,
         title: '调整模型过滤规则：所有 Non-reasoning（非思考/无思维链）模型及各思考级别全局不再显示',
         type: 'Filter'
       },
@@ -441,7 +478,7 @@ async function main() {
       },
       {
         date: today,
-        title: '升级编程能力指数评测基准为官方最新高难评测 Terminal-Bench 4.0，全面展现最新旗舰大模型（GPT-6 Astra, Claude Opus 5.5 等）的断代代码能力与深层思考梯度，避免旧版 v2.1 饱和引发的档位微小方差倒挂',
+        title: '升级编程能力指数评测基准为官方最新高难评测 Terminal-Bench 4.0，全面展现最新旗舰大模型（GPT-6.1 Sol, Claude Opus 5.5 等）的断代代码能力与深层思考梯度，避免旧版 v2.1 饱和引发的档位微小方差倒挂',
         type: 'Update'
       },
       {
@@ -456,7 +493,7 @@ async function main() {
       },
       {
         date: today,
-        title: '编码 Agent 榜新增 Devin Fusion 框架支持，同步 Cognition 官方最新评测组合（Claude Fable 5.1 与 GPT-6 Astra）',
+        title: '编码 Agent 榜新增 Devin Fusion 框架支持，同步 Cognition 官方最新评测组合',
         type: 'Feature'
       },
       {

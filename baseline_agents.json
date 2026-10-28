@@ -1,43 +1,11 @@
 [
   {
     "agent_harness": "Claude Code",
-    "model": "Fable 5.1 (max) (with fallback)",
-    "solve_rate": 62.22249615769457,
-    "avg_time_min": 34.831668756875715,
-    "cost_usd": 12.388092375137534,
-    "brand": "claude"
-  },
-  {
-    "agent_harness": "Devin Fusion",
-    "model": "Claude Fable 5.1 XHigh + SWE-2 Medium",
-    "solve_rate": 61.68255492406223,
-    "avg_time_min": 35.78320149431607,
-    "cost_usd": 7.897126985217273,
-    "brand": "claude"
-  },
-  {
-    "agent_harness": "Codex Agent CLI",
-    "model": "GPT-6 Astra (max)",
-    "solve_rate": 61.64504498789397,
-    "avg_time_min": 29.36721710671066,
-    "cost_usd": 7.46709735138597,
-    "brand": "gpt"
-  },
-  {
-    "agent_harness": "Claude Code",
     "model": "Opus 5 (max)",
     "solve_rate": 59.726367298448366,
     "avg_time_min": 41.92567059955995,
     "cost_usd": 10.789154699257413,
     "brand": "claude"
-  },
-  {
-    "agent_harness": "Devin Fusion",
-    "model": "GPT-6 Astra XHigh + SWE-2 Medium",
-    "solve_rate": 58.8884131062264,
-    "avg_time_min": 24.698266336633665,
-    "cost_usd": 4.536492777821779,
-    "brand": "gpt"
   },
   {
     "agent_harness": "Codex Agent CLI",
