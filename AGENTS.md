@@ -22,10 +22,14 @@
 - **所有 Non-reasoning 模型**（非思考/无思维链档位，全局排除）
 - `Nemotron` 系列
 - `gpt-oss`
-- `Grok` / `Groq`
+- `Groq`
+- `Grok < 4.6` 旧版模型
 - `o3` 开头的旧版模型
 
 ### ✅ 允许保留的精选模型 (Included Models) - 采用通用动态版本号白名单机制（$\ge$ 对应基准版本号）
+- **默认不局限于仅活跃列表**：不以官方当前是否标记为活跃状态（Active）为唯一限制。对于历史/已弃用（Deprecated）但符合对应基准版本号的模型（如 Grok 4.6 系列），只要官方权威基准库保留有完整实测数据，允许并鼓励保留纳入对比，避免官方迭代轮换导致关键代际基准断档。
+- **xAI (Grok 系列 $\ge 4.6$)**：
+  - 动态支持 Grok 4.6、4.7、4.8、5.x 及以上（包含 High、Medium、Low、Xhigh 等各 Effort 级别，全局排除 < 4.6 的旧版及 Non-reasoning 版本）。
 - **Anthropic (Claude 系列 $\ge 4.6$)**：
   - 动态支持 Claude 4.6、4.7、4.8、5.x、6.x 及以上（包含 Opus、Sonnet 等架构和 Max / High / Med / Low 各 Effort 级别，排除 < 4.6 的旧版及 Haiku）。
   - **特别排除**：Claude Fable 5.1 及以下旧版；后续若有新版本（Fable > 5.1 如 Fable 5.2、6.x 等）自动保留纳入。
@@ -85,6 +89,7 @@
   - **GPT (OpenAI)**：暖金黄色 (`#ca8a04` / Warm Gold)
   - **Gemini (Google)**：天蓝色 (`#0284c7`)
   - **Muse (Meta)**：宝蓝色 (`#1d4ed8`)
+  - **Grok (xAI)**：纯黑/深空灰 (`#0f172a` / `#000000`)
   - **国内模型 (DeepSeek / Kimi / GLM / MiniMax / Qwen / MiMo)**：深灰/黑色 (`#1e293b`)
 - **Top 4 评分卡片规范**：
   - 极细 2px 高度 (`height: 2px;`)，轨道背景色 `#f1f5f9`，渐变填充 `linear-gradient(90deg, #cbd5e1, #94a3b8)`。

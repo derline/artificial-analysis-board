@@ -53,7 +53,6 @@ function isIgnoredModel(name) {
     n.includes('nonreasoning') ||
     n.includes('nemotron') ||
     n.includes('gpt-oss') ||
-    n.includes('grok') ||
     n.includes('groq') ||
     n.startsWith('o3') ||
     n.includes('composer') ||
@@ -69,7 +68,18 @@ function isIgnoredModel(name) {
     return true;
   }
 
-  // 2. Claude 系列 (>= 4.6，动态兼容 5.x, 6.x 等更新版本)
+  // 2. xAI (Grok 系列 >= 4.6，动态兼容 4.7, 5.x 等更新版本，全局排除 < 4.6)
+  if (n.includes('grok')) {
+    const gMatch = n.match(/grok\s*([0-9]+(?:\.[0-9]+)?)/) || n.match(/grok-?([0-9]+(?:\.[0-9]+)?)/);
+    if (gMatch) {
+      const ver = parseFloat(gMatch[1]);
+      if (ver >= 4.6) return false;
+      return true;
+    }
+    return true;
+  }
+
+  // 3. Claude 系列 (>= 4.6，动态兼容 5.x, 6.x 等更新版本)
   // 特别规则：排除 Claude Fable 5.1 及以下旧版，后续新版本（> 5.1 如 Fable 5.2、6.x 等）保留
   if (n.includes('claude') || n.includes('sonnet') || n.includes('opus') || n.includes('fable')) {
     if (n.includes('haiku')) return true;
@@ -226,6 +236,7 @@ function getBrand(model) {
   if (n.includes('gpt') || n.includes('sol') || n.includes('terra') || n.includes('luna') || n.includes('astra')) return 'gpt';
   if (n.includes('claude') || n.includes('opus') || n.includes('fable') || n.includes('sonnet')) return 'claude';
   if (n.includes('muse')) return 'muse';
+  if (n.includes('grok')) return 'grok';
   return 'cn';
 }
 
@@ -446,6 +457,11 @@ async function main() {
     speed_tokens_per_sec: speedList,
     cost_per_task_usd: costList,
     recent_updates: [
+      {
+        date: today,
+        title: '新增 xAI Grok 系列支持（Grok ≥ 4.6，动态兼容 4.7、5.x 及以上），且默认不再局限于仅活跃模型列表',
+        type: 'Feature'
+      },
       {
         date: today,
         title: '调整模型过滤规则：移除 Claude Fable 5.1 及 GPT-6 Astra，后续若有新版本（Fable > 5.1、Astra > 6）将自动保留纳入',

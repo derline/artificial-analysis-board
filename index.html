@@ -548,7 +548,7 @@
     <header>
       <div>
         <h1 class="brand-title">Artificial Analysis 最新基准数据</h1>
-        <p style="color: var(--text-muted); margin-top: 0.3rem;">精选大语言模型（GPT>5.6, Claude≥4.6, Gemini≥3.1, Muse, Qwen≥3.8）与编码 Agent 组合能力榜单</p>
+        <p style="color: var(--text-muted); margin-top: 0.3rem;">精选大语言模型（GPT>5.6, Claude≥4.6, Gemini≥3.1, Grok≥4.6, Muse, Qwen≥3.8）与编码 Agent 组合能力榜单</p>
       </div>
       <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
         <a href="https://artificialanalysis.ai" target="_blank" class="update-tag" style="text-decoration: none; color: #4f46e5; border-color: #c7d2fe; background: #eef2ff;">
@@ -571,6 +571,7 @@
       <span class="legend-item" style="color: #dc2626;"><span class="legend-dot" style="background:#dc2626;"></span> 红色：Claude 系列 (Anthropic)</span>
       <span class="legend-item" style="color: #0284c7;"><span class="legend-dot" style="background:#0284c7;"></span> 蓝色：Gemini 系列 (Google)</span>
       <span class="legend-item" style="color: #1d4ed8;"><span class="legend-dot" style="background:#1d4ed8;"></span> 宝蓝色：Muse 系列 (Meta)</span>
+      <span class="legend-item" style="color: #0f172a;"><span class="legend-dot" style="background:#0f172a;"></span> 纯黑/深空灰：Grok 系列 (xAI)</span>
       <span class="legend-item" style="color: #1e293b;"><span class="legend-dot" style="background:#1e293b;"></span> 深灰/黑色：国内模型 (DeepSeek / Kimi / GLM / MiniMax / Qwen / MiMo)</span>
     </div>
 
@@ -790,7 +791,6 @@
         n.includes('nonreasoning') ||
         n.includes('nemotron') ||
         n.includes('gpt-oss') ||
-        n.includes('grok') ||
         n.includes('groq') ||
         n.startsWith('o3') ||
         n.includes('composer') ||
@@ -806,7 +806,18 @@
         return true;
       }
 
-      // 2. Claude 系列 (>= 4.6，动态兼容 5.x, 6.x 等更新版本)
+      // 2. xAI (Grok 系列 >= 4.6，动态兼容 4.7, 5.x 等更新版本，全局排除 < 4.6)
+      if (n.includes('grok')) {
+        const gMatch = n.match(/grok\s*([0-9]+(?:\.[0-9]+)?)/) || n.match(/grok-?([0-9]+(?:\.[0-9]+)?)/);
+        if (gMatch) {
+          const ver = parseFloat(gMatch[1]);
+          if (ver >= 4.6) return false;
+          return true;
+        }
+        return true;
+      }
+
+      // 3. Claude 系列 (>= 4.6，动态兼容 5.x, 6.x 等更新版本)
       // 特别规则：排除 Claude Fable 5.1 及以下旧版，后续新版本（> 5.1 如 Fable 5.2、6.x 等）保留
       if (n.includes('claude') || n.includes('sonnet') || n.includes('opus') || n.includes('fable')) {
         if (n.includes('haiku')) return true;
@@ -963,6 +974,7 @@
       if (n.includes('gpt') || n.includes('sol') || n.includes('terra') || n.includes('luna') || n.includes('astra')) return '#ca8a04';      // 暖金黄色
       if (n.includes('gemini')) return '#0284c7';   // 天蓝色
       if (n.includes('muse')) return '#1d4ed8';     // 宝蓝色 (Meta Muse)
+      if (n.includes('grok')) return '#0f172a';     // 纯黑/深空灰 (xAI Grok)
 
       return '#1e293b';
     }
@@ -1496,12 +1508,20 @@
       "score": 38.1152076677975
     },
     {
+      "model": "Grok 4.7 (high)",
+      "score": 35.0122962959703
+    },
+    {
       "model": "GPT-6.1 Sol (low)",
       "score": 34.502924431456
     },
     {
       "model": "Claude Opus 5.5 (low with fallback)",
       "score": 34.502785007759
+    },
+    {
+      "model": "Grok 4.7 (xhigh)",
+      "score": 34.3350117067196
     },
     {
       "model": "Qwen3.8 Max (0902)",
@@ -1514,6 +1534,10 @@
     {
       "model": "GLM-5.3 (max)",
       "score": 31.653381843882
+    },
+    {
+      "model": "Grok 4.7 (low)",
+      "score": 30.882077602567
     },
     {
       "model": "Gemini 3.8 Flash (high)",
@@ -1714,12 +1738,20 @@
       "coding_score": 29.7979797979798
     },
     {
+      "model": "Grok 4.7 (xhigh)",
+      "coding_score": 25.7575757575758
+    },
+    {
       "model": "MiniMax-M3.1-Flash",
       "coding_score": 25.7575757575758
     },
     {
       "model": "Qwen3.8-Flash-Next",
       "coding_score": 25.2525252525253
+    },
+    {
+      "model": "Grok 4.7 (high)",
+      "coding_score": 24.747474747474698
     },
     {
       "model": "MiMo-V2.6-Flash",
@@ -1736,6 +1768,10 @@
     {
       "model": "Gemini 3.8 Flash (high)",
       "coding_score": 19.6969696969697
+    },
+    {
+      "model": "Grok 4.7 (low)",
+      "coding_score": 16.161616161616198
     },
     {
       "model": "GPT-6.1 Terra (low)",
@@ -1805,7 +1841,7 @@
   "speed_tokens_per_sec": [
     {
       "model": "Gemini 3.5 Flash-Lite",
-      "speed_tps": 460.614761695636
+      "speed_tps": 456.216182161305
     },
     {
       "model": "Muse Wonder (max)",
@@ -1813,23 +1849,23 @@
     },
     {
       "model": "DeepSeek V4.1 Flash 1017 (max)",
-      "speed_tps": 183.652842380641
+      "speed_tps": 182.175767523412
     },
     {
       "model": "Gemini 3.1 Pro Preview",
-      "speed_tps": 151.120508354767
+      "speed_tps": 151.217096728188
+    },
+    {
+      "model": "Muse Spark Open (xhigh)",
+      "speed_tps": 142.993887218874
     },
     {
       "model": "Gemini 3.8 Flash (high)",
       "speed_tps": 142.97122234427
     },
     {
-      "model": "Muse Spark Open (xhigh)",
-      "speed_tps": 141.976704684613
-    },
-    {
       "model": "Claude Sonnet 5.5 (max with fallback)",
-      "speed_tps": 136.766183613652
+      "speed_tps": 138.196824879532
     },
     {
       "model": "GPT-6 Luna (xhigh)",
@@ -1841,19 +1877,19 @@
     },
     {
       "model": "GPT-6 Luna (high)",
-      "speed_tps": 121.598001266696
+      "speed_tps": 120.847471268153
     },
     {
       "model": "GPT-6 Luna (max)",
       "speed_tps": 120.61330456798
     },
     {
-      "model": "MiniMax-M3.1-Flash",
-      "speed_tps": 118.914130891033
+      "model": "Claude Sonnet 5.5 (high with fallback)",
+      "speed_tps": 120.080676772505
     },
     {
-      "model": "Claude Sonnet 5.5 (high with fallback)",
-      "speed_tps": 118.879791418582
+      "model": "MiniMax-M3.1-Flash",
+      "speed_tps": 118.914130891033
     },
     {
       "model": "Claude Sonnet 5.5 (xhigh with fallback)",
@@ -1872,36 +1908,52 @@
       "speed_tps": 112.64950545897
     },
     {
+      "model": "Grok 4.7 (xhigh)",
+      "speed_tps": 109.931691973211
+    },
+    {
+      "model": "Grok 4.7 (high)",
+      "speed_tps": 106.052252638638
+    },
+    {
       "model": "MiniMax-M3",
-      "speed_tps": 107.400186312286
+      "speed_tps": 102.764463789428
     },
     {
       "model": "Gemini 4 Carbon (high)",
-      "speed_tps": 99.8122439156722
+      "speed_tps": 102.463229536653
     },
     {
       "model": "Claude Opus 5.5 (max with fallback)",
       "speed_tps": 98.3397658255992
     },
     {
+      "model": "GLM-5.3 (low)",
+      "speed_tps": 91.2600955165834
+    },
+    {
       "model": "GPT-6.1 Terra (low)",
-      "speed_tps": 90.9521278062973
+      "speed_tps": 90.9510810581888
     },
     {
       "model": "GPT-6.1 Terra (high)",
-      "speed_tps": 90.9179386771324
-    },
-    {
-      "model": "GPT-6.1 Terra (max)",
-      "speed_tps": 90.9179103911021
+      "speed_tps": 90.9227199508063
     },
     {
       "model": "GPT-6.1 Terra (medium)",
-      "speed_tps": 90.9153480314446
+      "speed_tps": 90.9214478813956
+    },
+    {
+      "model": "GPT-6.1 Terra (max)",
+      "speed_tps": 90.918002931244
     },
     {
       "model": "GPT-6.1 Terra (xhigh)",
-      "speed_tps": 90.903643215527
+      "speed_tps": 90.8979493999592
+    },
+    {
+      "model": "Grok 4.7 (low)",
+      "speed_tps": 90.8737251332639
     },
     {
       "model": "Claude Opus 5.5 (low with fallback)",
@@ -1912,10 +1964,6 @@
       "speed_tps": 85.4207730044178
     },
     {
-      "model": "GLM-5.3 (low)",
-      "speed_tps": 84.1506080994037
-    },
-    {
       "model": "Claude Opus 5.5 (high with fallback)",
       "speed_tps": 84.0456979277329
     },
@@ -1924,12 +1972,12 @@
       "speed_tps": 83.3199551646729
     },
     {
-      "model": "GPT-6.1 Sol (max)",
-      "speed_tps": 82.9919661168905
-    },
-    {
       "model": "Gemini 4 Argon (high)",
       "speed_tps": 82.3982856250053
+    },
+    {
+      "model": "GPT-6.1 Sol (max)",
+      "speed_tps": 81.0724688683688
     },
     {
       "model": "GLM-5.3 (max)",
@@ -1945,35 +1993,35 @@
     },
     {
       "model": "GPT-6.1 Sol (high)",
-      "speed_tps": 73.1658222771962
+      "speed_tps": 73.0893864816076
     },
     {
       "model": "GPT-6.1 Sol (low)",
-      "speed_tps": 67.213869644903
+      "speed_tps": 69.5476716025221
     },
     {
       "model": "GPT-6.1 Sol (medium)",
       "speed_tps": 66.2838538371223
     },
     {
-      "model": "MiMo-V2.6-Flash",
-      "speed_tps": 62.7743269448832
-    },
-    {
       "model": "MiMo-V2.6-Pro",
       "speed_tps": 62.7585191383154
+    },
+    {
+      "model": "MiMo-V2.6-Flash",
+      "speed_tps": 61.2656184358427
     },
     {
       "model": "Qwen3.8-Flash-Next",
       "speed_tps": 55.4029105266323
     },
     {
-      "model": "Qwen3.8 27B (low)",
-      "speed_tps": 44.5038655622288
+      "model": "Qwen3.8 27B (medium)",
+      "speed_tps": 43.8442138407543
     },
     {
-      "model": "Qwen3.8 27B (medium)",
-      "speed_tps": 44.2442037718334
+      "model": "Qwen3.8 27B (low)",
+      "speed_tps": 43.6703270905503
     },
     {
       "model": "Qwen3.8 2.4T A95B",
@@ -1985,11 +2033,11 @@
     },
     {
       "model": "Kimi K3.1 Pro",
-      "speed_tps": 37.7345987066698
+      "speed_tps": 37.3403752536409
     },
     {
       "model": "Qwen3.8 27B (xhigh)",
-      "speed_tps": 37.5784561208145
+      "speed_tps": 37.0045258820918
     }
   ],
   "cost_per_task_usd": [
@@ -2110,6 +2158,10 @@
       "cost_usd": 2.4510894376611723
     },
     {
+      "model": "Grok 4.7 (low)",
+      "cost_usd": 2.9222013011913153
+    },
+    {
       "model": "Claude Opus 5.5 (high with fallback)",
       "cost_usd": 3.4646622820973185
     },
@@ -2134,12 +2186,20 @@
       "cost_usd": 6.047194490848774
     },
     {
+      "model": "Grok 4.7 (high)",
+      "cost_usd": 6.18359556537658
+    },
+    {
       "model": "Gemini 3.8 Flash (medium)",
       "cost_usd": 6.258586089480771
     },
     {
       "model": "Muse Wonder (max)",
       "cost_usd": 6.9520364786062245
+    },
+    {
+      "model": "Grok 4.7 (xhigh)",
+      "cost_usd": 7.511769586408455
     },
     {
       "model": "Gemini 4 Argon (high)",
@@ -2167,6 +2227,11 @@
     }
   ],
   "recent_updates": [
+    {
+      "date": "2026-10-29",
+      "title": "新增 xAI Grok 系列支持（Grok ≥ 4.6，动态兼容 4.7、5.x 及以上），且默认不再局限于仅活跃模型列表",
+      "type": "Feature"
+    },
     {
       "date": "2026-10-29",
       "title": "调整模型过滤规则：移除 Claude Fable 5.1 及 GPT-6 Astra，后续若有新版本（Fable > 5.1、Astra > 6）将自动保留纳入",
@@ -2209,7 +2274,7 @@
     },
     {
       "date": "2026-10-29",
-      "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 45 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 6 组组合）",
+      "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 48 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 6 组组合）",
       "type": "Update"
     },
     {
