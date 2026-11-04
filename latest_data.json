@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03",
+  "updated_at": "2026-11-04",
   "source": "https://artificialanalysis.ai/leaderboards/models",
   "agents_source": "https://artificialanalysis.ai/agents/coding-agents",
   "coding_agent_leaderboard": [
@@ -47,43 +47,43 @@
   "intelligence_index": [
     {
       "model": "Gemini 4 Carbon (high)",
-      "score": 59.425738829526
+      "score": 60.025738829526
     },
     {
       "model": "Claude Opus 5.5 (max with fallback)",
-      "score": 58.4060336078904
+      "score": 59.1060336078904
     },
     {
       "model": "Gemini 4 Carbon (medium)",
-      "score": 57.7087824022788
+      "score": 58.2587824022788
     },
     {
       "model": "Claude Opus 5.5 (xhigh with fallback)",
-      "score": 56.9947060170507
+      "score": 57.4447060170507
     },
     {
       "model": "GPT-6.1 Sol (max)",
-      "score": 54.5087338138148
+      "score": 54.6087338138148
     },
     {
       "model": "Claude Sonnet 5.5 (max with fallback)",
-      "score": 54.24133407109
+      "score": 54.54133407109
     },
     {
       "model": "Gemini 4 Carbon (low)",
-      "score": 53.7206114502924
+      "score": 54.2206114502924
     },
     {
       "model": "GPT-6.1 Sol (xhigh)",
-      "score": 52.308219253291
+      "score": 52.458219253291
     },
     {
       "model": "Claude Opus 5.5 (high with fallback)",
-      "score": 51.6859958227294
+      "score": 51.8359958227294
     },
     {
       "model": "GPT-6.1 Terra (max)",
-      "score": 50.9765188577015
+      "score": 51.3265188577015
     },
     {
       "model": "Gemini 4 Argon (high)",
@@ -91,71 +91,71 @@
     },
     {
       "model": "GPT-6.1 Sol (high)",
-      "score": 50.2291231936536
+      "score": 50.3291231936536
     },
     {
       "model": "Muse Wonder Full (max)",
-      "score": 49.7272123627021
+      "score": 50.0772123627021
     },
     {
       "model": "Claude Sonnet 5.5 (xhigh with fallback)",
-      "score": 49.5740327787242
+      "score": 49.9240327787242
     },
     {
       "model": "Claude Opus 5.5 (medium with fallback)",
-      "score": 48.0581024960691
-    },
-    {
-      "model": "GPT-6.1 Sol (medium)",
-      "score": 46.1468797067114
+      "score": 48.2081024960691
     },
     {
       "model": "Kimi K3.1 Pro",
-      "score": 46.0026236744189
+      "score": 46.4526236744189
+    },
+    {
+      "model": "GPT-6.1 Sol (medium)",
+      "score": 46.3468797067114
     },
     {
       "model": "GPT-6.1 Terra (xhigh)",
-      "score": 44.950051789066
+      "score": 45.250051789066
     },
     {
       "model": "Muse Wonder (max)",
-      "score": 43.3248225998431
+      "score": 43.5748225998431
     },
     {
       "model": "GPT-6.1 Terra (high)",
-      "score": 42.3344508712563
+      "score": 42.4344508712563
     },
     {
       "model": "Claude Sonnet 5.5 (high with fallback)",
-      "score": 41.115109087048
+      "score": 41.515109087048
     },
     {
       "model": "GPT-6.1 Terra (medium)",
-      "score": 38.1152076677975
+      "score": 38.1652076677975
     },
     {
       "model": "Grok 4.7 (xhigh)",
-      "score": 35.3350117067196
+      "score": 35.4850117067196
     },
     {
       "model": "Grok 4.7 (high)",
-      "score": 35.0122962959703
+      "score": 35.2122962959703
     },
     {
       "model": "GPT-6.1 Sol (low)",
-      "score": 34.502924431456
+      "score": 34.8029244314559
     },
     {
       "model": "Claude Opus 5.5 (low with fallback)",
-      "score": 34.502785007759
+      "score": 34.752785007759
     },
     {
       "model": "Qwen3.8 Max (0902)",
-      "score": 33.5545627367888
+      "score": 33.6545627367888
     },
     {
       "model": "DeepSeek V4.1 Flash 1017 (max)",
-      "score": 32.4896393532027
+      "score": 32.5896393532027
     },
     {
       "model": "GLM-5.3 (max)",
@@ -163,19 +163,19 @@
     },
     {
       "model": "Grok 4.7 (low)",
-      "score": 30.882077602567
+      "score": 31.132077602567
     },
     {
       "model": "Gemini 3.8 Flash (high)",
-      "score": 30.5468119957291
+      "score": 30.8468119957291
     },
     {
       "model": "Claude Sonnet 5.5 (medium with fallback)",
-      "score": 30.3195522148431
+      "score": 30.8195522148431
     },
     {
       "model": "Gemini 3.8 Flash (medium)",
-      "score": 29.978569475636
+      "score": 30.078569475636
     },
     {
       "model": "MiMo-V2.6-Pro",
@@ -183,23 +183,23 @@
     },
     {
       "model": "GPT-6.1 Terra (low)",
-      "score": 29.2169280792131
+      "score": 29.4169280792131
     },
     {
       "model": "MiniMax-M3.1-Flash",
-      "score": 28.9095214290458
+      "score": 29.0595214290458
     },
     {
       "model": "DeepSeek V4.1 Flash 1017 (high)",
-      "score": 28.5437391540402
+      "score": 28.6437391540402
     },
     {
       "model": "GPT-6 Luna (max)",
-      "score": 27.7552004938153
+      "score": 27.8552004938153
     },
     {
       "model": "GLM-5.3-Flash",
-      "score": 27.753889160883
+      "score": 27.803889160883
     },
     {
       "model": "MiMo-V2.6-Flash",
@@ -207,27 +207,27 @@
     },
     {
       "model": "Claude Sonnet 5.5 (low with fallback)",
-      "score": 25.299704549789
+      "score": 25.649704549789
     },
     {
       "model": "Muse Spark Open (xhigh)",
-      "score": 24.6815868992913
+      "score": 24.8815868992913
     },
     {
       "model": "GPT-6 Luna (xhigh)",
-      "score": 23.3008728089378
+      "score": 23.4508728089378
     },
     {
       "model": "GLM-5.3 (low)",
-      "score": 23.0579373025379
+      "score": 23.1079373025379
     },
     {
       "model": "Gemini 3.8 Flash (low)",
-      "score": 22.348302237854
+      "score": 22.548302237854
     },
     {
       "model": "GPT-6 Luna (high)",
-      "score": 21.3790170864582
+      "score": 21.4290170864582
     },
     {
       "model": "Qwen3.8 27B (xhigh)",
@@ -235,11 +235,11 @@
     },
     {
       "model": "MiniMax-M3",
-      "score": 18.7289083859255
+      "score": 18.8789083859255
     },
     {
       "model": "GPT-6 Luna (medium)",
-      "score": 18.3042156192416
+      "score": 18.4542156192416
     },
     {
       "model": "Qwen3.8 27B (medium)",
@@ -495,207 +495,215 @@
   "speed_tokens_per_sec": [
     {
       "model": "Gemini 3.5 Flash-Lite",
-      "speed_tps": 423.317454997959
+      "speed_tps": 402.25462268539
     },
     {
       "model": "DeepSeek V4.1 Flash 1017 (high)",
-      "speed_tps": 203.315277707753
+      "speed_tps": 184.173066358097
     },
     {
       "model": "Muse Wonder (max)",
-      "speed_tps": 195.857104426616
+      "speed_tps": 170.787544194425
     },
     {
       "model": "Muse Spark Open (xhigh)",
-      "speed_tps": 194.863285134257
+      "speed_tps": 167.71835221781
     },
     {
       "model": "DeepSeek V4.1 Flash 1017 (max)",
-      "speed_tps": 170.462089292569
-    },
-    {
-      "model": "Gemini 3.1 Pro Preview",
-      "speed_tps": 139.649742755301
+      "speed_tps": 164.711377852721
     },
     {
       "model": "Claude Sonnet 5.5 (max with fallback)",
-      "speed_tps": 138.662185850236
+      "speed_tps": 139.308331182493
     },
     {
-      "model": "MiniMax-M3.1-Flash",
-      "speed_tps": 135.942802529148
+      "model": "Gemini 3.1 Pro Preview",
+      "speed_tps": 138.546039447996
     },
     {
       "model": "Gemini 3.8 Flash (high)",
-      "speed_tps": 131.2787866055
+      "speed_tps": 131.170066709761
     },
     {
-      "model": "Muse Glimmer (high)",
-      "speed_tps": 131.084142632074
+      "model": "MiniMax-M3.1-Flash",
+      "speed_tps": 128.645821239415
     },
     {
       "model": "GPT-6 Luna (xhigh)",
-      "speed_tps": 127.480023649098
+      "speed_tps": 127.046731128392
+    },
+    {
+      "model": "Muse Glimmer (high)",
+      "speed_tps": 122.660160583065
     },
     {
       "model": "GPT-6 Luna (high)",
-      "speed_tps": 122.206418046352
-    },
-    {
-      "model": "MiniMax-M3",
-      "speed_tps": 119.671840358048
-    },
-    {
-      "model": "GPT-6 Luna (max)",
-      "speed_tps": 117.221396321868
+      "speed_tps": 119.106961626158
     },
     {
       "model": "GPT-6 Luna (low)",
-      "speed_tps": 115.320976039621
+      "speed_tps": 115.200103016983
+    },
+    {
+      "model": "GPT-6 Luna (max)",
+      "speed_tps": 111.069146530481
     },
     {
       "model": "GPT-6.1 Terra (max)",
-      "speed_tps": 109.114519641117
+      "speed_tps": 109.454888962854
     },
     {
       "model": "Claude Sonnet 5.5 (xhigh with fallback)",
-      "speed_tps": 106.27366292387
+      "speed_tps": 106.810703414315
     },
     {
       "model": "Claude Sonnet 5.5 (high with fallback)",
-      "speed_tps": 105.660282457172
+      "speed_tps": 102.983381567339
     },
     {
-      "model": "Claude Sonnet 5.5 (low with fallback)",
-      "speed_tps": 103.86582418709
+      "model": "Gemini 4 Carbon (low)",
+      "speed_tps": 98.6422231212062
+    },
+    {
+      "model": "MiniMax-M3",
+      "speed_tps": 98.3895984819293
     },
     {
       "model": "GPT-6.1 Terra (xhigh)",
-      "speed_tps": 100.276627528065
+      "speed_tps": 97.772266929309
     },
     {
-      "model": "Claude Sonnet 5.5 (medium with fallback)",
-      "speed_tps": 99.8624127873441
+      "model": "Claude Sonnet 5.5 (low with fallback)",
+      "speed_tps": 96.4164907712772
     },
     {
       "model": "Claude Opus 5.5 (max with fallback)",
-      "speed_tps": 94.6871176409813
+      "speed_tps": 94.1585421689041
+    },
+    {
+      "model": "Claude Sonnet 5.5 (medium with fallback)",
+      "speed_tps": 93.6441784797911
+    },
+    {
+      "model": "Gemini 4 Carbon (medium)",
+      "speed_tps": 91.4819148191542
     },
     {
       "model": "GPT-6.1 Terra (high)",
-      "speed_tps": 94.5124971312474
-    },
-    {
-      "model": "Gemini 4 Carbon (high)",
-      "speed_tps": 92.1437139230189
-    },
-    {
-      "model": "GPT-6.1 Sol (max)",
-      "speed_tps": 91.279754833017
-    },
-    {
-      "model": "GPT-6.1 Terra (medium)",
-      "speed_tps": 90.9083661856151
+      "speed_tps": 91.4667941744262
     },
     {
       "model": "GPT-6.1 Terra (low)",
-      "speed_tps": 90.9031321226003
+      "speed_tps": 90.8627040387867
+    },
+    {
+      "model": "GPT-6.1 Terra (medium)",
+      "speed_tps": 88.7329011321496
+    },
+    {
+      "model": "Gemini 4 Carbon (high)",
+      "speed_tps": 88.7024455423415
     },
     {
       "model": "GLM-5.3 (max)",
-      "speed_tps": 88.7052833224419
-    },
-    {
-      "model": "Gemini 4 Argon (high)",
-      "speed_tps": 83.2883200602061
+      "speed_tps": 85.6607322184307
     },
     {
       "model": "GLM-5.3 (low)",
-      "speed_tps": 81.9485863563692
+      "speed_tps": 82.0457199490226
     },
     {
-      "model": "Grok 4.7 (xhigh)",
-      "speed_tps": 80.4721449534734
+      "model": "Gemini 4 Argon (high)",
+      "speed_tps": 81.9200566577613
     },
     {
       "model": "Claude Opus 5.5 (xhigh with fallback)",
-      "speed_tps": 80.3821864448136
+      "speed_tps": 79.8518952127418
     },
     {
       "model": "Claude Opus 5.5 (medium with fallback)",
-      "speed_tps": 79.4082812036957
-    },
-    {
-      "model": "Claude Opus 5.5 (high with fallback)",
-      "speed_tps": 79.3266571025187
+      "speed_tps": 77.9059774221876
     },
     {
       "model": "Claude Opus 5.5 (low with fallback)",
-      "speed_tps": 78.7511578980943
+      "speed_tps": 77.7937812163179
     },
     {
-      "model": "GPT-6.1 Sol (xhigh)",
-      "speed_tps": 76.9839497018347
+      "model": "Claude Opus 5.5 (high with fallback)",
+      "speed_tps": 77.4957872095607
     },
     {
-      "model": "GLM-5.3-Flash",
-      "speed_tps": 75.17356643857
+      "model": "Grok 4.7 (xhigh)",
+      "speed_tps": 74.9283213930067
+    },
+    {
+      "model": "GPT-6.1 Sol (max)",
+      "speed_tps": 74.0937113343863
     },
     {
       "model": "Grok 4.7 (high)",
-      "speed_tps": 75.0264716052203
+      "speed_tps": 73.5553790366919
+    },
+    {
+      "model": "GPT-6.1 Sol (xhigh)",
+      "speed_tps": 72.6027793162291
+    },
+    {
+      "model": "GLM-5.3-Flash",
+      "speed_tps": 71.2940982640891
     },
     {
       "model": "GPT-6.1 Sol (high)",
-      "speed_tps": 68.24293333468
-    },
-    {
-      "model": "Grok 4.7 (low)",
-      "speed_tps": 66.0853894025067
-    },
-    {
-      "model": "GPT-6.1 Sol (medium)",
-      "speed_tps": 62.5606897406558
+      "speed_tps": 64.7071834243803
     },
     {
       "model": "GPT-6.1 Sol (low)",
       "speed_tps": 61.0426089732534
     },
     {
-      "model": "Qwen3.8-Flash-Next",
-      "speed_tps": 54.4216424625732
+      "model": "Grok 4.7 (low)",
+      "speed_tps": 60.4552082966913
     },
     {
-      "model": "Qwen3.8 27B (low)",
-      "speed_tps": 48.2211812458691
+      "model": "GPT-6.1 Sol (medium)",
+      "speed_tps": 55.9265331944828
+    },
+    {
+      "model": "Qwen3.8-Flash-Next",
+      "speed_tps": 54.6863129428901
     },
     {
       "model": "Qwen3.8 27B (medium)",
-      "speed_tps": 47.777466134343
+      "speed_tps": 46.9290659107349
     },
     {
-      "model": "MiMo-V2.6-Pro",
-      "speed_tps": 43.5421621786138
+      "model": "Qwen3.8 27B (low)",
+      "speed_tps": 44.6826147793891
     },
     {
       "model": "Qwen3.8 27B (xhigh)",
-      "speed_tps": 41.4053746968184
+      "speed_tps": 41.8998288141249
     },
     {
-      "model": "Qwen3.8 Max (0902)",
-      "speed_tps": 39.442320872329
+      "model": "MiMo-V2.6-Pro",
+      "speed_tps": 40.5478897640297
     },
     {
       "model": "Qwen3.8 2.4T A95B",
-      "speed_tps": 38.7243288341472
+      "speed_tps": 39.0791120254072
+    },
+    {
+      "model": "Qwen3.8 Max (0902)",
+      "speed_tps": 37.8664498485711
     },
     {
       "model": "MiMo-V2.6-Flash",
-      "speed_tps": 37.0909278625303
+      "speed_tps": 33.3847076550629
     },
     {
       "model": "Kimi K3.1 Pro",
-      "speed_tps": 30.6000957031667
+      "speed_tps": 30.2960823277214
     }
   ],
   "cost_per_task_usd": [
@@ -754,6 +762,10 @@
     {
       "model": "GPT-6.1 Terra (xhigh)",
       "cost_usd": 0.40068900166662513
+    },
+    {
+      "model": "DeepSeek V4.1 Flash 1017 (high)",
+      "cost_usd": 0.45619449806633267
     },
     {
       "model": "MiniMax-M3.1-Flash",
@@ -872,6 +884,10 @@
       "cost_usd": 6.9520364786062245
     },
     {
+      "model": "Gemini 4 Carbon (low)",
+      "cost_usd": 7.186577262951972
+    },
+    {
       "model": "Gemini 4 Argon (high)",
       "cost_usd": 7.682671372515551
     },
@@ -902,62 +918,62 @@
   ],
   "recent_updates": [
     {
-      "date": "2026-11-03",
+      "date": "2026-11-04",
       "title": "新增 xAI Grok 系列支持（Grok ≥ 4.6，动态兼容 4.7、5.x 及以上），且默认不再局限于仅活跃模型列表",
       "type": "Feature"
     },
     {
-      "date": "2026-11-03",
+      "date": "2026-11-04",
       "title": "调整模型过滤规则：移除 Claude Fable 5.1 及 GPT-6 Astra，后续若有新版本（Fable > 5.1、Astra > 6）将自动保留纳入",
       "type": "Filter"
     },
     {
-      "date": "2026-11-03",
+      "date": "2026-11-04",
       "title": "调整模型过滤规则：所有 Non-reasoning（非思考/无思维链）模型及各思考级别全局不再显示",
       "type": "Filter"
     },
     {
-      "date": "2026-11-03",
+      "date": "2026-11-04",
       "title": "调整 OpenAI 模型过滤规则：GPT-5.6 及以下型号全局不再显示，仅保留 GPT-5.7 / GPT-6 及以上旗舰版本",
       "type": "Filter"
     },
     {
-      "date": "2026-11-03",
+      "date": "2026-11-04",
       "title": "调整 DeepSeek 模型过滤规则：仅保留 V4.1 及以上版本（过滤低于 4.1 的历史型号）",
       "type": "Filter"
     },
     {
-      "date": "2026-11-03",
+      "date": "2026-11-04",
       "title": "调整通义千问模型过滤规则：仅保留 Qwen 3.8 及以上版本（过滤低于 3.8 的历史型号）",
       "type": "Filter"
     },
     {
-      "date": "2026-11-03",
+      "date": "2026-11-04",
       "title": "模型白名单新增小米 MiMo 系列支持（MiMo-V2.6 及以上旗舰版本、MiMo Flash 系列全系），全量同步官方最新实测指标（含 MiMo-V2.6-Pro 及 MiMo-V2.6-Flash）",
       "type": "Feature"
     },
     {
-      "date": "2026-11-03",
+      "date": "2026-11-04",
       "title": "升级编程能力指数评测基准为官方最新高难评测 Terminal-Bench 4.0，全面展现最新旗舰大模型（GPT-6.1 Sol, Claude Opus 5.5 等）的断代代码能力与深层思考梯度，避免旧版 v2.1 饱和引发的档位微小方差倒挂",
       "type": "Update"
     },
     {
-      "date": "2026-11-03",
+      "date": "2026-11-04",
       "title": "重新纳入 Meta (Muse 系列) 与阿里通义千问 Qwen（>= 3.0）系列评测，编码 Agent 榜新增 Muse Code 框架及 Qwen3.8 Max 组合",
       "type": "Feature"
     },
     {
-      "date": "2026-11-03",
+      "date": "2026-11-04",
       "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 54 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 5 组组合）",
       "type": "Update"
     },
     {
-      "date": "2026-11-03",
+      "date": "2026-11-04",
       "title": "编码 Agent 榜新增 Devin Fusion 框架支持，同步 Cognition 官方最新评测组合",
       "type": "Feature"
     },
     {
-      "date": "2026-11-03",
+      "date": "2026-11-04",
       "title": "编码 Agent 榜新增 Antigravity（Google Antigravity SDK）框架，同步官方最新实测组合",
       "type": "Feature"
     },
