@@ -749,6 +749,27 @@
         </table>
       </div>
 
+      <!-- ⚫ xAI (Grok 系列) -->
+      <div class="family-block">
+        <div class="family-header" style="color: #0f172a;">
+          <span style="width:12px; height:12px; border-radius:50%; background:#0f172a; display:inline-block;"></span>
+          xAI (Grok 系列)
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 24%;">模型 / 架构</th>
+              <th style="width: 20%;">Effort 级别</th>
+              <th>智商指数 (Intelligence)</th>
+              <th>编程指数 (Coding)</th>
+              <th>输出速度 (Tokens/s)</th>
+              <th>预估单任务成本 (USD)</th>
+            </tr>
+          </thead>
+          <tbody id="grok-family-body"></tbody>
+        </table>
+      </div>
+
       <!-- ⚪ 国内模型 -->
       <div class="family-block">
         <div class="family-header" style="color: #1e293b;">
@@ -1266,6 +1287,7 @@
       const gptList = [];
       const geminiList = [];
       const museList = [];
+      const grokList = [];
       const cnList = [];
 
       Object.keys(modelMap).forEach(fullName => {
@@ -1286,6 +1308,8 @@
           geminiList.push(itemObj);
         } else if (m.includes('muse')) {
           museList.push(itemObj);
+        } else if (m.includes('grok')) {
+          grokList.push(itemObj);
         } else {
           cnList.push(itemObj);
         }
@@ -1336,6 +1360,17 @@
         return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
       });
       renderGroupedTable('muse-family-body', museList);
+
+      grokList.sort((a, b) => {
+        const getVer = (name) => {
+          const match = name.match(/Grok[-\s]*([\d.]+)/i);
+          return match ? parseFloat(match[1]) : 0;
+        };
+        const verDiff = getVer(b.fullName) - getVer(a.fullName);
+        if (verDiff !== 0) return verDiff;
+        return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
+      });
+      renderGroupedTable('grok-family-body', grokList);
 
       cnList.sort((a, b) => {
         return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
