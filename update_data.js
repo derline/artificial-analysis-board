@@ -333,8 +333,11 @@ function parseModelsPage(html) {
     }
 
     // 3. 输出速度 (tps)
-    if (typeof m.medianOutputTokensPerSecond === 'number') {
-      speedList.push({ model: displayName, speed_tps: m.medianOutputTokensPerSecond });
+    const outputSpeed = typeof m.medianOutputTokensPerSecond === 'number'
+      ? m.medianOutputTokensPerSecond
+      : (typeof m.outputSpeed === 'number' ? m.outputSpeed : null);
+    if (typeof outputSpeed === 'number') {
+      speedList.push({ model: displayName, speed_tps: outputSpeed });
     }
 
     // 4. 单任务成本 (USD)
@@ -358,21 +361,27 @@ function parseModelsPage(html) {
 }
 
 function parseAgentsPage(html) {
-  // 支持新版 rows 数组
+  // 官网 RSC 将默认高亮项放在 rows（8 条），全量组合放在 benchmarkRows（含指向 rows 的 RSC 引用字符串）
   const rows = extractJsonArray(html, [
     '"rows":[',
     '\\"rows\\":['
-  ]);
+  ]) || [];
+  const benchmarkRows = extractJsonArray(html, [
+    '"benchmarkRows":[',
+    '\\"benchmarkRows\\":['
+  ]) || [];
 
-  if (!rows || !Array.isArray(rows)) {
-    console.error('未能在 coding-agents 页面中找到 rows 数组');
+  const allRows = [...rows, ...benchmarkRows].filter(r => r && typeof r === 'object');
+
+  if (allRows.length === 0) {
+    console.error('未能在 coding-agents 页面中找到 rows / benchmarkRows 数组');
     return [];
   }
 
   const liveEntries = [];
   const seen = new Set();
 
-  rows.forEach(r => {
+  allRows.forEach(r => {
     const rawHarness = r.display?.agent || r.agentName;
     const harness = normalizeHarness(rawHarness);
     const model = r.display?.model || '';
@@ -457,6 +466,11 @@ async function main() {
     speed_tokens_per_sec: speedList,
     cost_per_task_usd: costList,
     recent_updates: [
+      {
+        date: today,
+        title: `修复 Coding Agent 榜 RSC 拆分解析：合并 rows 与 benchmarkRows 全量实测数据，恢复同步全部 ${codingAgentLeaderboard.length} 组符合规范的官方组合`,
+        type: 'Fix'
+      },
       {
         date: today,
         title: '新增 xAI Grok 系列支持（Grok ≥ 4.6，动态兼容 4.7、5.x 及以上），且默认不再局限于仅活跃模型列表',
