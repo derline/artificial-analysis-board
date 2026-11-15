@@ -113,24 +113,8 @@ function isIgnoredModel(name) {
   }
 
   // 3. GPT 系列 (> 5.6，即 >= 5.7，动态兼容 GPT-6, GPT-6.x 等更新版本，全局排除 <= 5.6)
-  // 特别规则：排除 GPT-6 Astra 及旧版，后续新版本（> 6 如 GPT-6.1 Astra、GPT-7 Astra 等）保留
   if (n.includes('gpt') || /\b(sol|terra|luna|astra)\b/.test(n)) {
     if (n.includes('instant')) return true;
-
-    // Astra 专有过滤：排除 GPT-6 Astra 及以下旧版，后续新版本（> 6）保留
-    if (n.includes('astra')) {
-      const aMatch = n.match(/gpt[-_ ]*([0-9]+(?:[\.-][0-9]+)?).*astra/) ||
-                     n.match(/astra[-_ ]*([0-9]+(?:[\.-][0-9]+)?)/) ||
-                     n.match(/([0-9]+(?:[\.-][0-9]+)?)[-_ ]*astra/) ||
-                     n.match(/gpt-?([0-9]+(?:\.[0-9]+)?)/) ||
-                     n.match(/([0-9]+(?:[\.-][0-9]+)?)/);
-      if (aMatch) {
-        const aVer = parseFloat(aMatch[1].replace('-', '.'));
-        if (aVer <= 6.0) return true; // 排除 GPT-6 Astra 及以下
-        return false; // 新版本保留
-      }
-      return true; // 无版本号默认排除
-    }
 
     const vMatch = n.match(/gpt-?([0-9]+(?:\.[0-9]+)?)/);
     if (vMatch) {
@@ -466,6 +450,11 @@ async function main() {
     speed_tokens_per_sec: speedList,
     cost_per_task_usd: costList,
     recent_updates: [
+      {
+        date: today,
+        title: '调整模型过滤规则：取消对 GPT-6 Astra 的特别排除，重新纳入模型榜与 Coding Agent 榜对比',
+        type: 'Filter'
+      },
       {
         date: today,
         title: `修复 Coding Agent 榜 RSC 拆分解析：合并 rows 与 benchmarkRows 全量实测数据，恢复同步全部 ${codingAgentLeaderboard.length} 组符合规范的官方组合`,

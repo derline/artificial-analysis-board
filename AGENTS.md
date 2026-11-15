@@ -34,8 +34,7 @@
   - 动态支持 Claude 4.6、4.7、4.8、5.x、6.x 及以上（包含 Opus、Sonnet 等架构和 Max / High / Med / Low 各 Effort 级别，排除 < 4.6 的旧版及 Haiku）。
   - **特别排除**：Claude Fable 5.1 及以下旧版；后续若有新版本（Fable > 5.1 如 Fable 5.2、6.x 等）自动保留纳入。
 - **OpenAI (GPT 系列 $> 5.6$，即 $\ge 5.7$)**：
-  - 动态支持 GPT-5.7、GPT-6、GPT-6.1 及以上（包含 Sol、Terra、Luna 等旗舰系列及 Pro 版本，全局排除 $\le 5.6$ 的旧版如 GPT-5.5、GPT-5.6 等以及 Instant 体验版）。
-  - **特别排除**：GPT-6 Astra 及以下旧版；后续若有新版本（Astra > 6 如 GPT-6.1 Astra、GPT-7 Astra 等）自动保留纳入。
+  - 动态支持 GPT-5.7、GPT-6、GPT-6.1 及以上（包含 Sol、Terra、Luna、Astra 等旗舰系列及 Pro 版本，全局排除 $\le 5.6$ 的旧版如 GPT-5.5、GPT-5.6 等以及 Instant 体验版）。
 - **Google (Gemini 系列 $\ge 3.1$)**：
   - 动态支持 Gemini 3.1、3.5、3.6、3.7、3.8、4.x 及以上（包含 Flash、Flash-Lite、Pro、Ultra 等各 Effort 级别，排除 < 3.1 的旧版）。
 - **Meta (Muse 系列)**：

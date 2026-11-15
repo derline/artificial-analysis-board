@@ -851,24 +851,8 @@
       }
 
       // 3. GPT 系列 (> 5.6，即 >= 5.7，动态兼容 GPT-6, GPT-6.x 等更新版本，全局排除 <= 5.6)
-      // 特别规则：排除 GPT-6 Astra 及旧版，后续新版本（> 6 如 GPT-6.1 Astra、GPT-7 Astra 等）保留
       if (n.includes('gpt') || /\b(sol|terra|luna|astra)\b/.test(n)) {
         if (n.includes('instant')) return true;
-
-        // Astra 专有过滤：排除 GPT-6 Astra 及以下旧版，后续新版本（> 6）保留
-        if (n.includes('astra')) {
-          const aMatch = n.match(/gpt[-_ ]*([0-9]+(?:[\.-][0-9]+)?).*astra/) ||
-                         n.match(/astra[-_ ]*([0-9]+(?:[\.-][0-9]+)?)/) ||
-                         n.match(/([0-9]+(?:[\.-][0-9]+)?)[-_ ]*astra/) ||
-                         n.match(/gpt-?([0-9]+(?:[\.-][0-9]+)?)/) ||
-                         n.match(/([0-9]+(?:[\.-][0-9]+)?)/);
-          if (aMatch) {
-            const aVer = parseFloat(aMatch[1].replace('-', '.'));
-            if (aVer <= 6.0) return true; // 排除 GPT-6 Astra 及以下
-            return false; // 新版本保留
-          }
-          return true; // 无版本号默认排除
-        }
 
         const vMatch = n.match(/gpt-?([0-9]+(?:\.[0-9]+)?)/);
         if (vMatch) {
@@ -1442,6 +1426,14 @@
       "brand": "muse"
     },
     {
+      "agent_harness": "Codex Agent CLI",
+      "model": "GPT-6 Astra (Max)",
+      "solve_rate": 53.0999198979038,
+      "avg_time_min": 25.990572982513335,
+      "cost_usd": 7.625489243747186,
+      "brand": "gpt"
+    },
+    {
       "agent_harness": "Claude Code",
       "model": "Claude Fable 5.2 (Medium, Default Fallback)",
       "solve_rate": 53.04187058759639,
@@ -1568,8 +1560,20 @@
       "score": 57.4447060170507
     },
     {
+      "model": "GPT-6 Astra (max)",
+      "score": 56.8538559596797
+    },
+    {
       "model": "Claude Fable 5.2 (medium)",
       "score": 56.4083157101519
+    },
+    {
+      "model": "GPT-6 Astra (xhigh)",
+      "score": 55.3057468569681
+    },
+    {
+      "model": "GPT-6 Astra (high)",
+      "score": 54.849838322506
     },
     {
       "model": "GPT-6.1 Sol (max)",
@@ -1598,6 +1602,10 @@
     {
       "model": "Claude Opus 5.5 (high)",
       "score": 51.8359958227294
+    },
+    {
+      "model": "GPT-6 Astra (medium)",
+      "score": 51.5548393864113
     },
     {
       "model": "GPT-6.1 Terra (max)",
@@ -1646,6 +1654,10 @@
     {
       "model": "Muse Wonder (max)",
       "score": 43.5748225998431
+    },
+    {
+      "model": "GPT-6 Astra (low)",
+      "score": 43.3349823228524
     },
     {
       "model": "GPT-6.1 Terra (high)",
@@ -1838,6 +1850,10 @@
       "coding_score": 60.606060606060595
     },
     {
+      "model": "GPT-6 Astra (xhigh)",
+      "coding_score": 59.5959595959596
+    },
+    {
       "model": "Claude Opus 5.5 (max)",
       "coding_score": 59.5959595959596
     },
@@ -1852,6 +1868,10 @@
     {
       "model": "Claude Fable 5.2 (high)",
       "coding_score": 59.5959595959596
+    },
+    {
+      "model": "GPT-6 Astra (max)",
+      "coding_score": 59.09090909090911
     },
     {
       "model": "Claude Sonnet 5.5 (xhigh)",
@@ -1898,6 +1918,10 @@
       "coding_score": 54.040404040404
     },
     {
+      "model": "GPT-6 Astra (high)",
+      "coding_score": 54.040404040404
+    },
+    {
       "model": "Gemini 4 Hydrogen (xhigh)",
       "coding_score": 53.5353535353535
     },
@@ -1914,6 +1938,10 @@
       "coding_score": 51.5151515151515
     },
     {
+      "model": "GPT-6 Astra (medium)",
+      "coding_score": 49.494949494949495
+    },
+    {
       "model": "GPT-6.1 Sol (medium)",
       "coding_score": 47.979797979798
     },
@@ -1924,6 +1952,10 @@
     {
       "model": "Claude Sonnet 5.5 (high)",
       "coding_score": 43.9393939393939
+    },
+    {
+      "model": "GPT-6 Astra (low)",
+      "coding_score": 41.9191919191919
     },
     {
       "model": "GLM-5.3 (max)",
@@ -2360,12 +2392,32 @@
       "speed_tps": 44.05920463971116
     },
     {
+      "model": "GPT-6 Astra (low)",
+      "speed_tps": 42.91781416220585
+    },
+    {
       "model": "Qwen3.8 27B (xhigh)",
       "speed_tps": 42.76441628913648
     },
     {
+      "model": "GPT-6 Astra (high)",
+      "speed_tps": 41.88570095728356
+    },
+    {
+      "model": "GPT-6 Astra (medium)",
+      "speed_tps": 41.06860397825647
+    },
+    {
+      "model": "GPT-6 Astra (max)",
+      "speed_tps": 39.646883256090355
+    },
+    {
       "model": "Qwen3.8 2.4T A95B",
       "speed_tps": 39.364378145377195
+    },
+    {
+      "model": "GPT-6 Astra (xhigh)",
+      "speed_tps": 38.144637082591586
     },
     {
       "model": "Kimi K3.1 Pro",
@@ -2502,6 +2554,10 @@
       "cost_usd": 1.2850974407373852
     },
     {
+      "model": "GPT-6 Astra (low)",
+      "cost_usd": 1.4237229635663595
+    },
+    {
       "model": "GLM-5.3 (low)",
       "cost_usd": 1.5749301149593384
     },
@@ -2530,6 +2586,10 @@
       "cost_usd": 2.4510894376611723
     },
     {
+      "model": "GPT-6 Astra (medium)",
+      "cost_usd": 2.732438933013427
+    },
+    {
       "model": "Grok 4.7 (low)",
       "cost_usd": 2.9222013011913153
     },
@@ -2542,12 +2602,20 @@
       "cost_usd": 3.1601590757006157
     },
     {
+      "model": "GPT-6 Astra (high)",
+      "cost_usd": 3.2385719685518306
+    },
+    {
       "model": "Claude Opus 5.5 (high)",
       "cost_usd": 3.4646622820973185
     },
     {
       "model": "Qwen3.8 27B (xhigh)",
       "cost_usd": 3.5295494751410654
+    },
+    {
+      "model": "GPT-6 Astra (xhigh)",
+      "cost_usd": 3.6589264906126227
     },
     {
       "model": "Kimi K3.1 Pro",
@@ -2598,6 +2666,10 @@
       "cost_usd": 6.18359556537658
     },
     {
+      "model": "GPT-6 Astra (max)",
+      "cost_usd": 6.244666943602518
+    },
+    {
       "model": "Gemini 3.8 Flash (medium)",
       "cost_usd": 6.258586089480771
     },
@@ -2641,7 +2713,12 @@
   "recent_updates": [
     {
       "date": "2026-11-15",
-      "title": "修复 Coding Agent 榜 RSC 拆分解析：合并 rows 与 benchmarkRows 全量实测数据，恢复同步全部 20 组符合规范的官方组合",
+      "title": "调整模型过滤规则：取消对 GPT-6 Astra 的特别排除，重新纳入模型榜与 Coding Agent 榜对比",
+      "type": "Filter"
+    },
+    {
+      "date": "2026-11-15",
+      "title": "修复 Coding Agent 榜 RSC 拆分解析：合并 rows 与 benchmarkRows 全量实测数据，恢复同步全部 21 组符合规范的官方组合",
       "type": "Fix"
     },
     {
@@ -2691,7 +2768,7 @@
     },
     {
       "date": "2026-11-15",
-      "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 68 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 20 组组合）",
+      "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 73 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 21 组组合）",
       "type": "Update"
     },
     {
