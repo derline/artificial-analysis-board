@@ -14,56 +14,26 @@
 
 ---
 
-## 2. 模型筛选与过滤规则 (Model Inclusion / Exclusion Rules)
+## 2. 全量抓取与页面手动筛选机制 (Unfiltered Sync & Interactive Filtering)
 
-在渲染图标、四栏卡片及分类汇总表时，必须通过 `isIgnoredModel()` 进行严格过滤：
-
-### ❌ 必须过滤/忽略的模型 (Excluded Models)
-- **所有 Non-reasoning 模型**（非思考/无思维链档位，全局排除）
-- `Nemotron` 系列
-- `gpt-oss`
-- `Groq`
-- `Grok < 4.6` 旧版模型
-- `o3` 开头的旧版模型
-
-### ✅ 允许保留的精选模型 (Included Models) - 采用通用动态版本号白名单机制（$\ge$ 对应基准版本号）
-- **默认不局限于仅活跃列表**：不以官方当前是否标记为活跃状态（Active）为唯一限制。对于历史/已弃用（Deprecated）但符合对应基准版本号的模型（如 Grok 4.6 系列），只要官方权威基准库保留有完整实测数据，允许并鼓励保留纳入对比，避免官方迭代轮换导致关键代际基准断档。
-- **xAI (Grok 系列 $\ge 4.6$)**：
-  - 动态支持 Grok 4.6、4.7、4.8、5.x 及以上（包含 High、Medium、Low、Xhigh 等各 Effort 级别，全局排除 < 4.6 的旧版及 Non-reasoning 版本）。
-- **Anthropic (Claude 系列 $\ge 4.6$)**：
-  - 动态支持 Claude 4.6、4.7、4.8、5.x、6.x 及以上（包含 Opus、Sonnet 等架构和 Max / High / Med / Low 各 Effort 级别，排除 < 4.6 的旧版及 Haiku）。
-  - **特别排除**：Claude Fable 5.1 及以下旧版；后续若有新版本（Fable > 5.1 如 Fable 5.2、6.x 等）自动保留纳入。
-- **OpenAI (GPT 系列 $> 5.6$，即 $\ge 5.7$)**：
-  - 动态支持 GPT-5.7、GPT-6、GPT-6.1 及以上（包含 Sol、Terra、Luna、Astra 等旗舰系列及 Pro 版本，全局排除 $\le 5.6$ 的旧版如 GPT-5.5、GPT-5.6 等以及 Instant 体验版）。
-- **Google (Gemini 系列 $\ge 3.1$)**：
-  - 动态支持 Gemini 3.1、3.5、3.6、3.7、3.8、4.x 及以上（包含 Flash、Flash-Lite、Pro、Ultra 等各 Effort 级别，排除 < 3.1 的旧版）。
-- **Meta (Muse 系列)**：
-  - 支持 Muse Spark 1.x、Muse Glimmer 等系列。
-- **国内主流模型（支持更高演进版本）**：
-  - **Qwen**：Qwen 3.8 及以上（$\ge 3.8$）
-  - **Kimi**：K3、K4 及以上（$\ge \text{K3}$）
-  - **DeepSeek**：V4.1、V5 及以上（$\ge 4.1$）
-  - **GLM**：GLM-5.2、GLM-5.3、GLM-6 及以上（$\ge \text{5.2}$）
-  - **MiniMax**：M3、M4 及以上（$\ge \text{M3}$）
-  - **MiMo**：MiMo-V2.6 及以上版本、MiMo Flash 系列全系
+- **抓取端零过滤 (No Scraping/Backend Filtering)**：
+  - `update_data.js` 对官网 `leaderboards/models` 与 `agents/coding-agents` 的 RSC Payload **不做任何模型或 Agent 过滤**，全量保存所有大模型（含 Non-reasoning、全部厂商）及所有编码 Agent 组合，同时提取 `model_meta`（厂商、是否 Reasoning、是否开源、是否 Deprecated）。
+- **页面端多维手动过滤 (`index.html`)**：
+  - 默认采用**全量展示**，页面顶部提供全局手动过滤控制台，支持：
+    - **快捷预设**：`全量展示 (无过滤)` / `精选主线 (原过滤规则)`
+    - **厂商家族多选**：OpenAI / Anthropic / Google / Meta / xAI / 国内模型 / 其他国际厂商
+    - **模型属性**：思考模式（全部 / 仅 Reasoning / 仅 Non-reasoning）、权重属性（全部 / 仅开源 / 仅闭源）、隐藏已弃用（Deprecated）、四栏展示条数（Top 30 / Top 50 / 全部）
+    - **关键词手动指定**：支持逗号分隔的`包含关键词`与`排除关键词`实时过滤
+- **原“精选主线”预设白名单规则 (`isLegacyIgnoredModel`)**：
+  - 保留作为页面一键切换“精选主线”预设的规则：排除 Non-reasoning、Nemotron、gpt-oss、Groq、o3、Mistral/Solar/Step 等，保留 Grok >= 4.6、Claude >= 4.6（排除 Haiku 及 Fable <= 5.1）、GPT > 5.6、Gemini >= 3.1、Muse、Qwen >= 3.8、Kimi >= K3、DeepSeek >= V4.1、GLM >= 5.2、MiniMax >= M3、MiMo >= 2.6 及 Flash 系列。
 
 ---
 
 ## 3. 编码 Agent 排行榜规范 (Coding Agent Leaderboard Rules)
 
 - **数据口径**：仅使用 Artificial Analysis Coding Agent Index（DeepSWE / Terminal-Bench v2 / SWE-Atlas-QnA 等权合成），严禁混入 SWE-bench Verified 或其他评测集，严禁手工估算补录。
-- **主流 Harness 框架**：
-  - `Codex Agent CLI`
-  - `Devin Fusion` (Cognition Devin Fusion CLI)
-  - `Claude Code`
-  - `Cursor Agent`
-  - `Kimi Code CLI`
-  - `OpenCode`
-  - `Gemini CLI`
-  - `Antigravity` (Google Antigravity SDK)
-  - `Muse Code`
-- **排除框架**：
-  - **忽略 Devin 旧版单体、Aider、Grok Build** 及其他未指定支持的 Agent 工具。
+- **全量收录 + 前端筛选**：
+  - 抓取端同步官网全部 Agent Harness（含 `Codex Agent CLI`、`Devin Fusion`、`Claude Code`、`Cursor Agent`、`Kimi Code CLI`、`OpenCode`、`Gemini CLI`、`Antigravity`、`Muse Code` 以及 `Mistral Vibe`、`Grok Build`、`Mirror`、`DeepSeek Harness` 等所有实测框架）；在切换至“精选主线”预设时仅展示上述 9 大主流框架。
 - **Agent Harness 筛选器 (Harness Filter)**：
   - 编码 Agent 排行榜顶部提供按 Harness 框架切换的筛选 Pill 按钮组，支持“全部 (All)”及各大主流框架快速过滤。
   - 各筛选按钮显示当前筛选组合的数量徽章（Count badge），激活时自动切换为该 Harness 专属的高亮配色，切换后表格内部排名序号即时重新计算。

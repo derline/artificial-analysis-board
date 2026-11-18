@@ -30,7 +30,9 @@ async function fetchText(url) {
 }
 
 function normalizeHarness(agentName) {
-  const a = String(agentName || '').toLowerCase();
+  const raw = String(agentName || '').trim();
+  if (!raw) return null;
+  const a = raw.toLowerCase();
   if (a.includes('claude code')) return 'Claude Code';
   if (a.includes('codex')) return 'Codex Agent CLI';
   if (a.includes('cursor')) return 'Cursor Agent';
@@ -40,188 +42,26 @@ function normalizeHarness(agentName) {
   if (a.includes('antigravity')) return 'Antigravity';
   if (a.includes('devin') || a.includes('fusion')) return 'Devin Fusion';
   if (a.includes('muse')) return 'Muse Code';
-  return null;
+  return raw;
 }
 
-function isIgnoredModel(name) {
-  const n = String(name || '').toLowerCase();
-
-  // 1. 绝对黑名单与非思考模型 (Non-reasoning)
-  if (
-    n.includes('non-reasoning') ||
-    n.includes('non reasoning') ||
-    n.includes('nonreasoning') ||
-    n.includes('nemotron') ||
-    n.includes('gpt-oss') ||
-    n.includes('groq') ||
-    n.startsWith('o3') ||
-    n.includes('composer') ||
-    n.includes('mistral') ||
-    n.includes('ministral') ||
-    n.includes('magistral') ||
-    n.includes('solar') ||
-    n.includes('step') ||
-    n.includes('celeris') ||
-    n.includes('inkling') ||
-    n.includes('quasar')
-  ) {
-    return true;
-  }
-
-  // 2. xAI (Grok 系列 >= 4.6，动态兼容 4.7, 5.x 等更新版本，全局排除 < 4.6)
-  if (n.includes('grok')) {
-    const gMatch = n.match(/grok\s*([0-9]+(?:\.[0-9]+)?)/) || n.match(/grok-?([0-9]+(?:\.[0-9]+)?)/);
-    if (gMatch) {
-      const ver = parseFloat(gMatch[1]);
-      if (ver >= 4.6) return false;
-      return true;
-    }
-    return true;
-  }
-
-  // 3. Claude 系列 (>= 4.6，动态兼容 5.x, 6.x 等更新版本)
-  // 特别规则：排除 Claude Fable 5.1 及以下旧版，后续新版本（> 5.1 如 Fable 5.2、6.x 等）保留
-  if (n.includes('claude') || n.includes('sonnet') || n.includes('opus') || n.includes('fable')) {
-    if (n.includes('haiku')) return true;
-
-    // Fable 专有过滤：排除 Fable 5.1 及以下旧版，后续新版本（> 5.1）保留
-    if (n.includes('fable')) {
-      const fMatch = n.match(/fable[-_ ]*([0-9]+(?:[\.-][0-9]+)?)/) ||
-                     n.match(/([0-9]+(?:[\.-][0-9]+)?)[-_ ]*fable/) ||
-                     n.match(/([0-9]+(?:[\.-][0-9]+)?)/);
-      if (fMatch) {
-        const fVer = parseFloat(fMatch[1].replace('-', '.'));
-        if (fVer <= 5.1) return true; // 排除 Fable 5.1 及历史版本
-        return false; // 新版本保留
-      }
-      return true; // 无版本号默认排除
-    }
-
-    const vMatch = n.match(/(?:claude|sonnet|opus)\s*([0-9]+(?:\.[0-9]+)?)/) ||
-                   n.match(/([0-9]+(?:\.[0-9]+)?)\s*(?:sonnet|opus|claude)/);
-    if (vMatch) {
-      const ver = parseFloat(vMatch[1]);
-      if (ver >= 4.6) return false;
-      return true;
-    }
-    if (n.includes('opus') || n.includes('sonnet')) {
-      const numMatch = n.match(/([0-9]+\.[0-9]+)/);
-      if (numMatch && parseFloat(numMatch[1]) < 4.6) return true;
-      return false;
-    }
-    return true;
-  }
-
-  // 3. GPT 系列 (> 5.6，即 >= 5.7，动态兼容 GPT-6, GPT-6.x 等更新版本，全局排除 <= 5.6)
-  if (n.includes('gpt') || /\b(sol|terra|luna|astra)\b/.test(n)) {
-    if (n.includes('instant')) return true;
-
-    const vMatch = n.match(/gpt-?([0-9]+(?:\.[0-9]+)?)/);
-    if (vMatch) {
-      const ver = parseFloat(vMatch[1]);
-      return ver <= 5.6; // 排除 5.6 及以下
-    }
-    const anyNumMatch = n.match(/([0-9]+(?:\.[0-9]+)?)/);
-    if (anyNumMatch) {
-      const ver = parseFloat(anyNumMatch[1]);
-      return ver <= 5.6;
-    }
-    return true;
-  }
-
-  // 4. Gemini 系列 (>= 3.1，动态兼容 3.8, 4.x 等更新版本)
-  if (n.includes('gemini')) {
-    const vMatch = n.match(/gemini\s*([0-9]+(?:\.[0-9]+)?)/);
-    if (vMatch) {
-      const ver = parseFloat(vMatch[1]);
-      if (ver >= 3.1) return false;
-      return true;
-    }
-    return true;
-  }
-
-  // 5. 国内主流模型 (动态兼容更高版本)
-  // Kimi 系列 (>= K3)
-  if (n.includes('kimi')) {
-    const kMatch = n.match(/k([0-9]+(?:\.[0-9]+)?)/);
-    if (kMatch) {
-      return parseFloat(kMatch[1]) < 3;
-    }
-    return true;
-  }
-
-  // DeepSeek 系列 (>= V4.1，动态兼容 V4.2, V5 等更高版本)
-  if (n.includes('deepseek')) {
-    const dMatch = n.match(/v([0-9]+(?:[\.-][0-9]+)?)/);
-    if (dMatch) {
-      const ver = parseFloat(dMatch[1].replace('-', '.'));
-      if (ver >= 4.1) return false;
-      return true;
-    }
-    return true;
-  }
-
-  // GLM 系列 (>= 5.2)
-  if (n.includes('glm')) {
-    const gMatch = n.match(/glm-?([0-9]+(?:\.[0-9]+)?)/);
-    if (gMatch) {
-      if (parseFloat(gMatch[1]) >= 5.2) return false;
-      return true;
-    }
-    return true;
-  }
-
-  // MiniMax 系列 (>= M3)
-  if (n.includes('minimax')) {
-    const mMatch = n.match(/m([0-9]+(?:\.[0-9]+)?)/);
-    if (mMatch) {
-      if (parseFloat(mMatch[1]) >= 3) return false;
-      return true;
-    }
-    return true;
-  }
-
-  // Qwen 系列 (>= 3.8，动态兼容 3.8, 3.9, 4.x 等更高版本)
-  if (n.includes('qwen')) {
-    const qMatch = n.match(/qwen\s*([0-9]+(?:\.[0-9]+)?)/) || n.match(/qwen-?([0-9]+(?:\.[0-9]+)?)/);
-    if (qMatch) {
-      return parseFloat(qMatch[1]) < 3.8;
-    }
-    return true;
-  }
-
-  // MiMo 系列 (>= V2.6 及 Flash 系列全系)
-  if (n.includes('mimo')) {
-    if (n.includes('flash')) return false;
-    const mMatch = n.match(/mimo[^\d]*([0-9]+(?:[\.-][0-9]+)?)/);
-    if (mMatch) {
-      const ver = parseFloat(mMatch[1].replace('-', '.'));
-      return ver < 2.6;
-    }
-    return true;
-  }
-
-  // 6. Meta (Muse 系列)
-  if (n.includes('muse')) {
-    return false;
-  }
-
-  return true;
-}
-
-function isAllowedAgentModel(model) {
-  return !isIgnoredModel(model);
-}
-
-function getBrand(model) {
+function getBrand(model, creator = '') {
   const n = String(model || '').toLowerCase();
-  if (n.includes('kimi') || n.includes('glm') || n.includes('deepseek') || n.includes('minimax') || n.includes('qwen') || n.includes('mimo')) return 'cn';
-  if (n.includes('gemini')) return 'gemini';
-  if (n.includes('gpt') || n.includes('sol') || n.includes('terra') || n.includes('luna') || n.includes('astra')) return 'gpt';
-  if (n.includes('claude') || n.includes('opus') || n.includes('fable') || n.includes('sonnet')) return 'claude';
-  if (n.includes('muse')) return 'muse';
-  if (n.includes('grok')) return 'grok';
-  return 'cn';
+  const c = String(creator || '').toLowerCase();
+  if (
+    n.includes('kimi') || n.includes('glm') || n.includes('deepseek') ||
+    n.includes('minimax') || n.includes('qwen') || n.includes('mimo') ||
+    n.includes('step') || n.includes('ernie') || n.includes('hunyuan') ||
+    n.includes('doubao') || n.includes('longcat') || n.includes('nanbeige') ||
+    n.includes('ling') || n.includes('ring') || n.includes('ming') ||
+    ['alibaba', 'deepseek', 'kimi', 'z ai', 'minimax', 'xiaomi', 'stepfun', 'baidu', 'tencent', 'bytedance seed', 'china mobile', 'inclusionai', 'openbmb', 'nanbeige', 'longcat', 'kwaikat'].includes(c)
+  ) return 'cn';
+  if (n.includes('gemini') || n.includes('gemma') || c === 'google') return 'gemini';
+  if (n.includes('gpt') || /\b(sol|terra|luna|astra|o1|o3|o4)\b/.test(n) || c === 'openai') return 'gpt';
+  if (n.includes('claude') || n.includes('opus') || n.includes('fable') || n.includes('sonnet') || n.includes('haiku') || c === 'anthropic') return 'claude';
+  if (n.includes('muse') || n.includes('llama') || c === 'meta') return 'muse';
+  if (n.includes('grok') || c === 'spacexai' || c === 'xai') return 'grok';
+  return 'other';
 }
 
 function extractJsonArray(html, keyPatterns) {
@@ -271,32 +111,38 @@ function parseModelsPage(html) {
 
   if (!modelsList || !Array.isArray(modelsList)) {
     console.error('未能在 models 页面中找到模型数组数据');
-    return { intelList: [], codList: [], speedList: [], costList: [] };
+    return { intelList: [], codList: [], speedList: [], costList: [], modelMeta: {} };
   }
+
+  // 统计 shortName 重复次数，避免不同思考档位（如 Instruct vs Reasoning）因 shortName 相同被覆盖
+  const shortNameCounts = {};
+  modelsList.forEach(m => {
+    const baseName = m.shortName || m.name;
+    if (baseName) shortNameCounts[baseName] = (shortNameCounts[baseName] || 0) + 1;
+  });
 
   const intelList = [];
   const codList = [];
   const speedList = [];
   const costList = [];
+  const modelMeta = {};
   const seenModels = new Set();
 
   modelsList.forEach(m => {
-    // 过滤非 reasoning 模型（全局排除）
-    if (m.isReasoning === false) return;
-
     const fullName = m.name || m.shortName;
-    const cleanFullName = (fullName || '').replace(/\s*\(based on [^)]+\)/i, '');
+    const baseName = m.shortName || fullName;
+    if (!baseName) return;
 
-    // 白名单过滤
-    if (isIgnoredModel(cleanFullName) && isIgnoredModel(m.shortName)) return;
-
-    let displayName = m.shortName || fullName;
+    let displayName = shortNameCounts[baseName] > 1 && fullName ? fullName : baseName;
     if (seenModels.has(displayName)) return;
     seenModels.add(displayName);
+
+    let hasMetric = false;
 
     // 1. 智商综合指数
     if (typeof m.intelligenceIndex === 'number') {
       intelList.push({ model: displayName, score: m.intelligenceIndex });
+      hasMetric = true;
     }
 
     // 2. 编程能力指数 (Terminal-Bench 4.0 百分制实测数据)
@@ -314,6 +160,7 @@ function parseModelsPage(html) {
                         : null))));
     if (typeof terminalScore === 'number') {
       codList.push({ model: displayName, coding_score: terminalScore * 100 });
+      hasMetric = true;
     }
 
     // 3. 输出速度 (tps)
@@ -322,6 +169,7 @@ function parseModelsPage(html) {
       : (typeof m.outputSpeed === 'number' ? m.outputSpeed : null);
     if (typeof outputSpeed === 'number') {
       speedList.push({ model: displayName, speed_tps: outputSpeed });
+      hasMetric = true;
     }
 
     // 4. 单任务成本 (USD)
@@ -333,6 +181,16 @@ function parseModelsPage(html) {
     }
     if (typeof costTotal === 'number') {
       costList.push({ model: displayName, cost_usd: costTotal });
+      hasMetric = true;
+    }
+
+    if (hasMetric) {
+      modelMeta[displayName] = {
+        creator: m.modelCreatorName || '',
+        is_reasoning: m.isReasoning !== false,
+        is_open_weights: Boolean(m.isOpenWeights),
+        deprecated: Boolean(m.deprecated)
+      };
     }
   });
 
@@ -341,7 +199,7 @@ function parseModelsPage(html) {
   speedList.sort((a, b) => b.speed_tps - a.speed_tps);
   costList.sort((a, b) => a.cost_usd - b.cost_usd);
 
-  return { intelList, codList, speedList, costList };
+  return { intelList, codList, speedList, costList, modelMeta };
 }
 
 function parseAgentsPage(html) {
@@ -370,7 +228,7 @@ function parseAgentsPage(html) {
     const harness = normalizeHarness(rawHarness);
     const model = r.display?.model || '';
 
-    if (!harness || !isAllowedAgentModel(model)) return;
+    if (!harness || !model) return;
 
     const key = `${harness}||${model}`;
     if (seen.has(key)) return;
@@ -426,7 +284,7 @@ async function main() {
   }
 
   console.log('正在解析模型 RSC Payload...');
-  const { intelList, codList, speedList, costList } = parseModelsPage(modelsHtml);
+  const { intelList, codList, speedList, costList, modelMeta } = parseModelsPage(modelsHtml);
 
   console.log('正在解析编码 Agent RSC Payload...');
   const codingAgentLeaderboard = parseAgentsPage(agentsHtml);
@@ -449,7 +307,13 @@ async function main() {
     coding_index: codList,
     speed_tokens_per_sec: speedList,
     cost_per_task_usd: costList,
+    model_meta: modelMeta,
     recent_updates: [
+      {
+        date: today,
+        title: `取消抓取与后端过滤限制，全量同步官网所有大模型（${Object.keys(modelMeta).length} 款，含 Non-reasoning 与全厂商）及全部编码 Agent 组合（${codingAgentLeaderboard.length} 组）；并在页面新增多维手动筛选面板`,
+        type: 'Feature'
+      },
       {
         date: today,
         title: '调整模型过滤规则：取消对 GPT-6 Astra 的特别排除，重新纳入模型榜与 Coding Agent 榜对比',

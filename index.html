@@ -365,6 +365,13 @@
       color: #1d4ed8;
     }
 
+    /* 10. 其他 Harness 默认样式 */
+    .harness-other {
+      background-color: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #475569;
+    }
+
     /* Harness 筛选栏控件 */
     .filter-bar-wrapper {
       display: flex;
@@ -529,6 +536,200 @@
       color: #1e40af;
     }
 
+    .harness-filter-btn.active.harness-other {
+      background: #f1f5f9;
+      border-color: #64748b;
+      color: #0f172a;
+    }
+    .harness-filter-btn.active.harness-other .filter-count {
+      background: #cbd5e1;
+      color: #0f172a;
+    }
+
+    /* 全局手动过滤面板 */
+    .global-filter-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-sm);
+      border-radius: 1rem;
+      padding: 1.15rem 1.35rem;
+      margin-bottom: 2rem;
+    }
+
+    .gf-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding-bottom: 0.85rem;
+      margin-bottom: 0.9rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .gf-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .gf-stats-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .gf-stats-badge {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #475569;
+      background: #f1f5f9;
+      padding: 0.25rem 0.7rem;
+      border-radius: 9999px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .gf-reset-btn {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #4f46e5;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      padding: 0.25rem 0.7rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .gf-reset-btn:hover {
+      background: #e0e7ff;
+      border-color: #818cf8;
+    }
+
+    .gf-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .gf-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .gf-row-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      min-width: 78px;
+      user-select: none;
+    }
+
+    .gf-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.28rem 0.72rem;
+      border-radius: 9999px;
+      font-size: 0.79rem;
+      font-weight: 600;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .gf-pill:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .gf-pill.active {
+      background: #0f172a;
+      border-color: #0f172a;
+      color: #ffffff;
+    }
+
+    .gf-pill.preset-curated.active {
+      background: #4f46e5;
+      border-color: #4f46e5;
+      color: #ffffff;
+    }
+
+    .gf-divider {
+      width: 1px;
+      height: 18px;
+      background: #e2e8f0;
+      margin: 0 0.25rem;
+    }
+
+    .gf-inputs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.15rem;
+    }
+
+    .gf-input-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.6rem;
+      padding: 0.35rem 0.75rem;
+      transition: border-color 0.15s ease;
+    }
+
+    .gf-input-group:focus-within {
+      border-color: #6366f1;
+      background: #ffffff;
+    }
+
+    .gf-input-group label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .gf-input-group input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+      font-size: 0.82rem;
+      color: var(--text-main);
+      font-family: inherit;
+    }
+
+    .gf-checkbox-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.79rem;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      user-select: none;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.45rem;
+    }
+
+    .gf-checkbox-label:hover {
+      background: #f1f5f9;
+    }
+
     .rank-num {
       font-weight: 800;
       font-size: 0.9rem;
@@ -548,7 +749,7 @@
     <header>
       <div>
         <h1 class="brand-title">Artificial Analysis 最新基准数据</h1>
-        <p style="color: var(--text-muted); margin-top: 0.3rem;">精选大语言模型（GPT>5.6, Claude≥4.6, Gemini≥3.1, Grok≥4.6, Muse, Qwen≥3.8）与编码 Agent 组合能力榜单</p>
+        <p style="color: var(--text-muted); margin-top: 0.3rem;">全量收录官方大语言模型与编码 Agent 组合能力榜单（支持页面多维手动过滤）</p>
       </div>
       <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
         <a href="https://artificialanalysis.ai" target="_blank" class="update-tag" style="text-decoration: none; color: #4f46e5; border-color: #c7d2fe; background: #eef2ff;">
@@ -572,7 +773,81 @@
       <span class="legend-item" style="color: #0284c7;"><span class="legend-dot" style="background:#0284c7;"></span> 蓝色：Gemini 系列 (Google)</span>
       <span class="legend-item" style="color: #1d4ed8;"><span class="legend-dot" style="background:#1d4ed8;"></span> 宝蓝色：Muse 系列 (Meta)</span>
       <span class="legend-item" style="color: #0f172a;"><span class="legend-dot" style="background:#0f172a;"></span> 纯黑/深空灰：Grok 系列 (xAI)</span>
-      <span class="legend-item" style="color: #1e293b;"><span class="legend-dot" style="background:#1e293b;"></span> 深灰/黑色：国内模型 (DeepSeek / Kimi / GLM / MiniMax / Qwen / MiMo)</span>
+      <span class="legend-item" style="color: #1e293b;"><span class="legend-dot" style="background:#1e293b;"></span> 深灰/黑色：国内模型 (DeepSeek / Kimi / GLM / MiniMax / Qwen / MiMo 等)</span>
+      <span class="legend-item" style="color: #475569;"><span class="legend-dot" style="background:#475569;"></span> 岩灰色：其他国际厂商 (Mistral / NVIDIA / Amazon 等)</span>
+    </div>
+
+    <!-- 🎛️ 全局手动过滤控制台 -->
+    <div class="global-filter-card" id="global-filter-panel">
+      <div class="gf-header">
+        <div class="gf-title">
+          <svg style="width: 16px; height: 16px; color: #6366f1;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+          </svg>
+          页面手动过滤控制台 (同步作用于 Agent 榜、四栏排行与家族汇总表)
+        </div>
+        <div class="gf-stats-wrap">
+          <span class="gf-stats-badge" id="gf-stats-text">正在加载统计...</span>
+          <button type="button" class="gf-reset-btn" onclick="resetAllFilters()">重置全部条件</button>
+        </div>
+      </div>
+
+      <div class="gf-rows">
+        <!-- 预设视图 + 思考模式 + 权重 + 条数 -->
+        <div class="gf-row">
+          <span class="gf-row-label">快捷预设:</span>
+          <button type="button" class="gf-pill active" data-preset="all" onclick="setPresetFilter('all')">全量展示 (无过滤)</button>
+          <button type="button" class="gf-pill preset-curated" data-preset="curated" onclick="setPresetFilter('curated')">精选主线 (原过滤规则)</button>
+
+          <span class="gf-divider"></span>
+          <span class="gf-row-label" style="min-width: auto;">思考模式:</span>
+          <button type="button" class="gf-pill active" data-reasoning="all" onclick="setReasoningFilter('all')">全部</button>
+          <button type="button" class="gf-pill" data-reasoning="reasoning" onclick="setReasoningFilter('reasoning')">仅 Reasoning</button>
+          <button type="button" class="gf-pill" data-reasoning="non-reasoning" onclick="setReasoningFilter('non-reasoning')">仅 Non-reasoning</button>
+
+          <span class="gf-divider"></span>
+          <span class="gf-row-label" style="min-width: auto;">权重:</span>
+          <button type="button" class="gf-pill active" data-weights="all" onclick="setWeightsFilter('all')">全部</button>
+          <button type="button" class="gf-pill" data-weights="open" onclick="setWeightsFilter('open')">仅开源</button>
+          <button type="button" class="gf-pill" data-weights="closed" onclick="setWeightsFilter('closed')">仅闭源</button>
+        </div>
+
+        <!-- 厂商/家族多选 -->
+        <div class="gf-row">
+          <span class="gf-row-label">厂商家族:</span>
+          <button type="button" class="gf-pill active" data-family="ALL" onclick="toggleFamilyFilter('ALL')">全部厂商</button>
+          <button type="button" class="gf-pill" data-family="gpt" onclick="toggleFamilyFilter('gpt')">OpenAI (GPT)</button>
+          <button type="button" class="gf-pill" data-family="claude" onclick="toggleFamilyFilter('claude')">Anthropic (Claude)</button>
+          <button type="button" class="gf-pill" data-family="gemini" onclick="toggleFamilyFilter('gemini')">Google (Gemini)</button>
+          <button type="button" class="gf-pill" data-family="muse" onclick="toggleFamilyFilter('muse')">Meta (Muse/Llama)</button>
+          <button type="button" class="gf-pill" data-family="grok" onclick="toggleFamilyFilter('grok')">xAI (Grok)</button>
+          <button type="button" class="gf-pill" data-family="cn" onclick="toggleFamilyFilter('cn')">国内模型</button>
+          <button type="button" class="gf-pill" data-family="other" onclick="toggleFamilyFilter('other')">其他国际厂商</button>
+
+          <span class="gf-divider"></span>
+          <span class="gf-row-label" style="min-width: auto;">四栏条数:</span>
+          <button type="button" class="gf-pill active" data-toplimit="30" onclick="setTopLimit(30)">Top 30</button>
+          <button type="button" class="gf-pill" data-toplimit="50" onclick="setTopLimit(50)">Top 50</button>
+          <button type="button" class="gf-pill" data-toplimit="0" onclick="setTopLimit(0)">全部</button>
+
+          <label class="gf-checkbox-label" style="margin-left: 0.25rem;">
+            <input type="checkbox" id="filter-hide-deprecated" onchange="toggleHideDeprecated(this.checked)">
+            隐藏已弃用 (Deprecated)
+          </label>
+        </div>
+
+        <!-- 关键词包含/排除 -->
+        <div class="gf-inputs-grid">
+          <div class="gf-input-group">
+            <label for="filter-include">包含关键词:</label>
+            <input type="text" id="filter-include" placeholder="例如: opus, gpt-6.2, deepseek (逗号分隔，命中任意即显示)" oninput="setKeywordFilter('include', this.value)">
+          </div>
+          <div class="gf-input-group">
+            <label for="filter-exclude">排除关键词:</label>
+            <input type="text" id="filter-exclude" placeholder="例如: haiku, non-reasoning, mirror (逗号分隔，命中即隐藏)" oninput="setKeywordFilter('exclude', this.value)">
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ⚡️ 编码 Agent 组合能力排行榜 -->
@@ -581,7 +856,7 @@
         <span>🤖 编码 Agent 组合能力排行榜 (Coding Agent Leaderboard)</span>
         <span style="font-size: 0.8rem; font-weight: 500; color: var(--text-muted); background: #f1f5f9; padding: 0.25rem 0.65rem; border-radius: 6px;">Artificial Analysis Coding Agent Index</span>
       </div>
-      <div class="subtitle">主流编码 Agent 框架（Codex Agent CLI / Devin Fusion / Claude Code / Cursor Agent / Kimi Code CLI / OpenCode / Gemini CLI / Antigravity / Muse Code）结合各类大模型的官方评测组合（DeepSWE · Terminal-Bench v2 · SWE-Atlas-QnA）</div>
+      <div class="subtitle">全量同步官方编码 Agent 评测组合（包含所有已评测 Harness 框架与底层模型，可通过上方全局控制台或下方 Harness 按钮手动筛选）</div>
       
       <!-- Harness 筛选栏 -->
       <div class="filter-bar-wrapper">
@@ -663,13 +938,13 @@
     <!-- 专属分类列表展示区 (按合并模型单元格组进行交替斑马纹) -->
     <div class="table-section">
       <div class="table-title">厂商家族与 Effort 级别分类汇总一览</div>
-      <div class="subtitle">按模型家族归类展示所有精选模型及其 Effort (思考深度) 档位的完整评估参数</div>
+      <div class="subtitle">按模型家族归类展示当前筛选条件下的模型及其 Effort (思考深度) 档位的完整评估参数</div>
 
       <!-- 🟡 OpenAI -->
-      <div class="family-block">
+      <div class="family-block" id="family-block-gpt">
         <div class="family-header" style="color: #ca8a04;">
           <span style="width:12px; height:12px; border-radius:50%; background:#ca8a04; display:inline-block;"></span>
-          OpenAI (GPT-6 及以上系列)
+          OpenAI (GPT 系列)
         </div>
         <table>
           <thead>
@@ -687,7 +962,7 @@
       </div>
 
       <!-- 🔴 Anthropic -->
-      <div class="family-block">
+      <div class="family-block" id="family-block-claude">
         <div class="family-header" style="color: #dc2626;">
           <span style="width:12px; height:12px; border-radius:50%; background:#dc2626; display:inline-block;"></span>
           Anthropic (Claude 系列)
@@ -708,7 +983,7 @@
       </div>
 
       <!-- 🔵 Google -->
-      <div class="family-block">
+      <div class="family-block" id="family-block-gemini">
         <div class="family-header" style="color: #0284c7;">
           <span style="width:12px; height:12px; border-radius:50%; background:#0284c7; display:inline-block;"></span>
           Google (Gemini 系列)
@@ -729,10 +1004,10 @@
       </div>
 
       <!-- 🔵 Meta (Muse 系列) -->
-      <div class="family-block">
+      <div class="family-block" id="family-block-muse">
         <div class="family-header" style="color: #1d4ed8;">
           <span style="width:12px; height:12px; border-radius:50%; background:#1d4ed8; display:inline-block;"></span>
-          Meta (Muse 系列)
+          Meta (Muse / Llama 系列)
         </div>
         <table>
           <thead>
@@ -750,7 +1025,7 @@
       </div>
 
       <!-- ⚫ xAI (Grok 系列) -->
-      <div class="family-block">
+      <div class="family-block" id="family-block-grok">
         <div class="family-header" style="color: #0f172a;">
           <span style="width:12px; height:12px; border-radius:50%; background:#0f172a; display:inline-block;"></span>
           xAI (Grok 系列)
@@ -771,10 +1046,10 @@
       </div>
 
       <!-- ⚪ 国内模型 -->
-      <div class="family-block">
+      <div class="family-block" id="family-block-cn">
         <div class="family-header" style="color: #1e293b;">
           <span style="width:12px; height:12px; border-radius:50%; background:#1e293b; display:inline-block;"></span>
-          国内主流模型 (DeepSeek / Kimi / GLM / MiniMax / Qwen / MiMo)
+          国内模型 (DeepSeek / Kimi / GLM / MiniMax / Qwen / MiMo / StepFun 等)
         </div>
         <table>
           <thead>
@@ -791,6 +1066,31 @@
         </table>
       </div>
 
+      <!-- 🔘 其他国际厂商 -->
+      <div class="family-block" id="family-block-other">
+        <div class="family-header" style="color: #475569;">
+          <span style="width:12px; height:12px; border-radius:50%; background:#475569; display:inline-block;"></span>
+          其他国际厂商模型 (Mistral / NVIDIA / Amazon / Cohere / LG / IBM 等)
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 24%;">模型名称</th>
+              <th style="width: 20%;">Effort 级别</th>
+              <th>智商指数 (Intelligence)</th>
+              <th>编程指数 (Coding)</th>
+              <th>输出速度 (Tokens/s)</th>
+              <th>预估单任务成本 (USD)</th>
+            </tr>
+          </thead>
+          <tbody id="other-family-body"></tbody>
+        </table>
+      </div>
+
+      <div id="family-empty-state" style="display: none; text-align: center; color: var(--text-muted); padding: 2.5rem 1rem; font-size: 0.92rem;">
+        没有符合当前筛选条件的模型，可点击上方“重置全部条件”恢复展示。
+      </div>
+
     </div>
 
     <!-- 最新评测动态 -->
@@ -801,11 +1101,20 @@
   </div>
 
   <script>
-    // 过滤忽略模型：实现通用动态版本白名单机制，支持未来更新版本号
-    function isIgnoredModel(name) {
+    // HTML 转义，防止特殊字符导致布局异常
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // 原精选白名单规则（仅在用户手动选择“精选主线 (原过滤规则)”预设时生效）
+    function isLegacyIgnoredModel(name) {
       const n = String(name || '').toLowerCase();
 
-      // 1. 绝对排除的黑名单与非思考模型 (Non-reasoning)
       if (
         n.includes('non-reasoning') ||
         n.includes('non reasoning') ||
@@ -827,42 +1136,27 @@
         return true;
       }
 
-      // 2. xAI (Grok 系列 >= 4.6，动态兼容 4.7, 5.x 等更新版本，全局排除 < 4.6)
       if (n.includes('grok')) {
         const gMatch = n.match(/grok\s*([0-9]+(?:\.[0-9]+)?)/) || n.match(/grok-?([0-9]+(?:\.[0-9]+)?)/);
-        if (gMatch) {
-          const ver = parseFloat(gMatch[1]);
-          if (ver >= 4.6) return false;
-          return true;
-        }
+        if (gMatch) return parseFloat(gMatch[1]) < 4.6;
         return true;
       }
 
-      // 3. Claude 系列 (>= 4.6，动态兼容 5.x, 6.x 等更新版本)
-      // 特别规则：排除 Claude Fable 5.1 及以下旧版，后续新版本（> 5.1 如 Fable 5.2、6.x 等）保留
       if (n.includes('claude') || n.includes('sonnet') || n.includes('opus') || n.includes('fable')) {
         if (n.includes('haiku')) return true;
-
-        // Fable 专有过滤：排除 Fable 5.1 及以下旧版，后续新版本（> 5.1）保留
         if (n.includes('fable')) {
           const fMatch = n.match(/fable[-_ ]*([0-9]+(?:[\.-][0-9]+)?)/) ||
                          n.match(/([0-9]+(?:[\.-][0-9]+)?)[-_ ]*fable/) ||
                          n.match(/([0-9]+(?:[\.-][0-9]+)?)/);
           if (fMatch) {
             const fVer = parseFloat(fMatch[1].replace('-', '.'));
-            if (fVer <= 5.1) return true; // 排除 Fable 5.1 及历史版本
-            return false; // 新版本保留
+            return fVer <= 5.1;
           }
-          return true; // 无版本号默认排除
-        }
-
-        const vMatch = n.match(/(?:claude|sonnet|opus)\s*([0-9]+(?:\.[0-9]+)?)/) ||
-                       n.match(/([0-9]+(?:[\.-][0-9]+)?)\s*(?:sonnet|opus|claude)/);
-        if (vMatch) {
-          const ver = parseFloat(vMatch[1]);
-          if (ver >= 4.6) return false;
           return true;
         }
+        const vMatch = n.match(/(?:claude|sonnet|opus)\s*([0-9]+(?:\.[0-9]+)?)/) ||
+                       n.match(/([0-9]+(?:[\.-][0-9]+)?)\s*(?:sonnet|opus|claude)/);
+        if (vMatch) return parseFloat(vMatch[1]) < 4.6;
         if (n.includes('opus') || n.includes('sonnet')) {
           const numMatch = n.match(/([0-9]+\.[0-9]+)/);
           if (numMatch && parseFloat(numMatch[1]) < 4.6) return true;
@@ -871,122 +1165,121 @@
         return true;
       }
 
-      // 3. GPT 系列 (> 5.6，即 >= 5.7，动态兼容 GPT-6, GPT-6.x 等更新版本，全局排除 <= 5.6)
       if (n.includes('gpt') || /\b(sol|terra|luna|astra)\b/.test(n)) {
         if (n.includes('instant')) return true;
-
         const vMatch = n.match(/gpt-?([0-9]+(?:\.[0-9]+)?)/);
-        if (vMatch) {
-          const ver = parseFloat(vMatch[1]);
-          return ver <= 5.6; // 排除 5.6 及以下
-        }
+        if (vMatch) return parseFloat(vMatch[1]) <= 5.6;
         const anyNumMatch = n.match(/([0-9]+(?:\.[0-9]+)?)/);
-        if (anyNumMatch) {
-          const ver = parseFloat(anyNumMatch[1]);
-          return ver <= 5.6;
-        }
+        if (anyNumMatch) return parseFloat(anyNumMatch[1]) <= 5.6;
         return true;
       }
 
-      // 4. Gemini 系列 (>= 3.1，动态兼容 3.8, 4.x 等更新版本)
       if (n.includes('gemini')) {
         const vMatch = n.match(/gemini\s*([0-9]+(?:\.[0-9]+)?)/);
-        if (vMatch) {
-          const ver = parseFloat(vMatch[1]);
-          if (ver >= 3.1) return false;
-          return true;
-        }
+        if (vMatch) return parseFloat(vMatch[1]) < 3.1;
         return true;
       }
 
-      // 5. 国内精选主流模型 (动态兼容更高版本)
-      // Kimi 系列 (>= K3)
       if (n.includes('kimi')) {
         const kMatch = n.match(/k([0-9]+(?:\.[0-9]+)?)/);
-        if (kMatch) {
-          return parseFloat(kMatch[1]) < 3;
-        }
+        if (kMatch) return parseFloat(kMatch[1]) < 3;
         return false;
       }
 
-      // DeepSeek 系列 (>= V4.1，动态兼容 V4.2, V5 等更高版本)
       if (n.includes('deepseek')) {
         const dMatch = n.match(/v([0-9]+(?:[\.-][0-9]+)?)/);
-        if (dMatch) {
-          const ver = parseFloat(dMatch[1].replace('-', '.'));
-          if (ver >= 4.1) return false;
-          return true;
-        }
+        if (dMatch) return parseFloat(dMatch[1].replace('-', '.')) < 4.1;
         return true;
       }
 
-      // GLM 系列 (>= 5.2)
       if (n.includes('glm')) {
         const gMatch = n.match(/glm-?([0-9]+(?:\.[0-9]+)?)/);
-        if (gMatch) {
-          if (parseFloat(gMatch[1]) >= 5.2) return false;
-          return true;
-        }
+        if (gMatch) return parseFloat(gMatch[1]) < 5.2;
         return true;
       }
 
-      // MiniMax 系列 (>= M3)
       if (n.includes('minimax')) {
         const mMatch = n.match(/m([0-9]+(?:\.[0-9]+)?)/);
-        if (mMatch) {
-          if (parseFloat(mMatch[1]) >= 3) return false;
-          return true;
-        }
+        if (mMatch) return parseFloat(mMatch[1]) < 3;
         return false;
       }
 
-      // Qwen 系列 (>= 3.8，动态兼容 3.8, 3.9, 4.x 等更高版本)
       if (n.includes('qwen')) {
         const qMatch = n.match(/qwen\s*([0-9]+(?:\.[0-9]+)?)/) || n.match(/qwen-?([0-9]+(?:\.[0-9]+)?)/);
-        if (qMatch) {
-          return parseFloat(qMatch[1]) < 3.8;
-        }
+        if (qMatch) return parseFloat(qMatch[1]) < 3.8;
         return true;
       }
 
-      // MiMo 系列 (>= V2.6 及 Flash 系列全系)
       if (n.includes('mimo')) {
         if (n.includes('flash')) return false;
         const mMatch = n.match(/mimo[^\d]*([0-9]+(?:[\.-][0-9]+)?)/);
-        if (mMatch) {
-          const ver = parseFloat(mMatch[1].replace('-', '.'));
-          return ver < 2.6;
-        }
+        if (mMatch) return parseFloat(mMatch[1].replace('-', '.')) < 2.6;
         return true;
       }
 
-      // 6. Meta (Muse 系列)
-      if (n.includes('muse')) {
-        return false;
-      }
-
+      if (n.includes('muse')) return false;
       return true;
     }
 
-    // 按模型家族分配专属浅色系文字颜色：
-    function getModelColor(name) {
-      const n = name.toLowerCase();
-      if (n.includes('kimi') || n.includes('glm') || n.includes('deepseek') || n.includes('minimax') || n.includes('qwen') || n.includes('mimo')) {
-        return '#1e293b';
+    const CURATED_HARNESSES = new Set([
+      'Codex Agent CLI', 'Devin Fusion', 'Claude Code', 'Cursor Agent',
+      'Kimi Code CLI', 'OpenCode', 'Gemini CLI', 'Antigravity', 'Muse Code'
+    ]);
+
+    const CN_CREATORS = new Set([
+      'alibaba', 'deepseek', 'kimi', 'z ai', 'minimax', 'xiaomi', 'stepfun',
+      'baidu', 'tencent', 'bytedance seed', 'china mobile', 'inclusionai',
+      'openbmb', 'nanbeige', 'longcat', 'kwaikat'
+    ]);
+
+    // 统一判定模型所属家族: gpt | claude | gemini | muse | grok | cn | other
+    function getModelFamily(name, creator = '') {
+      const n = String(name || '').toLowerCase();
+      const c = String(creator || '').toLowerCase();
+
+      if (n.includes('claude') || n.includes('opus') || n.includes('fable') || n.includes('sonnet') || n.includes('haiku') || c === 'anthropic') {
+        return 'claude';
       }
+      if (n.includes('gpt') || /\b(sol|terra|luna|astra|o1|o3|o4)\b/.test(n) || c === 'openai') {
+        return 'gpt';
+      }
+      if (n.includes('gemini') || n.includes('gemma') || c === 'google') {
+        return 'gemini';
+      }
+      if (n.includes('muse') || n.includes('llama') || c === 'meta') {
+        return 'muse';
+      }
+      if (n.includes('grok') || c === 'spacexai' || c === 'xai') {
+        return 'grok';
+      }
+      if (
+        n.includes('kimi') || n.includes('glm') || n.includes('deepseek') ||
+        n.includes('minimax') || n.includes('qwen') || n.includes('mimo') ||
+        n.includes('step') || n.includes('ernie') || n.includes('hunyuan') ||
+        n.includes('doubao') || n.includes('longcat') || n.includes('nanbeige') ||
+        n.includes('ling') || n.includes('ring') || n.includes('ming') ||
+        n.includes('jt-') || n.includes('minicpm') || CN_CREATORS.has(c)
+      ) {
+        return 'cn';
+      }
+      return 'other';
+    }
 
-      if (n.includes('claude') || n.includes('opus') || n.includes('fable') || n.includes('sonnet')) return '#dc2626';   // 红色
-      if (n.includes('gpt') || n.includes('sol') || n.includes('terra') || n.includes('luna') || n.includes('astra')) return '#ca8a04';      // 暖金黄色
-      if (n.includes('gemini')) return '#0284c7';   // 天蓝色
-      if (n.includes('muse')) return '#1d4ed8';     // 宝蓝色 (Meta Muse)
-      if (n.includes('grok')) return '#0f172a';     // 纯黑/深空灰 (xAI Grok)
-
-      return '#1e293b';
+    // 按模型家族分配专属浅色系文字颜色
+    function getModelColor(name, creator = '') {
+      const fam = getModelFamily(name, creator);
+      if (fam === 'claude') return '#dc2626';
+      if (fam === 'gpt') return '#ca8a04';
+      if (fam === 'gemini') return '#0284c7';
+      if (fam === 'muse') return '#1d4ed8';
+      if (fam === 'grok') return '#0f172a';
+      if (fam === 'cn') return '#1e293b';
+      return '#475569';
     }
 
     // Agent Harness 专属 Badge 样式类判定
     function getHarnessClass(harness) {
-      const h = harness.toLowerCase();
+      const h = String(harness || '').toLowerCase();
       if (h.includes('claude code')) return 'harness-claude-code';
       if (h.includes('devin') || h.includes('fusion')) return 'harness-devin-fusion';
       if (h.includes('codex')) return 'harness-codex-agent';
@@ -996,7 +1289,7 @@
       if (h.includes('gemini cli')) return 'harness-gemini-cli';
       if (h.includes('antigravity')) return 'harness-antigravity';
       if (h.includes('muse')) return 'harness-muse-code';
-      return '';
+      return 'harness-other';
     }
 
     // 解析模型名称与 Effort 级别
@@ -1008,11 +1301,190 @@
       return { model: fullName.trim(), effort: 'Standard' };
     }
 
-
-    // 全局状态：当前选中的 Harness 框架与全部 Agent 列表
+    // 全局数据与手动筛选状态（默认全量展示，不做任何过滤）
+    let rawDashboardData = null;
     let currentHarnessFilter = 'ALL';
-    let allCodingAgents = [];
+    let filteredCodingAgents = [];
     const HARNESS_ORDER = ['Codex Agent CLI', 'Devin Fusion', 'Claude Code', 'Cursor Agent', 'Kimi Code CLI', 'OpenCode', 'Gemini CLI', 'Antigravity', 'Muse Code'];
+
+    const filterState = {
+      preset: 'all',          // 'all' | 'curated'
+      families: new Set(),    // 空 Set 代表全部厂商
+      reasoning: 'all',       // 'all' | 'reasoning' | 'non-reasoning'
+      weights: 'all',         // 'all' | 'open' | 'closed'
+      hideDeprecated: false,
+      topLimit: 30,           // 30 | 50 | 0 (0 = 全部)
+      includeText: '',
+      excludeText: ''
+    };
+
+    function parseKeywords(str) {
+      return String(str || '')
+        .split(/[,，;\n]+/)
+        .map(s => s.trim().toLowerCase())
+        .filter(Boolean);
+    }
+
+    function getModelMeta(modelName) {
+      const metaMap = rawDashboardData?.model_meta || {};
+      if (metaMap[modelName]) return metaMap[modelName];
+      const base = parseModelAndEffort(modelName).model;
+      if (metaMap[base]) return metaMap[base];
+      return null;
+    }
+
+    function matchesGlobalFilter(modelName, opts = {}) {
+      const { isAgent = false, agentHarness = '' } = opts;
+      const meta = getModelMeta(modelName);
+      const creator = meta?.creator || '';
+
+      // 1. 快捷预设
+      if (filterState.preset === 'curated') {
+        if (isLegacyIgnoredModel(modelName)) return false;
+        if (isAgent && agentHarness && !CURATED_HARNESSES.has(agentHarness)) return false;
+      }
+
+      // 2. 厂商家族多选
+      if (filterState.families.size > 0) {
+        const fam = getModelFamily(modelName, creator);
+        if (!filterState.families.has(fam)) return false;
+      }
+
+      // 3. 思考模式 (Reasoning / Non-reasoning)
+      if (filterState.reasoning !== 'all') {
+        const isReasoning = meta
+          ? meta.is_reasoning !== false
+          : !(/non[- ]?reasoning|\binstruct\b/i.test(modelName));
+        if (filterState.reasoning === 'reasoning' && !isReasoning) return false;
+        if (filterState.reasoning === 'non-reasoning' && isReasoning) return false;
+      }
+
+      // 4. 权重属性 (开源 / 闭源)
+      if (filterState.weights !== 'all') {
+        if (meta) {
+          if (filterState.weights === 'open' && !meta.is_open_weights) return false;
+          if (filterState.weights === 'closed' && meta.is_open_weights) return false;
+        } else {
+          // Agent 组合里存在部分未直接同名收录于 models 表的名称，按常见开源前缀辅助判断
+          const n = modelName.toLowerCase();
+          const likelyOpen = /\b(deepseek|qwen|kimi|glm|minimax|mimo|llama|mistral|ministral|magistral|nemotron|gpt-oss|step)\b/.test(n);
+          if (filterState.weights === 'open' && !likelyOpen) return false;
+          if (filterState.weights === 'closed' && likelyOpen) return false;
+        }
+      }
+
+      // 5. 隐藏已弃用
+      if (filterState.hideDeprecated && meta?.deprecated) {
+        return false;
+      }
+
+      // 6. 关键词包含/排除
+      const searchTarget = `${modelName} ${creator} ${agentHarness}`.toLowerCase();
+      const incTerms = parseKeywords(filterState.includeText);
+      if (incTerms.length > 0 && !incTerms.some(t => searchTarget.includes(t))) {
+        return false;
+      }
+      const excTerms = parseKeywords(filterState.excludeText);
+      if (excTerms.length > 0 && excTerms.some(t => searchTarget.includes(t))) {
+        return false;
+      }
+
+      return true;
+    }
+
+    function syncFilterControlsUI() {
+      document.querySelectorAll('[data-preset]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-preset') === filterState.preset);
+      });
+      document.querySelectorAll('[data-reasoning]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-reasoning') === filterState.reasoning);
+      });
+      document.querySelectorAll('[data-weights]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-weights') === filterState.weights);
+      });
+      document.querySelectorAll('[data-toplimit]').forEach(btn => {
+        btn.classList.toggle('active', Number(btn.getAttribute('data-toplimit')) === filterState.topLimit);
+      });
+      document.querySelectorAll('[data-family]').forEach(btn => {
+        const fam = btn.getAttribute('data-family');
+        if (fam === 'ALL') {
+          btn.classList.toggle('active', filterState.families.size === 0);
+        } else {
+          btn.classList.toggle('active', filterState.families.has(fam));
+        }
+      });
+      const depCb = document.getElementById('filter-hide-deprecated');
+      if (depCb) depCb.checked = filterState.hideDeprecated;
+    }
+
+    function setPresetFilter(preset) {
+      filterState.preset = preset;
+      syncFilterControlsUI();
+      applyFiltersAndRender();
+    }
+
+    function setReasoningFilter(mode) {
+      filterState.reasoning = mode;
+      syncFilterControlsUI();
+      applyFiltersAndRender();
+    }
+
+    function setWeightsFilter(mode) {
+      filterState.weights = mode;
+      syncFilterControlsUI();
+      applyFiltersAndRender();
+    }
+
+    function setTopLimit(limit) {
+      filterState.topLimit = limit;
+      syncFilterControlsUI();
+      applyFiltersAndRender();
+    }
+
+    function toggleHideDeprecated(checked) {
+      filterState.hideDeprecated = checked;
+      applyFiltersAndRender();
+    }
+
+    function toggleFamilyFilter(fam) {
+      if (fam === 'ALL') {
+        filterState.families.clear();
+      } else {
+        if (filterState.families.has(fam)) {
+          filterState.families.delete(fam);
+        } else {
+          filterState.families.add(fam);
+        }
+      }
+      syncFilterControlsUI();
+      applyFiltersAndRender();
+    }
+
+    function setKeywordFilter(kind, value) {
+      if (kind === 'include') filterState.includeText = value;
+      else filterState.excludeText = value;
+      applyFiltersAndRender();
+    }
+
+    function resetAllFilters() {
+      filterState.preset = 'all';
+      filterState.families.clear();
+      filterState.reasoning = 'all';
+      filterState.weights = 'all';
+      filterState.hideDeprecated = false;
+      filterState.topLimit = 30;
+      filterState.includeText = '';
+      filterState.excludeText = '';
+      currentHarnessFilter = 'ALL';
+
+      const incInput = document.getElementById('filter-include');
+      const excInput = document.getElementById('filter-exclude');
+      if (incInput) incInput.value = '';
+      if (excInput) excInput.value = '';
+
+      syncFilterControlsUI();
+      applyFiltersAndRender();
+    }
 
     // 渲染 Harness 筛选栏按钮组
     function renderHarnessFilterBar(agentList) {
@@ -1031,6 +1503,10 @@
         }
       });
 
+      if (currentHarnessFilter !== 'ALL' && !availableHarnesses.includes(currentHarnessFilter)) {
+        currentHarnessFilter = 'ALL';
+      }
+
       let html = `
         <button class="harness-filter-btn ${currentHarnessFilter === 'ALL' ? 'active' : ''}" data-harness="ALL" onclick="selectHarnessFilter('ALL')">
           全部
@@ -1041,9 +1517,10 @@
       availableHarnesses.forEach(h => {
         const hClass = getHarnessClass(h);
         const isActive = currentHarnessFilter === h;
+        const safeH = escapeHtml(h);
         html += `
-          <button class="harness-filter-btn ${hClass} ${isActive ? 'active' : ''}" data-harness="${h}" onclick="selectHarnessFilter('${h}')">
-            ${h}
+          <button class="harness-filter-btn ${hClass} ${isActive ? 'active' : ''}" data-harness="${safeH}" onclick="selectHarnessFilter(this.getAttribute('data-harness'))">
+            ${safeH}
             <span class="filter-count">${counts[h] || 0}</span>
           </button>
         `;
@@ -1066,12 +1543,12 @@
       });
 
       const filteredList = harness === 'ALL'
-        ? allCodingAgents
-        : allCodingAgents.filter(item => item.agent_harness === harness);
+        ? filteredCodingAgents
+        : filteredCodingAgents.filter(item => item.agent_harness === harness);
       renderAgentLeaderboard('agent-leaderboard-body', filteredList);
     }
 
-    // 渲染编码 Agent 排行榜表格 (独立背景色样式，支持 null 缺省值渲染及空数据提示)
+    // 渲染编码 Agent 排行榜表格
     function renderAgentLeaderboard(containerId, agentList) {
       const container = document.getElementById(containerId);
       container.innerHTML = '';
@@ -1080,13 +1557,14 @@
         container.innerHTML = `
           <tr>
             <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2.5rem 1rem; font-size: 0.9rem;">
-              暂无该 Harness 框架相关的官方评测组合
+              暂无符合当前筛选条件的官方评测组合
             </td>
           </tr>
         `;
         return;
       }
 
+      let rowsHtml = '';
       agentList.forEach((item, index) => {
         const rank = index + 1;
         let rankClass = '';
@@ -1094,32 +1572,40 @@
         else if (rank === 2) rankClass = 'top-rank-2';
         else if (rank === 3) rankClass = 'top-rank-3';
 
-        const modelColor = getModelColor(item.model);
+        const meta = getModelMeta(item.model);
+        const modelColor = getModelColor(item.model, meta?.creator);
         const harnessClass = getHarnessClass(item.agent_harness);
 
         const solveRateStr = item.solve_rate !== null && item.solve_rate !== undefined ? item.solve_rate.toFixed(1) : '-';
         const avgTimeStr = item.avg_time_min !== null && item.avg_time_min !== undefined ? `${item.avg_time_min.toFixed(1)} min` : '-';
         const costStr = item.cost_usd !== null && item.cost_usd !== undefined ? `$${item.cost_usd.toFixed(2)}` : '-';
 
-        container.innerHTML += `
+        rowsHtml += `
           <tr style="background-color: ${index % 2 === 1 ? '#f8fafc' : '#ffffff'};">
             <td style="text-align: center;"><span class="rank-num ${rankClass}">#${rank}</span></td>
-            <td><span class="agent-harness-badge ${harnessClass}">${item.agent_harness}</span></td>
-            <td style="color: ${modelColor}; font-weight: 700;">${item.model}</td>
+            <td><span class="agent-harness-badge ${harnessClass}">${escapeHtml(item.agent_harness)}</span></td>
+            <td style="color: ${modelColor}; font-weight: 700;">${escapeHtml(item.model)}</td>
             <td style="font-weight: 800; color: #0f172a;">${solveRateStr}</td>
             <td style="color: var(--text-muted); font-weight: 600;">${avgTimeStr}</td>
             <td style="color: var(--text-muted); font-weight: 600;">${costStr}</td>
           </tr>
         `;
       });
+      container.innerHTML = rowsHtml;
     }
 
-    // 渲染带有 rowspan (跨行合并) 的模型表格，单元格文字保留在第一行 (vertical-align: top)，按合并单元格组交替斑马底色
-    function renderGroupedTable(containerId, items) {
+    // 渲染带有 rowspan (跨行合并) 的模型表格
+    function renderGroupedTable(containerId, blockId, items) {
       const container = document.getElementById(containerId);
+      const block = document.getElementById(blockId);
       container.innerHTML = '';
 
-      // Group items by base model name
+      if (!items || items.length === 0) {
+        if (block) block.style.display = 'none';
+        return 0;
+      }
+      if (block) block.style.display = '';
+
       const groups = [];
       const map = {};
 
@@ -1127,7 +1613,7 @@
         const parsed = parseModelAndEffort(item.fullName);
         if (!map[parsed.model]) {
           map[parsed.model] = [];
-          groups.push({ model: parsed.model, rows: map[parsed.model] });
+          groups.push({ model: parsed.model, creator: item.creator || '', rows: map[parsed.model] });
         }
         map[parsed.model].push({
           effort: parsed.effort,
@@ -1139,253 +1625,207 @@
         });
       });
 
+      let rowsHtml = '';
       groups.forEach((g, gIdx) => {
         const rowCount = g.rows.length;
         const bgStyle = gIdx % 2 === 1 ? 'background-color: #f8fafc;' : 'background-color: #ffffff;';
+        const creatorTag = g.creator ? `<div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 500; margin-top: 0.15rem;">${escapeHtml(g.creator)}</div>` : '';
 
         g.rows.forEach((r, idx) => {
           let tr = `<tr style="${bgStyle}">`;
           if (idx === 0) {
-            tr += `<td rowspan="${rowCount}" style="vertical-align: top; border-right: 1px solid #e2e8f0; ${bgStyle} padding-top: 0.5rem;"><strong style="color: ${r.color}; font-size: 0.95rem; font-weight: 700;">${g.model}</strong></td>`;
+            tr += `<td rowspan="${rowCount}" style="vertical-align: top; border-right: 1px solid #e2e8f0; ${bgStyle} padding-top: 0.5rem;"><strong style="color: ${r.color}; font-size: 0.95rem; font-weight: 700;">${escapeHtml(g.model)}</strong>${creatorTag}</td>`;
           }
           tr += `
-            <td style="color: ${r.color}; font-weight: 500;"><span class="effort-badge" style="color: ${r.color};">${r.effort}</span></td>
+            <td style="color: ${r.color}; font-weight: 500;"><span class="effort-badge" style="color: ${r.color};">${escapeHtml(r.effort)}</span></td>
             <td style="color: ${r.color}; font-weight: 600;">${r.intel}</td>
             <td style="color: ${r.color}; font-weight: 600;">${r.coding}</td>
             <td style="color: ${r.color}; font-weight: 600;">${r.speed}</td>
             <td style="color: ${r.color}; font-weight: 600;">${r.cost}</td>
           </tr>`;
-          container.innerHTML += tr;
+          rowsHtml += tr;
         });
       });
+      container.innerHTML = rowsHtml;
+      return items.length;
     }
 
-    function renderDashboard(rawData) {
-      if (rawData.updated_at) {
-        const dateEl = document.getElementById('update-date-text');
-        if (dateEl) dateEl.textContent = `更新日期：${rawData.updated_at}`;
+    function renderBarCard(containerId, list, valueKey, formatFn) {
+      const container = document.getElementById(containerId);
+      if (!list || list.length === 0) {
+        container.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 1rem 0;">暂无匹配模型</div>';
+        return;
       }
+      const sliced = filterState.topLimit > 0 ? list.slice(0, filterState.topLimit) : list;
+      const maxVal = Math.max(...sliced.map(d => d[valueKey]), 0.0001);
+      let html = '';
+      sliced.forEach(item => {
+        const val = item[valueKey];
+        const pct = Math.max(0, Math.min(100, (val / maxVal) * 100));
+        const meta = getModelMeta(item.model);
+        const color = getModelColor(item.model, meta?.creator);
+        html += `
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span class="model-name-text" style="color: ${color};">${escapeHtml(item.model)}</span>
+              <span style="color: ${color}; font-weight: 700;">${formatFn(val)}</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: ${pct}%;"></div>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
 
-      // 0. Render Agent Leaderboard & Filter Bar
-      allCodingAgents = (rawData.coding_agent_leaderboard || []).filter(item => !isIgnoredModel(item.model));
-      renderHarnessFilterBar(allCodingAgents);
+    function applyFiltersAndRender() {
+      const rawData = rawDashboardData;
+      if (!rawData) return;
+
+      // 0. 编码 Agent 列表过滤
+      const allAgentsRaw = rawData.coding_agent_leaderboard || [];
+      filteredCodingAgents = allAgentsRaw.filter(item =>
+        matchesGlobalFilter(item.model, { isAgent: true, agentHarness: item.agent_harness })
+      );
+      renderHarnessFilterBar(filteredCodingAgents);
       selectHarnessFilter(currentHarnessFilter);
 
-      // 按规则过滤模型
-      const data = {
-        intelligence_index: rawData.intelligence_index.filter(item => !isIgnoredModel(item.model)),
-        coding_index: (rawData.coding_index || []).filter(item => !isIgnoredModel(item.model)),
-        speed_tokens_per_sec: rawData.speed_tokens_per_sec.filter(item => !isIgnoredModel(item.model)),
-        cost_per_task_usd: rawData.cost_per_task_usd.filter(item => !isIgnoredModel(item.model)),
-        recent_updates: rawData.recent_updates
-      };
+      // 1-4. 模型指标过滤
+      const intelFiltered = (rawData.intelligence_index || []).filter(i => matchesGlobalFilter(i.model));
+      const codingFiltered = (rawData.coding_index || []).filter(i => matchesGlobalFilter(i.model));
+      const speedFiltered = (rawData.speed_tokens_per_sec || []).filter(i => matchesGlobalFilter(i.model));
+      const costFiltered = (rawData.cost_per_task_usd || []).filter(i => matchesGlobalFilter(i.model));
 
-      // 1. Render Intelligence (Top 30)
-      const intelContainer = document.getElementById('intel-list');
-      intelContainer.innerHTML = '';
-      const intelList = data.intelligence_index.slice(0, 30);
-      const maxIntel = intelList.length > 0 ? Math.max(...intelList.map(d => d.score)) : 1;
-      intelList.forEach(item => {
-        const pct = (item.score / maxIntel) * 100;
-        const color = getModelColor(item.model);
-        intelContainer.innerHTML += `
-          <div class="bar-item">
-            <div class="bar-label-row">
-              <span class="model-name-text" style="color: ${color};">${item.model}</span>
-              <span style="color: ${color}; font-weight: 700;">${item.score.toFixed(1)}</span>
-            </div>
-            <div class="bar-track">
-              <div class="bar-fill" style="width: ${pct}%;"></div>
-            </div>
-          </div>
-        `;
-      });
+      renderBarCard('intel-list', intelFiltered, 'score', v => v.toFixed(1));
+      renderBarCard('coding-list', codingFiltered, 'coding_score', v => v.toFixed(1));
+      renderBarCard('speed-list', speedFiltered, 'speed_tps', v => `${v.toFixed(1)} t/s`);
+      renderBarCard('cost-list', costFiltered, 'cost_usd', v => `$${v.toFixed(3)}`);
 
-      // 2. Render Coding Index (Top 30)
-      const codingContainer = document.getElementById('coding-list');
-      codingContainer.innerHTML = '';
-      const codingList = data.coding_index.slice(0, 30);
-      const maxCoding = codingList.length > 0 ? Math.max(...codingList.map(d => d.coding_score)) : 1;
-      codingList.forEach(item => {
-        const pct = (item.coding_score / maxCoding) * 100;
-        const color = getModelColor(item.model);
-        codingContainer.innerHTML += `
-          <div class="bar-item">
-            <div class="bar-label-row">
-              <span class="model-name-text" style="color: ${color};">${item.model}</span>
-              <span style="color: ${color}; font-weight: 700;">${item.coding_score.toFixed(1)}</span>
-            </div>
-            <div class="bar-track">
-              <div class="bar-fill" style="width: ${pct}%;"></div>
-            </div>
-          </div>
-        `;
-      });
-
-      // 3. Render Speed (Top 30)
-      const speedContainer = document.getElementById('speed-list');
-      speedContainer.innerHTML = '';
-      const speedList = data.speed_tokens_per_sec.slice(0, 30);
-      const maxSpeed = speedList.length > 0 ? Math.max(...speedList.map(d => d.speed_tps)) : 1;
-      speedList.forEach(item => {
-        const pct = (item.speed_tps / maxSpeed) * 100;
-        const color = getModelColor(item.model);
-        speedContainer.innerHTML += `
-          <div class="bar-item">
-            <div class="bar-label-row">
-              <span class="model-name-text" style="color: ${color};">${item.model}</span>
-              <span style="color: ${color}; font-weight: 700;">${item.speed_tps.toFixed(1)} t/s</span>
-            </div>
-            <div class="bar-track">
-              <div class="bar-fill" style="width: ${pct}%;"></div>
-            </div>
-          </div>
-        `;
-      });
-
-      // 4. Render Cost (Lowest 30)
-      const costContainer = document.getElementById('cost-list');
-      costContainer.innerHTML = '';
-      const costList = data.cost_per_task_usd.slice(0, 30);
-      const maxCost = costList.length > 0 ? Math.max(...costList.map(d => d.cost_usd)) : 1;
-      costList.forEach(item => {
-        const pct = (item.cost_usd / maxCost) * 100;
-        const color = getModelColor(item.model);
-        costContainer.innerHTML += `
-          <div class="bar-item">
-            <div class="bar-label-row">
-              <span class="model-name-text" style="color: ${color};">${item.model}</span>
-              <span style="color: ${color}; font-weight: 700;">$${item.cost_usd.toFixed(3)}</span>
-            </div>
-            <div class="bar-track">
-              <div class="bar-fill" style="width: ${pct}%;"></div>
-            </div>
-          </div>
-        `;
-      });
-
-      // 5. Construct Structured Model Map
+      // 5. 汇总所有可见模型并按家族归类
       const modelMap = {};
-      data.intelligence_index.forEach(i => {
+      intelFiltered.forEach(i => {
         if (!modelMap[i.model]) modelMap[i.model] = {};
         modelMap[i.model].intel = i.score;
       });
-      data.coding_index.forEach(cd => {
+      codingFiltered.forEach(cd => {
         if (!modelMap[cd.model]) modelMap[cd.model] = {};
         modelMap[cd.model].coding = cd.coding_score;
       });
-      data.speed_tokens_per_sec.forEach(s => {
+      speedFiltered.forEach(s => {
         if (!modelMap[s.model]) modelMap[s.model] = {};
         modelMap[s.model].speed = s.speed_tps;
       });
-      data.cost_per_task_usd.forEach(c => {
+      costFiltered.forEach(c => {
         if (!modelMap[c.model]) modelMap[c.model] = {};
         modelMap[c.model].cost = c.cost_usd;
       });
 
-      const claudeList = [];
-      const gptList = [];
-      const geminiList = [];
-      const museList = [];
-      const grokList = [];
-      const cnList = [];
+      const allRawModelNames = new Set([
+        ...(rawData.intelligence_index || []).map(i => i.model),
+        ...(rawData.coding_index || []).map(i => i.model),
+        ...(rawData.speed_tokens_per_sec || []).map(i => i.model),
+        ...(rawData.cost_per_task_usd || []).map(i => i.model)
+      ]);
+      const visibleModelNames = Object.keys(modelMap);
 
-      Object.keys(modelMap).forEach(fullName => {
-        const color = getModelColor(fullName);
-        const intel = modelMap[fullName].intel ? modelMap[fullName].intel.toFixed(1) : '-';
-        const coding = modelMap[fullName].coding ? modelMap[fullName].coding.toFixed(1) : '-';
-        const speed = modelMap[fullName].speed ? modelMap[fullName].speed.toFixed(1) + ' t/s' : '-';
-        const cost = modelMap[fullName].cost !== undefined ? '$' + modelMap[fullName].cost.toFixed(4) : '-';
+      const statsEl = document.getElementById('gf-stats-text');
+      if (statsEl) {
+        statsEl.textContent = `模型: ${visibleModelNames.length} / ${allRawModelNames.size} · Agent 组合: ${filteredCodingAgents.length} / ${allAgentsRaw.length}`;
+      }
 
-        const itemObj = { fullName, color, intel, coding, speed, cost };
+      const buckets = {
+        claude: [],
+        gpt: [],
+        gemini: [],
+        muse: [],
+        grok: [],
+        cn: [],
+        other: []
+      };
 
-        const m = fullName.toLowerCase();
-        if (m.includes('claude') || m.includes('opus') || m.includes('fable') || m.includes('sonnet')) {
-          claudeList.push(itemObj);
-        } else if (m.includes('gpt') || m.includes('sol') || m.includes('terra') || m.includes('luna') || m.includes('astra')) {
-          gptList.push(itemObj);
-        } else if (m.includes('gemini')) {
-          geminiList.push(itemObj);
-        } else if (m.includes('muse')) {
-          museList.push(itemObj);
-        } else if (m.includes('grok')) {
-          grokList.push(itemObj);
-        } else {
-          cnList.push(itemObj);
-        }
+      visibleModelNames.forEach(fullName => {
+        const meta = getModelMeta(fullName);
+        const creator = meta?.creator || '';
+        const fam = getModelFamily(fullName, creator);
+        const color = getModelColor(fullName, creator);
+        const entry = modelMap[fullName];
+        const intel = entry.intel !== undefined && entry.intel !== null ? entry.intel.toFixed(1) : '-';
+        const coding = entry.coding !== undefined && entry.coding !== null ? entry.coding.toFixed(1) : '-';
+        const speed = entry.speed !== undefined && entry.speed !== null ? entry.speed.toFixed(1) + ' t/s' : '-';
+        const cost = entry.cost !== undefined && entry.cost !== null ? '$' + entry.cost.toFixed(4) : '-';
+
+        buckets[fam].push({ fullName, creator, color, intel, coding, speed, cost });
       });
 
-      // 排序：各家族均按版本号及性能优先排序
-      claudeList.sort((a, b) => {
+      const sortByVerAndIntel = (verRegex) => (a, b) => {
+        const getVer = (name) => {
+          const match = name.match(verRegex);
+          return match ? parseFloat(match[1]) : 0;
+        };
+        const verDiff = getVer(b.fullName) - getVer(a.fullName);
+        if (verDiff !== 0) return verDiff;
+        return (parseFloat(b.intel) || -1) - (parseFloat(a.intel) || -1);
+      };
+
+      buckets.claude.sort((a, b) => {
         const getVer = (name) => {
           const m = name.toLowerCase();
-          const match = m.match(/(?:claude|sonnet|opus|fable)\s*([\d.]+)/) || m.match(/([\d.]+)\s*(?:sonnet|opus|fable)/);
+          const match = m.match(/(?:claude|sonnet|opus|fable|haiku)\s*([\d.]+)/) || m.match(/([\d.]+)\s*(?:sonnet|opus|fable|haiku)/);
           return match ? parseFloat(match[1]) : 0;
         };
         const verDiff = getVer(b.fullName) - getVer(a.fullName);
         if (verDiff !== 0) return verDiff;
-        return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
+        return (parseFloat(b.intel) || -1) - (parseFloat(a.intel) || -1);
       });
-      renderGroupedTable('claude-family-body', claudeList);
-
-      gptList.sort((a, b) => {
-        const getVer = (name) => {
-          const match = name.match(/GPT-?([\d.]+)/i);
-          return match ? parseFloat(match[1]) : 0;
-        };
-        const verDiff = getVer(b.fullName) - getVer(a.fullName);
-        if (verDiff !== 0) return verDiff;
-        return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
-      });
-      renderGroupedTable('gpt-family-body', gptList);
-
-      geminiList.sort((a, b) => {
-        const getVer = (name) => {
-          const match = name.match(/Gemini\s*([\d.]+)/i);
-          return match ? parseFloat(match[1]) : 0;
-        };
-        const verDiff = getVer(b.fullName) - getVer(a.fullName);
-        if (verDiff !== 0) return verDiff;
-        return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
-      });
-      renderGroupedTable('gemini-family-body', geminiList);
-
-      museList.sort((a, b) => {
+      buckets.gpt.sort(sortByVerAndIntel(/GPT-?([\d.]+)/i));
+      buckets.gemini.sort(sortByVerAndIntel(/Gemini\s*([\d.]+)/i));
+      buckets.muse.sort((a, b) => {
         const getVer = (name) => {
           const match = name.match(/Spark\s*([\d.]+)/i) || name.match(/Muse\s*([\d.]+)/i);
           return match ? parseFloat(match[1]) : 0;
         };
         const verDiff = getVer(b.fullName) - getVer(a.fullName);
         if (verDiff !== 0) return verDiff;
-        return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
+        return (parseFloat(b.intel) || -1) - (parseFloat(a.intel) || -1);
       });
-      renderGroupedTable('muse-family-body', museList);
+      buckets.grok.sort(sortByVerAndIntel(/Grok[-\s]*([\d.]+)/i));
+      buckets.cn.sort((a, b) => (parseFloat(b.intel) || -1) - (parseFloat(a.intel) || -1));
+      buckets.other.sort((a, b) => (parseFloat(b.intel) || -1) - (parseFloat(a.intel) || -1));
 
-      grokList.sort((a, b) => {
-        const getVer = (name) => {
-          const match = name.match(/Grok[-\s]*([\d.]+)/i);
-          return match ? parseFloat(match[1]) : 0;
-        };
-        const verDiff = getVer(b.fullName) - getVer(a.fullName);
-        if (verDiff !== 0) return verDiff;
-        return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
-      });
-      renderGroupedTable('grok-family-body', grokList);
+      let totalRendered = 0;
+      totalRendered += renderGroupedTable('gpt-family-body', 'family-block-gpt', buckets.gpt);
+      totalRendered += renderGroupedTable('claude-family-body', 'family-block-claude', buckets.claude);
+      totalRendered += renderGroupedTable('gemini-family-body', 'family-block-gemini', buckets.gemini);
+      totalRendered += renderGroupedTable('muse-family-body', 'family-block-muse', buckets.muse);
+      totalRendered += renderGroupedTable('grok-family-body', 'family-block-grok', buckets.grok);
+      totalRendered += renderGroupedTable('cn-family-body', 'family-block-cn', buckets.cn);
+      totalRendered += renderGroupedTable('other-family-body', 'family-block-other', buckets.other);
 
-      cnList.sort((a, b) => {
-        return (parseFloat(b.intel) || 0) - (parseFloat(a.intel) || 0);
-      });
-      renderGroupedTable('cn-family-body', cnList);
+      const emptyEl = document.getElementById('family-empty-state');
+      if (emptyEl) emptyEl.style.display = totalRendered === 0 ? 'block' : 'none';
+    }
+
+    function renderDashboard(rawData) {
+      rawDashboardData = rawData;
+
+      if (rawData.updated_at) {
+        const dateEl = document.getElementById('update-date-text');
+        if (dateEl) dateEl.textContent = `更新日期：${rawData.updated_at}`;
+      }
+
+      syncFilterControlsUI();
+      applyFiltersAndRender();
 
       // Render Changelog
       const changelogContainer = document.getElementById('changelog-container');
       changelogContainer.innerHTML = '';
-      data.recent_updates.forEach(upd => {
+      (rawData.recent_updates || []).forEach(upd => {
         changelogContainer.innerHTML += `
           <div class="changelog-item">
-            <span class="changelog-date">${upd.date}</span>
-            <span style="background:#e2e8f0; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; color:#475569; font-weight:600;">${upd.type}</span>
-            <span>${upd.title}</span>
+            <span class="changelog-date">${escapeHtml(upd.date)}</span>
+            <span style="background:#e2e8f0; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem; color:#475569; font-weight:600;">${escapeHtml(upd.type)}</span>
+            <span>${escapeHtml(upd.title)}</span>
           </div>
         `;
       });
@@ -1493,6 +1933,14 @@
       "brand": "claude"
     },
     {
+      "agent_harness": "Claude Code",
+      "model": "Claude Fable 5.1 (Max, Default Fallback)",
+      "solve_rate": 52.489956554795306,
+      "avg_time_min": 36.34521312045183,
+      "cost_usd": 11.704592829641319,
+      "brand": "claude"
+    },
+    {
       "agent_harness": "Antigravity",
       "model": "Gemini 4 Hydrogen (Xhigh)",
       "solve_rate": 52.31665933528839,
@@ -1597,6 +2045,22 @@
       "brand": "muse"
     },
     {
+      "agent_harness": "Grok Build",
+      "model": "Grok 4.7 (Xhigh)",
+      "solve_rate": 41.6396947974367,
+      "avg_time_min": 36.63264487391834,
+      "cost_usd": 15.3499017442707,
+      "brand": "grok"
+    },
+    {
+      "agent_harness": "Mistral Vibe",
+      "model": "Mistral Large 4 (High)",
+      "solve_rate": 40.5885380688606,
+      "avg_time_min": 49.0395181845335,
+      "cost_usd": 1.34308297720647,
+      "brand": "other"
+    },
+    {
       "agent_harness": "OpenCode",
       "model": "GLM-5.3 (Max)",
       "solve_rate": 40.117560280221596,
@@ -1621,12 +2085,28 @@
       "brand": "gpt"
     },
     {
+      "agent_harness": "DeepSeek Harness",
+      "model": "DeepSeek V4.1 Flash 1017 (Max)",
+      "solve_rate": 36.8337115781471,
+      "avg_time_min": 31.444245550034335,
+      "cost_usd": 0.320957200254155,
+      "brand": "cn"
+    },
+    {
       "agent_harness": "Muse Code",
       "model": "Muse Spark 1.3 (Max)",
       "solve_rate": 36.7706495058108,
       "avg_time_min": 24.443544365247497,
       "cost_usd": 4.33726857901732,
       "brand": "muse"
+    },
+    {
+      "agent_harness": "Claude Code",
+      "model": "Step 5 Preview",
+      "solve_rate": 35.7861713913327,
+      "avg_time_min": 59.5142494248035,
+      "cost_usd": 3.5462938292167023,
+      "brand": "cn"
     },
     {
       "agent_harness": "Codex Agent CLI",
@@ -1645,12 +2125,36 @@
       "brand": "cn"
     },
     {
+      "agent_harness": "Mistral Vibe",
+      "model": "Mistral Large 4 (Medium)",
+      "solve_rate": 29.6112186379928,
+      "avg_time_min": 43.05157260463049,
+      "cost_usd": 1.02273104493918,
+      "brand": "other"
+    },
+    {
+      "agent_harness": "Claude Code",
+      "model": "Claude Haiku 5.5 (Max)",
+      "solve_rate": 29.5910380688606,
+      "avg_time_min": 77.431077575486,
+      "cost_usd": 2.25403965932735,
+      "brand": "claude"
+    },
+    {
       "agent_harness": "Codex Agent CLI",
       "model": "GPT-6 Luna (Max)",
       "solve_rate": 25.893788421853,
       "avg_time_min": 23.527090340230334,
       "cost_usd": 0.19217143913196935,
       "brand": "gpt"
+    },
+    {
+      "agent_harness": "Mirror",
+      "model": "Beam 1.0",
+      "solve_rate": 15.4770250896058,
+      "avg_time_min": 40.450987337985495,
+      "cost_usd": 0.30843081634837477,
+      "brand": "other"
     }
   ],
   "intelligence_index": [
@@ -1811,6 +2315,10 @@
       "score": 38.1652076677975
     },
     {
+      "model": "Claude Haiku 5.5 (max)",
+      "score": 36.4845435880142
+    },
+    {
       "model": "Muse Ember (max)",
       "score": 36.0212987864912
     },
@@ -1825,6 +2333,14 @@
     {
       "model": "Claude Opus 5.5 (low)",
       "score": 34.752785007759
+    },
+    {
+      "model": "Claude Haiku 5.5 (xhigh)",
+      "score": 34.6387759486628
+    },
+    {
+      "model": "Tencent Hy4",
+      "score": 34.5552385392508
     },
     {
       "model": "Muse Ember (xhigh)",
@@ -1847,8 +2363,24 @@
       "score": 30.8195522148431
     },
     {
+      "model": "Inkling 2 Small",
+      "score": 30.6286781498958
+    },
+    {
+      "model": "GPT-6.1 Terra (non-reasoning)",
+      "score": 30.515898867357
+    },
+    {
       "model": "MiMo-V2.6-Pro",
       "score": 29.8897833093321
+    },
+    {
+      "model": "Claude Haiku 5.5 (high)",
+      "score": 29.874315467743
+    },
+    {
+      "model": "Ling 3.1 Flash 1019",
+      "score": 29.570119369837
     },
     {
       "model": "GPT-6.1 Terra (low)",
@@ -1867,6 +2399,10 @@
       "score": 28.5750026655353
     },
     {
+      "model": "Step 5 Preview",
+      "score": 28.5283090216016
+    },
+    {
       "model": "GPT-6 Luna (max)",
       "score": 27.8552004938153
     },
@@ -1883,6 +2419,10 @@
       "score": 26.7276981444568
     },
     {
+      "model": "Mistral Large 4 (high)",
+      "score": 26.1249946754784
+    },
+    {
       "model": "Claude Sonnet 5.5 (low)",
       "score": 25.649704549789
     },
@@ -1891,28 +2431,72 @@
       "score": 24.8815868992913
     },
     {
+      "model": "Claude Haiku 5.5 (medium)",
+      "score": 24.6013254343023
+    },
+    {
+      "model": "Agnes 2.5 Pro Theta",
+      "score": 24.029012523359
+    },
+    {
       "model": "GPT-6 Luna (xhigh)",
       "score": 23.4508728089378
+    },
+    {
+      "model": "Mistral Large 4 (medium)",
+      "score": 23.1277321742266
     },
     {
       "model": "GLM-5.3 (low)",
       "score": 23.1079373025379
     },
     {
+      "model": "DeepSeek V4 Pro 0813 (max)",
+      "score": 23.0632981493003
+    },
+    {
       "model": "GPT-6 Luna (high)",
       "score": 21.4290170864582
+    },
+    {
+      "model": "DeepSeek V4 Pro 0813 (high)",
+      "score": 20.799409628237
+    },
+    {
+      "model": "Nanbeige4.3-33B",
+      "score": 20.4071119588083
     },
     {
       "model": "Qwen3.8 27B (xhigh)",
       "score": 20.1068756031705
     },
     {
+      "model": "JT-4.1 Flash 236B A21B",
+      "score": 18.952876906667
+    },
+    {
       "model": "MiniMax-M3",
       "score": 18.8789083859255
     },
     {
+      "model": "Claude Haiku 5.5 (low)",
+      "score": 18.6180055310996
+    },
+    {
+      "model": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
+      "score": 18.5131594039446
+    },
+    {
       "model": "GPT-6 Luna (medium)",
       "score": 18.4542156192416
+    },
+    {
+      "model": "K2 Horizon 375B A23B",
+      "score": 17.8202731734027
+    },
+    {
+      "model": "Beam 1.0",
+      "score": 17.7307282547205
     },
     {
       "model": "Qwen3.8 27B (medium)",
@@ -1923,16 +2507,108 @@
       "score": 15.6850612405479
     },
     {
+      "model": "Solar Pro 4",
+      "score": 14.1589437644357
+    },
+    {
+      "model": "Apodex 1.1",
+      "score": 13.6712884627289
+    },
+    {
+      "model": "Nemotron 3.5 Super VL",
+      "score": 13.6203422723141
+    },
+    {
+      "model": "DeepSeek V4 Pro 0813 (non-reasoning)",
+      "score": 12.5675939779921
+    },
+    {
+      "model": "Inkling (xhigh)",
+      "score": 12.4781698715401
+    },
+    {
+      "model": "Nemotron 3 Ultra",
+      "score": 11.7592726308177
+    },
+    {
       "model": "Gemini 3.5 Flash-Lite",
       "score": 11.6563462044212
+    },
+    {
+      "model": "Qwen3.8 27B (non-reasoning)",
+      "score": 10.0316676028892
     },
     {
       "model": "GPT-6 Luna (low)",
       "score": 9.66610812336462
     },
     {
+      "model": "GPT-6 Luna (non-reasoning)",
+      "score": 9.44244373619813
+    },
+    {
+      "model": "A.X-K2",
+      "score": 9.04405716512642
+    },
+    {
+      "model": "K-EXAONE 2.0",
+      "score": 7.56357436827474
+    },
+    {
       "model": "Muse Glimmer (high)",
       "score": 6.34128724913462
+    },
+    {
+      "model": "Command A+",
+      "score": 6.24120025576958
+    },
+    {
+      "model": "LFM3-1.7B",
+      "score": 5.99389916662478
+    },
+    {
+      "model": "Nemotron 3.5 Lightning",
+      "score": 5.5346663903388
+    },
+    {
+      "model": "Granite 4.2 8B",
+      "score": 5.09826495217051
+    },
+    {
+      "model": "Gemma 4 E4B",
+      "score": 4.78077714822335
+    },
+    {
+      "model": "Granite 4.2 3B",
+      "score": 4.72268717901823
+    },
+    {
+      "model": "Mistral Medium 3.5",
+      "score": 4.64508756526957
+    },
+    {
+      "model": "Gemma 4 31B",
+      "score": 4.38438284215374
+    },
+    {
+      "model": "Mistral Small 4",
+      "score": 4.29716249600478
+    },
+    {
+      "model": "gpt-oss-120b (high)",
+      "score": 3.81981165137417
+    },
+    {
+      "model": "North Mini Code",
+      "score": 3.42470262148493
+    },
+    {
+      "model": "Nemotron 3 Nano 4B",
+      "score": 1.81584603785463
+    },
+    {
+      "model": "LFM3-VL-2B",
+      "score": 1.70629313092144
     }
   ],
   "coding_index": [
@@ -2049,6 +2725,10 @@
       "coding_score": 53.5353535353535
     },
     {
+      "model": "GPT-5.3 Codex (xhigh)",
+      "coding_score": 53.030303030303
+    },
+    {
       "model": "Claude Opus 5.5 (medium)",
       "coding_score": 52.5252525252525
     },
@@ -2059,6 +2739,10 @@
     {
       "model": "GPT-6.2 Astra (low)",
       "coding_score": 51.010101010101
+    },
+    {
+      "model": "KAT-Coder-Pro V2",
+      "coding_score": 49.2424242424242
     },
     {
       "model": "Qwen4 Max",
@@ -2093,6 +2777,18 @@
       "coding_score": 37.878787878787904
     },
     {
+      "model": "Tencent Hy4",
+      "coding_score": 37.3737373737374
+    },
+    {
+      "model": "o3",
+      "coding_score": 37.121212121212096
+    },
+    {
+      "model": "Qwen3.5 397B A17B (non-reasoning)",
+      "coding_score": 35.6060606060606
+    },
+    {
       "model": "Muse Ember (xhigh)",
       "coding_score": 35.3535353535354
     },
@@ -2109,7 +2805,19 @@
       "coding_score": 33.8383838383838
     },
     {
+      "model": "Step 5 Preview",
+      "coding_score": 33.3333333333333
+    },
+    {
       "model": "GLM-5.3-Flash",
+      "coding_score": 32.8282828282828
+    },
+    {
+      "model": "Ling 3.1 Flash 1019",
+      "coding_score": 32.8282828282828
+    },
+    {
+      "model": "Claude Haiku 5.5 (max)",
       "coding_score": 32.8282828282828
     },
     {
@@ -2121,19 +2829,51 @@
       "coding_score": 31.313131313131297
     },
     {
+      "model": "Gemma 4 31B (non-reasoning)",
+      "coding_score": 30.303030303030297
+    },
+    {
       "model": "Claude Sonnet 5.5 (medium)",
       "coding_score": 29.7979797979798
+    },
+    {
+      "model": "Nanbeige4.3-33B",
+      "coding_score": 29.7979797979798
+    },
+    {
+      "model": "Qwen3.5 122B A10B (non-reasoning)",
+      "coding_score": 29.545454545454504
+    },
+    {
+      "model": "Claude Haiku 5.5 (xhigh)",
+      "coding_score": 29.292929292929298
     },
     {
       "model": "Gemini 4 Hydrogen (medium)",
       "coding_score": 29.292929292929298
     },
     {
+      "model": "JT-35B-Flash",
+      "coding_score": 28.7878787878788
+    },
+    {
       "model": "DeepSeek V4.1 Flash 1017 (high)",
       "coding_score": 28.7878787878788
     },
     {
+      "model": "GPT-6.1 Terra (non-reasoning)",
+      "coding_score": 26.7676767676768
+    },
+    {
+      "model": "Doubao Seed Code",
+      "coding_score": 26.5151515151515
+    },
+    {
       "model": "Grok 4.7 (xhigh)",
+      "coding_score": 25.7575757575758
+    },
+    {
+      "model": "Qwen3.6 35B A3B (non-reasoning)",
       "coding_score": 25.7575757575758
     },
     {
@@ -2145,32 +2885,204 @@
       "coding_score": 25.2525252525253
     },
     {
+      "model": "Gemma 4 26B A4B (non-reasoning)",
+      "coding_score": 25
+    },
+    {
+      "model": "ERNIE 5.0 Thinking Preview",
+      "coding_score": 25
+    },
+    {
       "model": "Grok 4.7 (high)",
       "coding_score": 24.747474747474698
+    },
+    {
+      "model": "Mistral Large 4 (high)",
+      "coding_score": 24.747474747474698
+    },
+    {
+      "model": "Nova 2.0 Pro Preview (medium)",
+      "coding_score": 24.2424242424242
+    },
+    {
+      "model": "Mistral Large 4 (medium)",
+      "coding_score": 23.2323232323232
     },
     {
       "model": "MiMo-V2.6-Flash",
       "coding_score": 22.727272727272698
     },
     {
+      "model": "Claude Haiku 5.5 (high)",
+      "coding_score": 21.7171717171717
+    },
+    {
+      "model": "Qwen3.5 Omni Plus",
+      "coding_score": 21.2121212121212
+    },
+    {
+      "model": "Nemotron Cascade 2 30B A3B",
+      "coding_score": 21.2121212121212
+    },
+    {
       "model": "Claude Sonnet 5.5 (low)",
       "coding_score": 20.7070707070707
+    },
+    {
+      "model": "EXAONE 4.5 33B",
+      "coding_score": 20.4545454545455
+    },
+    {
+      "model": "Qwen3.5 9B (non-reasoning)",
+      "coding_score": 18.181818181818198
+    },
+    {
+      "model": "JT-MINI",
+      "coding_score": 18.181818181818198
+    },
+    {
+      "model": "Qwen3.5 4B",
+      "coding_score": 18.181818181818198
+    },
+    {
+      "model": "Gemma 4 12B",
+      "coding_score": 18.181818181818198
+    },
+    {
+      "model": "Nova 2.0 Pro Preview (low)",
+      "coding_score": 17.4242424242424
+    },
+    {
+      "model": "Nova 2.0 Lite (medium)",
+      "coding_score": 17.4242424242424
+    },
+    {
+      "model": "Nova 2.0 Lite (high)",
+      "coding_score": 16.6666666666667
+    },
+    {
+      "model": "Nova 2.0 Pro Preview (non-reasoning)",
+      "coding_score": 16.6666666666667
+    },
+    {
+      "model": "Cogito v2.1",
+      "coding_score": 16.6666666666667
     },
     {
       "model": "Grok 4.7 (low)",
       "coding_score": 16.161616161616198
     },
     {
+      "model": "JT-4.1 Flash 236B A21B",
+      "coding_score": 15.656565656565698
+    },
+    {
+      "model": "Claude Haiku 5.5 (medium)",
+      "coding_score": 15.151515151515198
+    },
+    {
       "model": "GPT-6.1 Terra (low)",
       "coding_score": 15.151515151515198
+    },
+    {
+      "model": "Apriel-v1.6-15B-Thinker",
+      "coding_score": 14.3939393939394
+    },
+    {
+      "model": "DeepSeek V4 Pro 0813 (max)",
+      "coding_score": 14.1414141414141
+    },
+    {
+      "model": "Gemma 4 26B A4B",
+      "coding_score": 13.639999999999999
+    },
+    {
+      "model": "Inkling 2 Small",
+      "coding_score": 13.1313131313131
+    },
+    {
+      "model": "Magistral Medium 1.2",
+      "coding_score": 12.8787878787879
+    },
+    {
+      "model": "Claude Haiku 5.5 (low)",
+      "coding_score": 12.6262626262626
     },
     {
       "model": "GPT-6 Luna (max)",
       "coding_score": 12.6262626262626
     },
     {
+      "model": "GPT-5.5 Instant (June 2026)",
+      "coding_score": 12.6262626262626
+    },
+    {
+      "model": "Nemotron 3 Nano (non-reasoning)",
+      "coding_score": 12.1212121212121
+    },
+    {
+      "model": "HyperCLOVA X SEED Think (32B)",
+      "coding_score": 12.1212121212121
+    },
+    {
+      "model": "DeepSeek V4 Flash Vision (max)",
+      "coding_score": 12.1212121212121
+    },
+    {
+      "model": "Gemma 4 12B (non-reasoning)",
+      "coding_score": 11.363636363636399
+    },
+    {
+      "model": "Qwen3.5 4B (non-reasoning)",
+      "coding_score": 11.363636363636399
+    },
+    {
+      "model": "Kimi Linear 48B A3B Instruct",
+      "coding_score": 11.363636363636399
+    },
+    {
+      "model": "Hermes 4 405B",
+      "coding_score": 11.363636363636399
+    },
+    {
       "model": "Qwen3.8 2.4T A95B",
       "coding_score": 11.1111111111111
+    },
+    {
+      "model": "Mistral Small 4 (non-reasoning)",
+      "coding_score": 10.6060606060606
+    },
+    {
+      "model": "LongCat Flash Lite",
+      "coding_score": 10.6060606060606
+    },
+    {
+      "model": "Agnes 2.5 Pro Theta",
+      "coding_score": 10.1010101010101
+    },
+    {
+      "model": "Qwen3 Next 80B A3B (Reasoning)",
+      "coding_score": 9.84848484848485
+    },
+    {
+      "model": "Hermes 4 405B (non-reasoning)",
+      "coding_score": 9.84848484848485
+    },
+    {
+      "model": "INTELLECT-3",
+      "coding_score": 9.09090909090909
+    },
+    {
+      "model": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
+      "coding_score": 9.09090909090909
+    },
+    {
+      "model": "Qwen3.5 Omni Flash",
+      "coding_score": 8.33333333333333
+    },
+    {
+      "model": "Nemotron 3 Nano Omni 30B A3B",
+      "coding_score": 8.33333333333333
     },
     {
       "model": "GPT-6 Luna (xhigh)",
@@ -2181,24 +3093,132 @@
       "coding_score": 8.08080808080808
     },
     {
+      "model": "Qwen3 Next 80B A3B Instruct",
+      "coding_score": 7.57575757575758
+    },
+    {
+      "model": "Ring-flash-2.0",
+      "coding_score": 7.57575757575758
+    },
+    {
+      "model": "Gemma 4 E4B (non-reasoning)",
+      "coding_score": 7.57575757575758
+    },
+    {
+      "model": "Nova 2.0 Omni (non-reasoning)",
+      "coding_score": 6.81818181818182
+    },
+    {
+      "model": "Llama 3.1 405B",
+      "coding_score": 6.81818181818182
+    },
+    {
+      "model": "Nova 2.0 Lite (non-reasoning)",
+      "coding_score": 6.81818181818182
+    },
+    {
+      "model": "Nova Premier",
+      "coding_score": 6.81818181818182
+    },
+    {
       "model": "Gemini 4 Hydrogen (low)",
       "coding_score": 6.56565656565657
+    },
+    {
+      "model": "ERNIE 4.5 300B A47B",
+      "coding_score": 6.06060606060606
+    },
+    {
+      "model": "DeepSeek V4 Pro 0813 (high)",
+      "coding_score": 6.06060606060606
     },
     {
       "model": "Qwen3.8 27B (xhigh)",
       "coding_score": 5.55555555555556
     },
     {
+      "model": "Step3 VL 10B",
+      "coding_score": 5.3030303030303
+    },
+    {
+      "model": "gpt-oss-120b (low)",
+      "coding_score": 5.3030303030303
+    },
+    {
       "model": "Qwen3.8 27B (medium)",
       "coding_score": 5.05050505050505
+    },
+    {
+      "model": "Nova 2.0 Omni (medium)",
+      "coding_score": 4.545454545454549
+    },
+    {
+      "model": "gpt-oss-20b (low)",
+      "coding_score": 4.545454545454549
+    },
+    {
+      "model": "Hermes 4 70B",
+      "coding_score": 4.545454545454549
+    },
+    {
+      "model": "NVIDIA Nemotron Nano 12B v2 VL",
+      "coding_score": 4.545454545454549
+    },
+    {
+      "model": "Magistral Small 1.2",
+      "coding_score": 4.545454545454549
     },
     {
       "model": "GPT-6 Luna (high)",
       "coding_score": 4.545454545454549
     },
     {
+      "model": "LFM2.5-8B-A1B",
+      "coding_score": 4.545454545454549
+    },
+    {
       "model": "Gemini 3.1 Pro Preview",
       "coding_score": 4.04040404040404
+    },
+    {
+      "model": "Qwen3.5 2B (non-reasoning)",
+      "coding_score": 3.78787878787879
+    },
+    {
+      "model": "Qwen3.5 2B",
+      "coding_score": 3.78787878787879
+    },
+    {
+      "model": "Motif-2-12.7B",
+      "coding_score": 3.78787878787879
+    },
+    {
+      "model": "Nova 2.0 Lite (low)",
+      "coding_score": 3.78787878787879
+    },
+    {
+      "model": "Nova 2.0 Omni (low)",
+      "coding_score": 3.78787878787879
+    },
+    {
+      "model": "Qwen3 Omni 30B A3B (Reasoning)",
+      "coding_score": 3.78787878787879
+    },
+    {
+      "model": "Phi-4",
+      "coding_score": 3.78787878787879
+    },
+    {
+      "model": "Beam 1.0",
+      "coding_score": 3.03030303030303
+    },
+    {
+      "model": "Llama 3.3 70B",
+      "coding_score": 3.03030303030303
+    },
+    {
+      "model": "Gemma 4 E2B",
+      "coding_score": 3.03030303030303
     },
     {
       "model": "GPT-6 Luna (medium)",
@@ -2209,23 +3229,443 @@
       "coding_score": 2.52525252525253
     },
     {
+      "model": "Solar Open 100B",
+      "coding_score": 2.27272727272727
+    },
+    {
+      "model": "Granite 4.0 H Small",
+      "coding_score": 2.27272727272727
+    },
+    {
+      "model": "Gemma 4 E2B (non-reasoning)",
+      "coding_score": 2.27272727272727
+    },
+    {
+      "model": "Sarvam 30B (high)",
+      "coding_score": 2.27272727272727
+    },
+    {
+      "model": "Jamba 1.7 Large",
+      "coding_score": 2.27272727272727
+    },
+    {
+      "model": "Falcon-H1R-7B",
+      "coding_score": 2.27272727272727
+    },
+    {
+      "model": "Llama Nemotron Ultra",
+      "coding_score": 2.27272727272727
+    },
+    {
+      "model": "Mi:dm K 2.5 Pro",
+      "coding_score": 2.27272727272727
+    },
+    {
       "model": "MiniMax-M3",
       "coding_score": 2.02020202020202
+    },
+    {
+      "model": "Qwen3 Omni 30B A3B Instruct",
+      "coding_score": 1.51515151515152
+    },
+    {
+      "model": "Granite 4.0 Micro",
+      "coding_score": 1.51515151515152
+    },
+    {
+      "model": "Nova Micro",
+      "coding_score": 1.51515151515152
+    },
+    {
+      "model": "Sarvam 105B (high)",
+      "coding_score": 1.51515151515152
+    },
+    {
+      "model": "GPT-6 Luna (non-reasoning)",
+      "coding_score": 1.51515151515152
+    },
+    {
+      "model": "K2 Horizon 375B A23B",
+      "coding_score": 1.51515151515152
+    },
+    {
+      "model": "DeepSeek V4 Pro 0813 (non-reasoning)",
+      "coding_score": 1.51515151515152
+    },
+    {
+      "model": "NVIDIA Nemotron Nano 9B V2",
+      "coding_score": 1.51515151515152
     },
     {
       "model": "Gemini 3.5 Flash-Lite",
       "coding_score": 1.01010101010101
     },
     {
+      "model": "Inkling (xhigh)",
+      "coding_score": 1.01010101010101
+    },
+    {
+      "model": "K2 Horizon 7B",
+      "coding_score": 1.01010101010101
+    },
+    {
+      "model": "Solar Mini 4",
+      "coding_score": 1.01010101010101
+    },
+    {
+      "model": "Kimi K2.7 Code",
+      "coding_score": 1.01010101010101
+    },
+    {
+      "model": "Qwen3.7 Plus",
+      "coding_score": 1.01010101010101
+    },
+    {
+      "model": "Quasar 438B (max)",
+      "coding_score": 1.01010101010101
+    },
+    {
+      "model": "NVIDIA Nemotron Nano 9B V2 (non-reasoning)",
+      "coding_score": 0.757575757575758
+    },
+    {
+      "model": "Olmo 3 7B Think",
+      "coding_score": 0.757575757575758
+    },
+    {
+      "model": "Tri-21B-Think",
+      "coding_score": 0.757575757575758
+    },
+    {
+      "model": "Llama 3.2 11B (Vision)",
+      "coding_score": 0.757575757575758
+    },
+    {
+      "model": "Jamba Reasoning 3B",
+      "coding_score": 0.757575757575758
+    },
+    {
+      "model": "North Mini Code",
+      "coding_score": 0.505050505050505
+    },
+    {
+      "model": "Nemotron 3.5 Lightning",
+      "coding_score": 0.505050505050505
+    },
+    {
+      "model": "Qwen3.5 9B",
+      "coding_score": 0.505050505050505
+    },
+    {
+      "model": "Command A+",
+      "coding_score": 0.505050505050505
+    },
+    {
       "model": "Muse Glimmer (high)",
       "coding_score": 0.505050505050505
     },
     {
+      "model": "Nemotron 3 Ultra",
+      "coding_score": 0.505050505050505
+    },
+    {
+      "model": "Trinity Large Thinking",
+      "coding_score": 0.505050505050505
+    },
+    {
+      "model": "Ring-2.6-1T",
+      "coding_score": 0.505050505050505
+    },
+    {
+      "model": "Gemma 3 270M",
+      "coding_score": 0
+    },
+    {
+      "model": "Apodex 1.1",
+      "coding_score": 0
+    },
+    {
+      "model": "Granite 4.2 3B",
+      "coding_score": 0
+    },
+    {
+      "model": "Qwen3.5 397B A17B",
+      "coding_score": 0
+    },
+    {
+      "model": "Granite 4.2 30B",
+      "coding_score": 0
+    },
+    {
+      "model": "Solar Pro 4",
+      "coding_score": 0
+    },
+    {
+      "model": "K-EXAONE 2.0",
+      "coding_score": 0
+    },
+    {
+      "model": "Qwen3.5 122B A10B",
+      "coding_score": 0
+    },
+    {
+      "model": "Hermes 4 70B (non-reasoning)",
+      "coding_score": 0
+    },
+    {
+      "model": "LFM3-VL-2B",
+      "coding_score": 0
+    },
+    {
+      "model": "K2 Horizon 3.7B",
+      "coding_score": 0
+    },
+    {
+      "model": "HyperNova 60B 2605 (high)",
+      "coding_score": 0
+    },
+    {
+      "model": "Qwen3.8 27B (non-reasoning)",
+      "coding_score": 0
+    },
+    {
+      "model": "gpt-oss-20b (high)",
+      "coding_score": 0
+    },
+    {
+      "model": "Olmo 3.1 32B Think",
+      "coding_score": 0
+    },
+    {
+      "model": "LFM2.5-VL-1.6B",
+      "coding_score": 0
+    },
+    {
+      "model": "Molmo2-8B",
+      "coding_score": 0
+    },
+    {
+      "model": "Mistral Small 4",
+      "coding_score": 0
+    },
+    {
+      "model": "Qwen3.5 0.8B (non-reasoning)",
+      "coding_score": 0
+    },
+    {
+      "model": "Ling-3.0-flash-VL",
+      "coding_score": 0
+    },
+    {
+      "model": "MiniCPM-V 4.6 1.3B",
+      "coding_score": 0
+    },
+    {
+      "model": "LFM2.5-1.2B-Instruct",
+      "coding_score": 0
+    },
+    {
+      "model": "Apertus 70B Instruct",
+      "coding_score": 0
+    },
+    {
+      "model": "K2 Horizon MoVA 36B A4B",
+      "coding_score": 0
+    },
+    {
+      "model": "Granite 4.0 350M",
+      "coding_score": 0
+    },
+    {
+      "model": "LFM2.5-1.2B-Thinking",
+      "coding_score": 0
+    },
+    {
+      "model": "LongCat 2.0",
+      "coding_score": 0
+    },
+    {
+      "model": "MiniCPM5-2B",
+      "coding_score": 0
+    },
+    {
+      "model": "Ministral 3 3B",
+      "coding_score": 0
+    },
+    {
+      "model": "Ling-3.0-flash-Fin",
+      "coding_score": 0
+    },
+    {
+      "model": "Ministral 3 14B",
+      "coding_score": 0
+    },
+    {
+      "model": "Mercury 2.5",
+      "coding_score": 0
+    },
+    {
+      "model": "Nemotron 3 Nano",
+      "coding_score": 0
+    },
+    {
+      "model": "MiniCPM5-1B",
+      "coding_score": 0
+    },
+    {
+      "model": "Nemotron 3.5 Bolt 74B-A9B",
+      "coding_score": 0
+    },
+    {
+      "model": "Nanbeige4.1-3B",
+      "coding_score": 0
+    },
+    {
+      "model": "Ling 3.0 Tiny",
+      "coding_score": 0
+    },
+    {
+      "model": "Celeris-1",
+      "coding_score": 0
+    },
+    {
+      "model": "Tiny Aya Global",
+      "coding_score": 0
+    },
+    {
+      "model": "A.X-K2",
+      "coding_score": 0
+    },
+    {
+      "model": "Exaone 4.0 1.2B (non-reasoning)",
+      "coding_score": 0
+    },
+    {
+      "model": "Qwen3.6 35B A3B",
+      "coding_score": 0
+    },
+    {
+      "model": "Apertus 8B Instruct",
+      "coding_score": 0
+    },
+    {
+      "model": "Olmo 3 7B",
+      "coding_score": 0
+    },
+    {
+      "model": "Llama 4 Maverick",
+      "coding_score": 0
+    },
+    {
+      "model": "Olmo 3.1 32B Instruct",
+      "coding_score": 0
+    },
+    {
+      "model": "Ministral 3 8B",
+      "coding_score": 0
+    },
+    {
+      "model": "K2 Horizon 0.9B",
+      "coding_score": 0
+    },
+    {
+      "model": "Nemotron 3 Nano 4B",
+      "coding_score": 0
+    },
+    {
+      "model": "Phi-4 Mini",
+      "coding_score": 0
+    },
+    {
+      "model": "Granite 4.0 H 350M",
+      "coding_score": 0
+    },
+    {
+      "model": "Qwen3.5 0.8B",
+      "coding_score": 0
+    },
+    {
+      "model": "NVIDIA Nemotron Nano 12B v2 VL (non-reasoning)",
+      "coding_score": 0
+    },
+    {
+      "model": "Llama 4 Scout",
+      "coding_score": 0
+    },
+    {
+      "model": "Granite 4.2 8B",
+      "coding_score": 0
+    },
+    {
+      "model": "Molmo 7B-D",
+      "coding_score": 0
+    },
+    {
+      "model": "Jamba 1.7 Mini",
+      "coding_score": 0
+    },
+    {
       "model": "GPT-6 Luna (low)",
+      "coding_score": 0
+    },
+    {
+      "model": "LFM3-1.7B",
+      "coding_score": 0
+    },
+    {
+      "model": "Gemma 4 31B",
+      "coding_score": 0
+    },
+    {
+      "model": "MiniCPM5-1B (non-reasoning)",
+      "coding_score": 0
+    },
+    {
+      "model": "Exaone 4.0 1.2B",
+      "coding_score": 0
+    },
+    {
+      "model": "Gemma 4 E4B",
+      "coding_score": 0
+    },
+    {
+      "model": "Granite 4.0 H 1B",
+      "coding_score": 0
+    },
+    {
+      "model": "Reka Flash 3",
+      "coding_score": 0
+    },
+    {
+      "model": "Mistral Medium 3.5",
+      "coding_score": 0
+    },
+    {
+      "model": "Nemotron 3.5 Super VL",
+      "coding_score": 0
+    },
+    {
+      "model": "gpt-oss-120b (high)",
+      "coding_score": 0
+    },
+    {
+      "model": "LFM2 24B A2B",
+      "coding_score": 0
+    },
+    {
+      "model": "Qwen3 Coder Next",
       "coding_score": 0
     }
   ],
   "speed_tokens_per_sec": [
+    {
+      "model": "Celeris-1",
+      "speed_tps": 761.9700834866322
+    },
+    {
+      "model": "Mercury 2.5",
+      "speed_tps": 530.5771908243144
+    },
     {
       "model": "Muse Ember (max)",
       "speed_tps": 450.08465797849203
@@ -2239,12 +3679,84 @@
       "speed_tps": 321.1973035946679
     },
     {
+      "model": "Nemotron 3.5 Super VL",
+      "speed_tps": 300.18863450105977
+    },
+    {
+      "model": "Nemotron 3.5 Lightning",
+      "speed_tps": 278.6324199852076
+    },
+    {
+      "model": "Beam 1.0",
+      "speed_tps": 258.2238076904303
+    },
+    {
+      "model": "Claude Haiku 5.5 (max)",
+      "speed_tps": 254.69300374924876
+    },
+    {
+      "model": "Claude Haiku 5.5 (xhigh)",
+      "speed_tps": 233.22081495417092
+    },
+    {
+      "model": "K2 Horizon 375B A23B",
+      "speed_tps": 228.33077045288238
+    },
+    {
+      "model": "NVIDIA Nemotron Nano 9B V2",
+      "speed_tps": 227.63375178520002
+    },
+    {
+      "model": "Claude Haiku 5.5 (high)",
+      "speed_tps": 226.60244412719564
+    },
+    {
+      "model": "Claude Haiku 5.5 (medium)",
+      "speed_tps": 224.36456561123745
+    },
+    {
+      "model": "Nova Micro",
+      "speed_tps": 224.16426152905197
+    },
+    {
+      "model": "Claude Haiku 5.5 (low)",
+      "speed_tps": 214.7582801078374
+    },
+    {
+      "model": "Nemotron 3 Ultra",
+      "speed_tps": 199.20826442057614
+    },
+    {
+      "model": "Nemotron 3 Nano",
+      "speed_tps": 190.92377610189948
+    },
+    {
+      "model": "Agnes 2.5 Pro Theta",
+      "speed_tps": 190.60097619358956
+    },
+    {
+      "model": "NVIDIA Nemotron Nano 9B V2 (non-reasoning)",
+      "speed_tps": 186.05437528266492
+    },
+    {
+      "model": "gpt-oss-120b (high)",
+      "speed_tps": 181.53200859895747
+    },
+    {
+      "model": "gpt-oss-120b (low)",
+      "speed_tps": 181.0778576246284
+    },
+    {
       "model": "Muse Spark Open (xhigh)",
       "speed_tps": 179.28609653660246
     },
     {
       "model": "DeepSeek V4.1 Flash 1017 (high)",
       "speed_tps": 178.84072088642122
+    },
+    {
+      "model": "Ling 3.0 Tiny",
+      "speed_tps": 177.75366236442747
     },
     {
       "model": "Gemini 4 Hydrogen (high)",
@@ -2259,16 +3771,68 @@
       "speed_tps": 173.0249227064027
     },
     {
+      "model": "North Mini Code",
+      "speed_tps": 171.32053060594694
+    },
+    {
+      "model": "Command A+",
+      "speed_tps": 170.1460143400376
+    },
+    {
+      "model": "DeepSeek V4 Flash Vision (max)",
+      "speed_tps": 167.34664294842966
+    },
+    {
       "model": "Gemini 4 Hydrogen (medium)",
       "speed_tps": 164.70084152348338
+    },
+    {
+      "model": "Nemotron 3 Nano (non-reasoning)",
+      "speed_tps": 161.621328312345
+    },
+    {
+      "model": "Nova 2.0 Lite (medium)",
+      "speed_tps": 161.27573390230415
     },
     {
       "model": "Gemini 4 Hydrogen (low)",
       "speed_tps": 161.20984777929266
     },
     {
+      "model": "Nova 2.0 Lite (high)",
+      "speed_tps": 160.19185542351144
+    },
+    {
+      "model": "Sarvam 105B (high)",
+      "speed_tps": 155.33773430978977
+    },
+    {
+      "model": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
+      "speed_tps": 155.1794061674697
+    },
+    {
+      "model": "gpt-oss-20b (high)",
+      "speed_tps": 154.27613059440552
+    },
+    {
+      "model": "Nova 2.0 Lite (low)",
+      "speed_tps": 154.0537289993367
+    },
+    {
+      "model": "gpt-oss-20b (low)",
+      "speed_tps": 152.12219369399187
+    },
+    {
+      "model": "Ministral 3 3B",
+      "speed_tps": 147.81671695610984
+    },
+    {
       "model": "Claude Sonnet 5.5 (max)",
       "speed_tps": 147.18221584109486
+    },
+    {
+      "model": "Mistral Medium 3.5",
+      "speed_tps": 144.53245267634443
     },
     {
       "model": "Claude Sonnet 5.5 (high)",
@@ -2279,16 +3843,52 @@
       "speed_tps": 143.07813904776978
     },
     {
+      "model": "Mistral Small 4",
+      "speed_tps": 142.1328246598513
+    },
+    {
+      "model": "Qwen3.5 Omni Flash",
+      "speed_tps": 136.71652108192913
+    },
+    {
+      "model": "Step 5 Preview",
+      "speed_tps": 136.11803593413106
+    },
+    {
+      "model": "NVIDIA Nemotron Nano 12B v2 VL (non-reasoning)",
+      "speed_tps": 135.7379340869395
+    },
+    {
       "model": "Claude Sonnet 5.5 (low)",
       "speed_tps": 134.63614090229675
+    },
+    {
+      "model": "Solar Mini 4",
+      "speed_tps": 134.52564528802438
     },
     {
       "model": "MiniMax-M3.1-Flash",
       "speed_tps": 133.9126266137156
     },
     {
+      "model": "Tiny Aya Global",
+      "speed_tps": 130.98766674734972
+    },
+    {
       "model": "Claude Sonnet 5.5 (medium)",
       "speed_tps": 130.536927465077
+    },
+    {
+      "model": "GPT-5.5 Instant (June 2026)",
+      "speed_tps": 129.24256606883176
+    },
+    {
+      "model": "Nova 2.0 Lite (non-reasoning)",
+      "speed_tps": 128.9838107531812
+    },
+    {
+      "model": "o3",
+      "speed_tps": 125.55970203675491
     },
     {
       "model": "Muse Wonder (high)",
@@ -2299,12 +3899,32 @@
       "speed_tps": 122.35036025532033
     },
     {
+      "model": "Mistral Small 4 (non-reasoning)",
+      "speed_tps": 120.04488560822006
+    },
+    {
+      "model": "Qwen3.6 35B A3B",
+      "speed_tps": 119.54347385615677
+    },
+    {
       "model": "Claude Opus 5.5 (max)",
       "speed_tps": 117.60861392285233
     },
     {
+      "model": "Qwen3.5 9B (non-reasoning)",
+      "speed_tps": 116.55376435175548
+    },
+    {
+      "model": "Inkling 2 Small",
+      "speed_tps": 115.94241679626897
+    },
+    {
       "model": "Gemini 3.1 Pro Preview",
       "speed_tps": 115.5637839862324
+    },
+    {
+      "model": "Qwen3 Next 80B A3B Instruct",
+      "speed_tps": 113.08762453464648
     },
     {
       "model": "Claude Fable 5.2 (max)",
@@ -2339,6 +3959,10 @@
       "speed_tps": 106.59550942842584
     },
     {
+      "model": "Nova 2.0 Pro Preview (non-reasoning)",
+      "speed_tps": 106.17998455638762
+    },
+    {
       "model": "Claude Fable 5.2 (xhigh)",
       "speed_tps": 105.88149911497446
     },
@@ -2351,16 +3975,60 @@
       "speed_tps": 102.63401042662929
     },
     {
+      "model": "Qwen3.5 122B A10B",
+      "speed_tps": 102.22487780647464
+    },
+    {
+      "model": "Inkling (xhigh)",
+      "speed_tps": 99.76847285952142
+    },
+    {
       "model": "GPT-6 Luna (xhigh)",
       "speed_tps": 99.60103337990897
+    },
+    {
+      "model": "Nova 2.0 Pro Preview (medium)",
+      "speed_tps": 98.81112281808464
+    },
+    {
+      "model": "Llama 4 Scout",
+      "speed_tps": 96.01045505855997
     },
     {
       "model": "GPT-6 Luna (medium)",
       "speed_tps": 95.41322579234479
     },
     {
+      "model": "Tencent Hy4",
+      "speed_tps": 95.04115152201179
+    },
+    {
+      "model": "DeepSeek V4 Pro 0813 (max)",
+      "speed_tps": 94.92716034356833
+    },
+    {
       "model": "GPT-6 Luna (high)",
       "speed_tps": 94.30951008192274
+    },
+    {
+      "model": "Qwen3.5 122B A10B (non-reasoning)",
+      "speed_tps": 93.49201639124227
+    },
+    {
+      "model": "Qwen3.6 35B A3B (non-reasoning)",
+      "speed_tps": 92.90779189223076
+    },
+    {
+      "model": "GPT-6 Luna (non-reasoning)",
+      "speed_tps": 91.44676238455305
+    },
+    {
+      "model": "GPT-5.3 Codex (xhigh)",
+      "speed_tps": 91.13848120221519
+    },
+    {
+      "model": "Nova 2.0 Pro Preview (low)",
+      "speed_tps": 90.36481571888511
     },
     {
       "model": "GLM-5.3 (max)",
@@ -2375,8 +4043,20 @@
       "speed_tps": 89.09239598583878
     },
     {
+      "model": "DeepSeek V4 Pro 0813 (non-reasoning)",
+      "speed_tps": 86.64713189319785
+    },
+    {
+      "model": "Qwen3 Omni 30B A3B (Reasoning)",
+      "speed_tps": 85.78868720885728
+    },
+    {
       "model": "GPT-6.2 Sol (max)",
       "speed_tps": 85.18101232802894
+    },
+    {
+      "model": "Ministral 3 8B",
+      "speed_tps": 85.03058525535775
     },
     {
       "model": "Qwen3.8-Flash-Next",
@@ -2387,12 +4067,44 @@
       "speed_tps": 80.24355850117986
     },
     {
+      "model": "Ministral 3 14B",
+      "speed_tps": 80.18266562846459
+    },
+    {
       "model": "GPT-6.2 Sol (high)",
       "speed_tps": 79.3097585459541
     },
     {
+      "model": "Qwen3.5 9B",
+      "speed_tps": 77.72783167846838
+    },
+    {
+      "model": "Qwen3.5 Omni Plus",
+      "speed_tps": 76.15712749582923
+    },
+    {
+      "model": "Qwen3 Omni 30B A3B Instruct",
+      "speed_tps": 74.60328746065179
+    },
+    {
       "model": "GPT-6.2 Sol (medium)",
       "speed_tps": 74.46217398832243
+    },
+    {
+      "model": "Mistral Large 4 (medium)",
+      "speed_tps": 74.01657112499304
+    },
+    {
+      "model": "Mistral Large 4 (high)",
+      "speed_tps": 73.9812328995073
+    },
+    {
+      "model": "Solar Pro 4",
+      "speed_tps": 72.8519185674512
+    },
+    {
+      "model": "Gemma 4 26B A4B (non-reasoning)",
+      "speed_tps": 72.2754647948904
     },
     {
       "model": "GPT-6.2 Sol (low)",
@@ -2403,8 +4115,16 @@
       "speed_tps": 71.56954268966349
     },
     {
+      "model": "Granite 4.2 8B",
+      "speed_tps": 71.38056503541306
+    },
+    {
       "model": "Grok 4.7 (low)",
       "speed_tps": 71.2970699898721
+    },
+    {
+      "model": "Llama 3.3 70B",
+      "speed_tps": 71.06134192808389
     },
     {
       "model": "Grok 4.7 (xhigh)",
@@ -2419,12 +4139,20 @@
       "speed_tps": 69.85746941261213
     },
     {
+      "model": "Llama 4 Maverick",
+      "speed_tps": 68.3560703841605
+    },
+    {
       "model": "Gemini 4 Argon (high)",
       "speed_tps": 67.11122368245553
     },
     {
       "model": "GPT-6.1 Terra (xhigh)",
       "speed_tps": 66.83761905251374
+    },
+    {
+      "model": "Gemma 4 26B A4B",
+      "speed_tps": 66.43752363414086
     },
     {
       "model": "GPT-6.1 Terra (high)",
@@ -2435,8 +4163,20 @@
       "speed_tps": 64.15679827768415
     },
     {
+      "model": "GPT-6.1 Terra (non-reasoning)",
+      "speed_tps": 63.84731944254917
+    },
+    {
       "model": "GPT-6.2 Astra (max)",
       "speed_tps": 63.81706500185169
+    },
+    {
+      "model": "Magistral Small 1.2",
+      "speed_tps": 63.46204902836441
+    },
+    {
+      "model": "Gemma 4 E4B",
+      "speed_tps": 62.76254152105732
     },
     {
       "model": "GPT-6.1 Terra (low)",
@@ -2445,6 +4185,14 @@
     {
       "model": "Gemini 4 Carbon (high)",
       "speed_tps": 61.855385678731466
+    },
+    {
+      "model": "Qwen3 Coder Next",
+      "speed_tps": 61.78707700219735
+    },
+    {
+      "model": "LongCat 2.0",
+      "speed_tps": 60.83452179691968
     },
     {
       "model": "GPT-6.2 Astra (high)",
@@ -2459,12 +4207,20 @@
       "speed_tps": 59.71965027938387
     },
     {
+      "model": "Gemma 4 E4B (non-reasoning)",
+      "speed_tps": 59.6241268129309
+    },
+    {
       "model": "GPT-6.2 Astra (medium)",
       "speed_tps": 58.59717190359939
     },
     {
       "model": "Gemini 4 Carbon (medium)",
       "speed_tps": 58.56022063818909
+    },
+    {
+      "model": "Reka Flash 3",
+      "speed_tps": 58.5436929840371
     },
     {
       "model": "GPT-6.2 Astra (low)",
@@ -2479,12 +4235,28 @@
       "speed_tps": 56.97640984806677
     },
     {
+      "model": "Qwen3.7 Plus",
+      "speed_tps": 56.416595001483216
+    },
+    {
+      "model": "Kimi K2.7 Code",
+      "speed_tps": 56.278148594813864
+    },
+    {
       "model": "Qwen4 Max",
       "speed_tps": 52.77218752382051
     },
     {
+      "model": "Qwen3.5 397B A17B",
+      "speed_tps": 52.66140646100889
+    },
+    {
       "model": "Gemini 4 Carbon (low)",
       "speed_tps": 50.06050002933443
+    },
+    {
+      "model": "Qwen3.5 397B A17B (non-reasoning)",
+      "speed_tps": 48.90465797648266
     },
     {
       "model": "Qwen3.8 27B (low)",
@@ -2503,30 +4275,110 @@
       "speed_tps": 41.69916714169974
     },
     {
+      "model": "Gemma 4 31B (non-reasoning)",
+      "speed_tps": 41.691821955427834
+    },
+    {
       "model": "Qwen3.8 2.4T A95B",
       "speed_tps": 40.811485849943324
     },
     {
+      "model": "Qwen3.8 27B (non-reasoning)",
+      "speed_tps": 39.19431187351785
+    },
+    {
+      "model": "Qwen3.5 4B",
+      "speed_tps": 38.00026568801778
+    },
+    {
+      "model": "Hermes 4 405B",
+      "speed_tps": 36.94381733178723
+    },
+    {
+      "model": "Gemma 4 31B",
+      "speed_tps": 35.70589193618026
+    },
+    {
+      "model": "Hermes 4 405B (non-reasoning)",
+      "speed_tps": 34.29941409006382
+    },
+    {
+      "model": "Phi-4",
+      "speed_tps": 34.002030506891444
+    },
+    {
+      "model": "Qwen3.5 4B (non-reasoning)",
+      "speed_tps": 33.29680709523711
+    },
+    {
       "model": "Kimi K3.1 Pro",
       "speed_tps": 30.935054769722086
+    },
+    {
+      "model": "Phi-4 Multimodal",
+      "speed_tps": 21.7155019800634
+    },
+    {
+      "model": "Llama 3.2 11B (Vision)",
+      "speed_tps": 21.40380271980838
+    },
+    {
+      "model": "Phi-4 Mini",
+      "speed_tps": 15.814508486164216
     }
   ],
   "cost_per_task_usd": [
     {
+      "model": "North Mini Code",
+      "cost_usd": 0
+    },
+    {
+      "model": "Command A+",
+      "cost_usd": 0
+    },
+    {
+      "model": "K2 Horizon 375B A23B",
+      "cost_usd": 0
+    },
+    {
       "model": "GPT-6 Luna (low)",
       "cost_usd": 0.005115255188520391
+    },
+    {
+      "model": "Gemma 4 E4B",
+      "cost_usd": 0.008266637382002534
+    },
+    {
+      "model": "Mistral Small 4",
+      "cost_usd": 0.03990856296103761
+    },
+    {
+      "model": "Granite 4.2 8B",
+      "cost_usd": 0.0404628507686443
     },
     {
       "model": "GPT-6 Luna (medium)",
       "cost_usd": 0.042201836106537785
     },
     {
+      "model": "Claude Haiku 5.5 (low)",
+      "cost_usd": 0.043757686381988486
+    },
+    {
       "model": "GPT-6.1 Terra (low)",
       "cost_usd": 0.07133756205169729
     },
     {
+      "model": "GPT-6 Luna (non-reasoning)",
+      "cost_usd": 0.07141741932294249
+    },
+    {
       "model": "GPT-6 Luna (high)",
       "cost_usd": 0.07294776473194697
+    },
+    {
+      "model": "Claude Haiku 5.5 (medium)",
+      "cost_usd": 0.0917645584066771
     },
     {
       "model": "GPT-6 Luna (xhigh)",
@@ -2535,6 +4387,10 @@
     {
       "model": "Muse Ember (xhigh)",
       "cost_usd": 0.1162277983030469
+    },
+    {
+      "model": "LFM3-VL-2B",
+      "cost_usd": 0.12372622709334724
     },
     {
       "model": "MiMo-V2.6-Flash",
@@ -2549,8 +4405,16 @@
       "cost_usd": 0.15195575732105837
     },
     {
+      "model": "Claude Haiku 5.5 (high)",
+      "cost_usd": 0.15856031956679498
+    },
+    {
       "model": "GPT-6.1 Terra (medium)",
       "cost_usd": 0.16880458238389412
+    },
+    {
+      "model": "LFM3-1.7B",
+      "cost_usd": 0.17318927264981218
     },
     {
       "model": "Muse Glimmer (high)",
@@ -2561,6 +4425,14 @@
       "cost_usd": 0.18358471526572703
     },
     {
+      "model": "GPT-6.1 Terra (non-reasoning)",
+      "cost_usd": 0.22589585897456366
+    },
+    {
+      "model": "Claude Haiku 5.5 (xhigh)",
+      "cost_usd": 0.24836110126596478
+    },
+    {
       "model": "MiMo-V2.6-Pro",
       "cost_usd": 0.25718036275876155
     },
@@ -2569,8 +4441,20 @@
       "cost_usd": 0.2592796466169722
     },
     {
+      "model": "Beam 1.0",
+      "cost_usd": 0.28440671352465285
+    },
+    {
       "model": "Gemini 4 Hydrogen (low)",
       "cost_usd": 0.2922227000200506
+    },
+    {
+      "model": "Nemotron 3.5 Lightning",
+      "cost_usd": 0.31445225066768195
+    },
+    {
+      "model": "gpt-oss-120b (high)",
+      "cost_usd": 0.34534207651823257
     },
     {
       "model": "GPT-6.1 Terra (xhigh)",
@@ -2581,8 +4465,20 @@
       "cost_usd": 0.40605590960076604
     },
     {
+      "model": "Claude Haiku 5.5 (max)",
+      "cost_usd": 0.41100741536816304
+    },
+    {
+      "model": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
+      "cost_usd": 0.4254202455035728
+    },
+    {
       "model": "DeepSeek V4.1 Flash 1017 (high)",
       "cost_usd": 0.45619449806633267
+    },
+    {
+      "model": "Nemotron 3.5 Super VL",
+      "cost_usd": 0.48180884308185656
     },
     {
       "model": "MiniMax-M3.1-Flash",
@@ -2599,6 +4495,10 @@
     {
       "model": "Qwen3.8-Flash-Next",
       "cost_usd": 0.5693810918846318
+    },
+    {
+      "model": "Agnes 2.5 Pro Theta",
+      "cost_usd": 0.5746675567739363
     },
     {
       "model": "GLM-5.3-Flash",
@@ -2621,12 +4521,24 @@
       "cost_usd": 0.6929018557975878
     },
     {
+      "model": "Apodex 1.1",
+      "cost_usd": 0.764236100822604
+    },
+    {
       "model": "Claude Sonnet 5.5 (medium)",
       "cost_usd": 0.7806560352024481
     },
     {
       "model": "Gemini 4 Hydrogen (medium)",
       "cost_usd": 0.7979866055252406
+    },
+    {
+      "model": "DeepSeek V4 Pro 0813 (high)",
+      "cost_usd": 0.8485312855493328
+    },
+    {
+      "model": "Solar Pro 4",
+      "cost_usd": 0.9557366659448332
     },
     {
       "model": "GPT-6.1 Terra (max)",
@@ -2637,12 +4549,36 @@
       "cost_usd": 0.9755293224458845
     },
     {
+      "model": "DeepSeek V4 Pro 0813 (non-reasoning)",
+      "cost_usd": 0.9769879356486032
+    },
+    {
       "model": "GPT-6.2 Sol (max)",
       "cost_usd": 1.014379970300768
     },
     {
+      "model": "Tencent Hy4",
+      "cost_usd": 1.0311060706397974
+    },
+    {
+      "model": "Mistral Medium 3.5",
+      "cost_usd": 1.0390849688366068
+    },
+    {
+      "model": "Inkling 2 Small",
+      "cost_usd": 1.1784281349617984
+    },
+    {
       "model": "MiniMax-M3",
       "cost_usd": 1.2850974407373852
+    },
+    {
+      "model": "Inkling (xhigh)",
+      "cost_usd": 1.3519575079737436
+    },
+    {
+      "model": "Mistral Large 4 (medium)",
+      "cost_usd": 1.4120973060945472
     },
     {
       "model": "GLM-5.3 (low)",
@@ -2657,6 +4593,10 @@
       "cost_usd": 1.6361294399784785
     },
     {
+      "model": "DeepSeek V4 Pro 0813 (max)",
+      "cost_usd": 1.7691338076407441
+    },
+    {
       "model": "Gemini 4 Hydrogen (high)",
       "cost_usd": 1.8733140062520008
     },
@@ -2669,12 +4609,24 @@
       "cost_usd": 2.0176680435839316
     },
     {
+      "model": "Mistral Large 4 (high)",
+      "cost_usd": 2.0617306268126856
+    },
+    {
       "model": "GPT-6.2 Astra (high)",
       "cost_usd": 2.073874957362806
     },
     {
       "model": "Qwen3.8 27B (medium)",
       "cost_usd": 2.1600047179927624
+    },
+    {
+      "model": "Nemotron 3 Ultra",
+      "cost_usd": 2.2102962660498227
+    },
+    {
+      "model": "Step 5 Preview",
+      "cost_usd": 2.3452525606205166
     },
     {
       "model": "Claude Opus 5.5 (medium)",
@@ -2697,6 +4649,10 @@
       "cost_usd": 3.1601590757006157
     },
     {
+      "model": "Ling 3.1 Flash 1019",
+      "cost_usd": 3.185145018337793
+    },
+    {
       "model": "Qwen4 Max",
       "cost_usd": 3.2681327300897323
     },
@@ -2711,6 +4667,10 @@
     {
       "model": "Kimi K3.1 Pro",
       "cost_usd": 3.6812002895742055
+    },
+    {
+      "model": "Qwen3.8 27B (non-reasoning)",
+      "cost_usd": 3.7729435511821583
     },
     {
       "model": "Claude Fable 5.2 (medium)",
@@ -2789,7 +4749,1586 @@
       "cost_usd": 26.53855780398091
     }
   ],
+  "model_meta": {
+    "JT-35B-Flash": {
+      "creator": "China Mobile",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Qwen3.5 Omni Plus": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Nova 2.0 Omni (medium)": {
+      "creator": "Amazon",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Qwen3.5 122B A10B (non-reasoning)": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemma 4 12B (non-reasoning)": {
+      "creator": "Google",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Sonnet 5.5 (medium)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Gemma 3 270M": {
+      "creator": "Google",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Apodex 1.1": {
+      "creator": "Apodex",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Gemini 3.5 Flash-Lite": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Step 5 Preview": {
+      "creator": "StepFun",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.5 2B (non-reasoning)": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3 Omni 30B A3B Instruct": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Granite 4.2 3B": {
+      "creator": "IBM",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Fable 5.2 (medium)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "GPT-6.1 Terra (non-reasoning)": {
+      "creator": "OpenAI",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Gemini 4 Carbon (medium)": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Nova 2.0 Pro Preview (medium)": {
+      "creator": "Amazon",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Inkling (xhigh)": {
+      "creator": "Thinking Machines",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.5 397B A17B": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Granite 4.2 30B": {
+      "creator": "IBM",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "K2 Horizon 7B": {
+      "creator": "Institute of Foundation Models",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "MiMo-V2.6-Flash": {
+      "creator": "Xiaomi",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Mistral Small 4 (non-reasoning)": {
+      "creator": "Mistral",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Solar Pro 4": {
+      "creator": "Upstage",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "gpt-oss-20b (low)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "o3": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "K-EXAONE 2.0": {
+      "creator": "LG AI Research",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GLM-5.3-Flash": {
+      "creator": "Z AI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6 Luna (xhigh)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "North Mini Code": {
+      "creator": "Cohere",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nova 2.0 Omni (non-reasoning)": {
+      "creator": "Amazon",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Granite 4.0 Micro": {
+      "creator": "IBM",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Haiku 5.5 (high)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Grok 4.7 (low)": {
+      "creator": "SpaceXAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Qwen3.5 9B (non-reasoning)": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.5 122B A10B": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Hermes 4 70B (non-reasoning)": {
+      "creator": "Nous Research",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nemotron 3 Nano (non-reasoning)": {
+      "creator": "NVIDIA",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "MiMo-V2.6-Pro": {
+      "creator": "Xiaomi",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Sonnet 5.5 (high)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Qwen3 Next 80B A3B Instruct": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Grok 4.7 (high)": {
+      "creator": "SpaceXAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "MiniMax-M3": {
+      "creator": "MiniMax",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Mistral Large 4 (medium)": {
+      "creator": "Mistral",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6.2 Sol (xhigh)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Nemotron 3.5 Lightning": {
+      "creator": "NVIDIA",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "LFM3-VL-2B": {
+      "creator": "Liquid AI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Phi-4 Multimodal": {
+      "creator": "Microsoft",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.5 9B": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "NVIDIA Nemotron Nano 9B V2 (non-reasoning)": {
+      "creator": "NVIDIA",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Command A+": {
+      "creator": "Cohere",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Opus 5.5 (max)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Qwen3.5 4B (non-reasoning)": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.5 397B A17B (non-reasoning)": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "K2 Horizon 3.7B": {
+      "creator": "Institute of Foundation Models",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Olmo 3 7B Think": {
+      "creator": "Allen Institute for AI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "HyperCLOVA X SEED Think (32B)": {
+      "creator": "Naver",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "HyperNova 60B 2605 (high)": {
+      "creator": "Multiverse Computing",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nova Micro": {
+      "creator": "Amazon",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Qwen3.8 27B (non-reasoning)": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Muse Spark Open (xhigh)": {
+      "creator": "Meta",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6 Luna (medium)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "INTELLECT-3": {
+      "creator": "Prime Intellect",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "gpt-oss-20b (high)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Muse Wonder (high)": {
+      "creator": "Meta",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Olmo 3.1 32B Think": {
+      "creator": "Allen Institute for AI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "LFM2.5-VL-1.6B": {
+      "creator": "Liquid AI",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "JT-MINI": {
+      "creator": "China Mobile",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Molmo2-8B": {
+      "creator": "Allen Institute for AI",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Mistral Small 4": {
+      "creator": "Mistral",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.5 0.8B (non-reasoning)": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Haiku 5.5 (xhigh)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Claude Haiku 5.5 (low)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Ling-3.0-flash-VL": {
+      "creator": "InclusionAI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "MiniCPM-V 4.6 1.3B": {
+      "creator": "OpenBMB",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Opus 5.5 (low)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Sarvam 105B (high)": {
+      "creator": "Sarvam",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Llama 3.1 405B": {
+      "creator": "Meta",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Ring-flash-2.0": {
+      "creator": "InclusionAI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "LFM2.5-1.2B-Instruct": {
+      "creator": "Liquid AI",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemini 4 Argon (medium)": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Apertus 70B Instruct": {
+      "creator": "Swiss AI Initiative",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nanbeige4.3-33B": {
+      "creator": "Nanbeige",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Doubao Seed Code": {
+      "creator": "ByteDance Seed",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "EXAONE 4.5 33B": {
+      "creator": "LG AI Research",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemma 4 E4B (non-reasoning)": {
+      "creator": "Google",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Ling 3.1 Flash 1019": {
+      "creator": "InclusionAI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "K2 Horizon MoVA 36B A4B": {
+      "creator": "Institute of Foundation Models",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Granite 4.0 350M": {
+      "creator": "IBM",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "DeepSeek V4.1 Flash 1017 (non-reasoning)": {
+      "creator": "DeepSeek",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Muse Glimmer (high)": {
+      "creator": "Meta",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6.2 Astra (xhigh)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Claude Fable 5.2 (max)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Grok 4.7 (xhigh)": {
+      "creator": "SpaceXAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Kimi Linear 48B A3B Instruct": {
+      "creator": "Kimi",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Solar Open 100B": {
+      "creator": "Upstage",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-5.3 Codex (xhigh)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "LFM2.5-1.2B-Thinking": {
+      "creator": "Liquid AI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nemotron 3 Ultra": {
+      "creator": "NVIDIA",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "LongCat 2.0": {
+      "creator": "LongCat",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.5 2B": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Tri-21B-Think": {
+      "creator": "Trillion Labs",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Granite 4.0 H Small": {
+      "creator": "IBM",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Llama 3.2 11B (Vision)": {
+      "creator": "Meta",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "LongCat Flash Lite": {
+      "creator": "LongCat",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nova 2.0 Lite (high)": {
+      "creator": "Amazon",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Solar Mini 4": {
+      "creator": "Upstage",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "GPT-6 Luna (non-reasoning)": {
+      "creator": "OpenAI",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "MiniCPM5-2B": {
+      "creator": "OpenBMB",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.5 4B": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.8 27B (medium)": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Kimi K3.1 Pro": {
+      "creator": "Kimi",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Motif-2-12.7B": {
+      "creator": "Motif Technologies",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Qwen3.6 35B A3B (non-reasoning)": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Ministral 3 3B": {
+      "creator": "Mistral",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Beam 1.0": {
+      "creator": "Reflection",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Hermes 4 70B": {
+      "creator": "Nous Research",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Ling-3.0-flash-Fin": {
+      "creator": "InclusionAI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemma 4 26B A4B": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "NVIDIA Nemotron Nano 12B v2 VL": {
+      "creator": "NVIDIA",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.5 Omni Flash": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "GPT-6 Luna (max)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Nova 2.0 Lite (low)": {
+      "creator": "Amazon",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Magistral Small 1.2": {
+      "creator": "Mistral",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemma 4 26B A4B (non-reasoning)": {
+      "creator": "Google",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Ministral 3 14B": {
+      "creator": "Mistral",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemma 4 E2B (non-reasoning)": {
+      "creator": "Google",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6.2 Astra (max)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Sarvam 30B (high)": {
+      "creator": "Sarvam",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Mercury 2.5": {
+      "creator": "Inception",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Claude Fable 5.2 (xhigh)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Nova 2.0 Lite (non-reasoning)": {
+      "creator": "Amazon",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Nemotron 3 Nano": {
+      "creator": "NVIDIA",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "DeepSeek V4 Flash Vision (max)": {
+      "creator": "DeepSeek",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "MiniCPM5-1B": {
+      "creator": "OpenBMB",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Jamba 1.7 Large": {
+      "creator": "AI21 Labs",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Muse Ember (xhigh)": {
+      "creator": "Meta",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Claude Haiku 5.5 (max)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "GPT-6 Luna (high)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Nemotron 3.5 Bolt 74B-A9B": {
+      "creator": "NVIDIA",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nanbeige4.1-3B": {
+      "creator": "Nanbeige",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.8 27B (low)": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Ling 3.0 Tiny": {
+      "creator": "InclusionAI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Celeris-1": {
+      "creator": "Celeris",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Tiny Aya Global": {
+      "creator": "Cohere",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "A.X-K2": {
+      "creator": "SK Telecom",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Exaone 4.0 1.2B (non-reasoning)": {
+      "creator": "LG AI Research",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Hermes 4 405B": {
+      "creator": "Nous Research",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6.2 Sol (medium)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "DeepSeek V4 Pro 0813 (max)": {
+      "creator": "DeepSeek",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Magistral Medium 1.2": {
+      "creator": "Mistral",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Qwen3.6 35B A3B": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemini 4 Hydrogen (low)": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Apertus 8B Instruct": {
+      "creator": "Swiss AI Initiative",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nemotron 3 Nano Omni 30B A3B": {
+      "creator": "NVIDIA",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6.2 Astra (medium)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Kimi K2.7 Code": {
+      "creator": "Kimi",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.8 2.4T A95B": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Olmo 3 7B": {
+      "creator": "Allen Institute for AI",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemini 4 Carbon (high)": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Llama 4 Maverick": {
+      "creator": "Meta",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Olmo 3.1 32B Instruct": {
+      "creator": "Allen Institute for AI",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Ministral 3 8B": {
+      "creator": "Mistral",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Sonnet 5.5 (xhigh)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Llama 3.3 70B": {
+      "creator": "Meta",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nemotron Cascade 2 30B A3B": {
+      "creator": "NVIDIA",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.8-Flash-Next": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "K2 Horizon 0.9B": {
+      "creator": "Institute of Foundation Models",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nemotron 3 Nano 4B": {
+      "creator": "NVIDIA",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Phi-4 Mini": {
+      "creator": "Microsoft",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6.2 Sol (max)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Nova 2.0 Pro Preview (non-reasoning)": {
+      "creator": "Amazon",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "ERNIE 5.0 Thinking Preview": {
+      "creator": "Baidu",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Granite 4.0 H 350M": {
+      "creator": "IBM",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.5 0.8B": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Apriel-v1.6-15B-Thinker": {
+      "creator": "ServiceNow",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6.2 Sol (low)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Qwen3.7 Plus": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "NVIDIA Nemotron Nano 12B v2 VL (non-reasoning)": {
+      "creator": "NVIDIA",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Step3 VL 10B": {
+      "creator": "StepFun",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Llama 4 Scout": {
+      "creator": "Meta",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Granite 4.2 8B": {
+      "creator": "IBM",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "ERNIE 4.5 300B A47B": {
+      "creator": "Baidu",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Haiku 5.5 (medium)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Molmo 7B-D": {
+      "creator": "Allen Institute for AI",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3.8 27B (xhigh)": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemma 4 E2B": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6.1 Terra (max)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Claude Sonnet 5.5 (max)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "JT-4.1 Flash 236B A21B": {
+      "creator": "China Mobile",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Nova 2.0 Omni (low)": {
+      "creator": "Amazon",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Gemini 4 Carbon (low)": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Jamba 1.7 Mini": {
+      "creator": "AI21 Labs",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Trinity Large Thinking": {
+      "creator": "Arcee AI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3 Omni 30B A3B (Reasoning)": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "K2 Horizon 375B A23B": {
+      "creator": "Institute of Foundation Models",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Sonnet 5.5 (low)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Gemini 3.1 Pro Preview": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "GPT-6 Luna (low)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "DeepSeek V4.1 Flash 1017 (high)": {
+      "creator": "DeepSeek",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-5.5 Instant (June 2026)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "GPT-6.1 Terra (medium)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Falcon-H1R-7B": {
+      "creator": "TII UAE",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "LFM3-1.7B": {
+      "creator": "Liquid AI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen3 Next 80B A3B (Reasoning)": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6.1 Terra (low)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "gpt-oss-120b (low)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GLM-5.3 (low)": {
+      "creator": "Z AI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6.2 Astra (low)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Gemma 4 31B": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GLM-5.3 (max)": {
+      "creator": "Z AI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "GPT-6.2 Sol (high)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Llama Nemotron Ultra": {
+      "creator": "NVIDIA",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Fable 5.2 (low)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Gemma 4 31B (non-reasoning)": {
+      "creator": "Google",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Tencent Hy4": {
+      "creator": "Tencent",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "MiniCPM5-1B (non-reasoning)": {
+      "creator": "OpenBMB",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemini 4 Argon (high)": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Hermes 4 405B (non-reasoning)": {
+      "creator": "Nous Research",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "MiniMax-M3.1-Flash": {
+      "creator": "MiniMax",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Agnes 2.5 Pro Theta": {
+      "creator": "Sapiens AI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "DeepSeek V4 Pro 0813 (non-reasoning)": {
+      "creator": "DeepSeek",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Exaone 4.0 1.2B": {
+      "creator": "LG AI Research",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemma 4 E4B": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemini 4 Hydrogen (xhigh)": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Gemini 4 Hydrogen (high)": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Granite 4.0 H 1B": {
+      "creator": "IBM",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Reka Flash 3": {
+      "creator": "Reka AI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Muse Ember (max)": {
+      "creator": "Meta",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Mistral Medium 3.5": {
+      "creator": "Mistral",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Mi:dm K 2.5 Pro": {
+      "creator": "Korea Telecom",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Claude Opus 5.5 (xhigh)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "LFM2.5-8B-A1B": {
+      "creator": "Liquid AI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nemotron 3.5 Super VL": {
+      "creator": "NVIDIA",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Inkling 2 Small": {
+      "creator": "Thinking Machines",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nova Premier": {
+      "creator": "Amazon",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "GPT-6.1 Terra (xhigh)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "DeepSeek V4 Pro 0813 (high)": {
+      "creator": "DeepSeek",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Muse Wonder Full (max)": {
+      "creator": "Meta",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "GPT-6.1 Terra (high)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Mistral Large 4 (high)": {
+      "creator": "Mistral",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Cogito v2.1": {
+      "creator": "Deep Cogito",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Opus 5.5 (medium)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Ring-2.6-1T": {
+      "creator": "InclusionAI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Phi-4": {
+      "creator": "Microsoft",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "gpt-oss-120b (high)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Gemini 4 Hydrogen (medium)": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "DeepSeek V4.1 Flash 1017 (max)": {
+      "creator": "DeepSeek",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "NVIDIA Nemotron Nano 9B V2": {
+      "creator": "NVIDIA",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Opus 5.5 (high)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Nova 2.0 Pro Preview (low)": {
+      "creator": "Amazon",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Jamba Reasoning 3B": {
+      "creator": "AI21 Labs",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Quasar 438B (max)": {
+      "creator": "Multiverse Computing",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "LFM2 24B A2B": {
+      "creator": "Liquid AI",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Nova 2.0 Lite (medium)": {
+      "creator": "Amazon",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "KAT-Coder-Pro V2": {
+      "creator": "KwaiKAT",
+      "is_reasoning": false,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Qwen3 Coder Next": {
+      "creator": "Alibaba",
+      "is_reasoning": false,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Claude Fable 5.2 (high)": {
+      "creator": "Anthropic",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "GPT-6.2 Astra (high)": {
+      "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Gemma 4 12B": {
+      "creator": "Google",
+      "is_reasoning": true,
+      "is_open_weights": true,
+      "deprecated": false
+    },
+    "Qwen4 Max": {
+      "creator": "Alibaba",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Muse Wonder (max)": {
+      "creator": "Meta",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    }
+  },
   "recent_updates": [
+    {
+      "date": "2026-11-18",
+      "title": "取消抓取与后端过滤限制，全量同步官网所有大模型（262 款，含 Non-reasoning 与全厂商）及全部编码 Agent 组合（40 组）；并在页面新增多维手动筛选面板",
+      "type": "Feature"
+    },
     {
       "date": "2026-11-18",
       "title": "调整模型过滤规则：取消对 GPT-6 Astra 的特别排除，重新纳入模型榜与 Coding Agent 榜对比",
@@ -2797,7 +6336,7 @@
     },
     {
       "date": "2026-11-18",
-      "title": "修复 Coding Agent 榜 RSC 拆分解析：合并 rows 与 benchmarkRows 全量实测数据，恢复同步全部 32 组符合规范的官方组合",
+      "title": "修复 Coding Agent 榜 RSC 拆分解析：合并 rows 与 benchmarkRows 全量实测数据，恢复同步全部 40 组符合规范的官方组合",
       "type": "Fix"
     },
     {
@@ -2847,7 +6386,7 @@
     },
     {
       "date": "2026-11-18",
-      "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 70 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 32 组组合）",
+      "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 113 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 40 组组合）",
       "type": "Update"
     },
     {
