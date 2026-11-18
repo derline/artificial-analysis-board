@@ -297,9 +297,24 @@ async function main() {
     process.exit(1);
   }
 
-  const today = new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const beijingParts = new Intl.DateTimeFormat('zh-CN', {
+    timeZone: 'Asia/Shanghai',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hourCycle: 'h23'
+  }).formatToParts(now).reduce((acc, p) => {
+    acc[p.type] = p.value;
+    return acc;
+  }, {});
+  const today = `${beijingParts.year}-${beijingParts.month}-${beijingParts.day}`;
+  const updatedAt = `${today} ${beijingParts.hour}:${beijingParts.minute}:${beijingParts.second}`;
   const latestData = {
-    updated_at: today,
+    updated_at: updatedAt,
     source: MODELS_URL,
     agents_source: AGENTS_URL,
     coding_agent_leaderboard: codingAgentLeaderboard,
@@ -410,7 +425,7 @@ async function main() {
   console.log('正在将最新数据写回 index.html...');
   const newStr = 'const latestData = ' + JSON.stringify(latestData, null, 2) + ';\n    renderDashboard(latestData);';
   indexHtml = indexHtml.substring(0, startMatch) + newStr + indexHtml.substring(endMatch);
-  indexHtml = indexHtml.replace(/<span id="update-date-text">更新日期：[^<]+<\/span>/, `<span id="update-date-text">更新日期：${today}</span>`);
+  indexHtml = indexHtml.replace(/<span id="update-date-text">更新(?:日期|时间)：[^<]+<\/span>/, `<span id="update-date-text">更新时间：${updatedAt}</span>`);
   indexHtml = indexHtml.replace(/<div class="subtitle">Terminal-Bench [^<]+<\/div>/, `<div class="subtitle">Terminal-Bench 4.0 · 越高越强</div>`);
   fs.writeFileSync(INDEX_HTML_PATH, indexHtml, 'utf8');
 
