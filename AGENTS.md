@@ -14,18 +14,13 @@
 
 ---
 
-## 2. 全量抓取与页面手动筛选机制 (Unfiltered Sync & Interactive Filtering)
+## 2. 全量抓取与页面分区域排除筛选机制 (Unfiltered Sync & Local Exclude Filter)
 
 - **抓取端零过滤 (No Scraping/Backend Filtering)**：
   - `update_data.js` 对官网 `leaderboards/models` 与 `agents/coding-agents` 的 RSC Payload **不做任何模型或 Agent 过滤**，全量保存所有大模型（含 Non-reasoning、全部厂商）及所有编码 Agent 组合，同时提取 `model_meta`（厂商、是否 Reasoning、是否开源、是否 Deprecated）。
-- **页面端多维手动过滤 (`index.html`)**：
-  - 默认采用**全量展示**，页面顶部提供全局手动过滤控制台，支持：
-    - **快捷预设**：`全量展示 (无过滤)` / `精选主线 (原过滤规则)`
-    - **厂商家族多选**：OpenAI / Anthropic / Google / Meta / xAI / 国内模型 / 其他国际厂商
-    - **模型属性**：思考模式（全部 / 仅 Reasoning / 仅 Non-reasoning）、权重属性（全部 / 仅开源 / 仅闭源）、隐藏已弃用（Deprecated）、四栏展示条数（Top 30 / Top 50 / 全部）
-    - **关键词手动指定**：支持逗号分隔的`包含关键词`与`排除关键词`实时过滤
-- **原“精选主线”预设白名单规则 (`isLegacyIgnoredModel`)**：
-  - 保留作为页面一键切换“精选主线”预设的规则：排除 Non-reasoning、Nemotron、gpt-oss、Groq、o3、Mistral/Solar/Step 等，保留 Grok >= 4.6、Claude >= 4.6（排除 Haiku 及 Fable <= 5.1）、GPT > 5.6、Gemini >= 3.1、Muse、Qwen >= 3.8、Kimi >= K3、DeepSeek >= V4.1、GLM >= 5.2、MiniMax >= M3、MiMo >= 2.6 及 Flash 系列。
+- **页面分区域“排除”下拉多选框 (`index.html`)**：
+  - 不做页面统一过滤，仅在 **编码 Agent 排行榜** 与 **4 个指数组** 这两处分别提供一个独立的 **“排除”下拉多选框**。
+  - 点选后在其后方实时列出已排除项标签，点击任意标签即可单个撤销，互不干扰。
 
 ---
 
