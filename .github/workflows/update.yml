@@ -2,8 +2,8 @@ name: Daily Data Update & Deploy to Pages
 
 on:
   schedule:
-    # 每天北京时间 07:00、12:00、18:00（UTC 23:00、04:00、10:00）自动触发
-    - cron: '0 4,10,23 * * *'
+    # 每天北京时间 07:17、12:17、18:17（UTC 23:17、04:17、10:17）自动触发，避开整点高并发拥堵
+    - cron: '17 4,10,23 * * *'
   push:
     branches:
       - main
