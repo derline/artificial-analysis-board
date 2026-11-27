@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27 13:06:00",
+  "updated_at": "2026-11-28 03:30:26",
   "source": "https://artificialanalysis.ai/leaderboards/models",
   "agents_source": "https://artificialanalysis.ai/agents/coding-agents",
   "coding_agent_leaderboard": [
@@ -87,7 +87,7 @@
       "agent_harness": "Codex Agent CLI",
       "model": "GPT-6.2 Astra (Xhigh)",
       "solve_rate": 53.121247963506,
-      "avg_time_min": 16.53917141939105,
+      "avg_time_min": 16.53917141939103,
       "cost_usd": 3.1979110852488017,
       "brand": "gpt"
     },
@@ -304,7 +304,7 @@
       "model": "DeepSeek V4.1 Flash 1017 (Max)",
       "solve_rate": 36.8337115781471,
       "avg_time_min": 31.444245550034335,
-      "cost_usd": 0.320957200254155,
+      "cost_usd": 0.320957200254154,
       "brand": "cn"
     },
     {
@@ -312,7 +312,7 @@
       "model": "GLM-5.3-Flash (Max)",
       "solve_rate": 36.8038918757467,
       "avg_time_min": 100.48638669354834,
-      "cost_usd": 0.38101252865289525,
+      "cost_usd": 0.3810125286528952,
       "brand": "cn"
     },
     {
@@ -527,7 +527,7 @@
       "agent_harness": "Mirror",
       "model": "Beam 1.0",
       "solve_rate": 15.4770250896058,
-      "avg_time_min": 40.450987337985495,
+      "avg_time_min": 40.450987337985666,
       "cost_usd": 0.30843081634837477,
       "brand": "other"
     }
@@ -848,6 +848,10 @@
     {
       "model": "GLM-5.3 (low)",
       "score": 23.1079373025379
+    },
+    {
+      "model": "Quasar 1.2 358B (max)",
+      "score": 23.0788933047591
     },
     {
       "model": "Mistral Large 4 (medium)",
@@ -1301,6 +1305,10 @@
     },
     {
       "model": "JT-35B-Flash",
+      "coding_score": 28.7878787878788
+    },
+    {
+      "model": "Quasar 1.2 358B (max)",
       "coding_score": 28.7878787878788
     },
     {
@@ -2127,695 +2135,699 @@
   "speed_tokens_per_sec": [
     {
       "model": "Celeris-1",
-      "speed_tps": 722.483478579131
+      "speed_tps": 721.402983225406
     },
     {
       "model": "Mercury 2.5",
-      "speed_tps": 477.125549274642
-    },
-    {
-      "model": "Muse Ember (xhigh)",
-      "speed_tps": 390.681403075621
+      "speed_tps": 474.025336073962
     },
     {
       "model": "Beam 1.0",
-      "speed_tps": 384.250146333899
+      "speed_tps": 386.891000378686
+    },
+    {
+      "model": "Muse Ember (xhigh)",
+      "speed_tps": 383.219224321506
     },
     {
       "model": "Muse Ember (max)",
-      "speed_tps": 371.428775802343
+      "speed_tps": 368.20665265824
     },
     {
       "model": "Nemotron 3.5 Super VL",
-      "speed_tps": 348.082559525225
+      "speed_tps": 354.748456762587
     },
     {
       "model": "LFM3-VL-2B",
-      "speed_tps": 338.304474035834
+      "speed_tps": 336.175674542528
     },
     {
       "model": "LFM3-1.7B",
-      "speed_tps": 328.304110731593
+      "speed_tps": 330.834891677762
     },
     {
       "model": "K2 Horizon 375B A23B",
-      "speed_tps": 315.691705799445
+      "speed_tps": 326.473910174497
     },
     {
       "model": "Nemotron 3.5 Lightning",
-      "speed_tps": 308.8133644764625
+      "speed_tps": 309.6726266464325
     },
     {
       "model": "Gemini 3.5 Flash-Lite",
-      "speed_tps": 307.446903782642
+      "speed_tps": 303.499328021366
     },
     {
       "model": "North Mini Code",
-      "speed_tps": 273.679677925463
+      "speed_tps": 273.123717102064
     },
     {
       "model": "Claude Haiku 5.5 (max)",
-      "speed_tps": 258.246959496758
+      "speed_tps": 246.387950766006
     },
     {
       "model": "Claude Haiku 5.5 (xhigh)",
-      "speed_tps": 236.411772718991
-    },
-    {
-      "model": "Sarvam 105B (high)",
-      "speed_tps": 232.538189011581
+      "speed_tps": 235.079857540729
     },
     {
       "model": "Claude Haiku 5.5 (high)",
-      "speed_tps": 230.820724270346
+      "speed_tps": 229.947169731965
     },
     {
       "model": "Nova Micro",
-      "speed_tps": 229.228132125544
+      "speed_tps": 226.643709674808
+    },
+    {
+      "model": "Sarvam 105B (high)",
+      "speed_tps": 226.380546772901
     },
     {
       "model": "Claude Haiku 5.5 (medium)",
-      "speed_tps": 224.063855603938
+      "speed_tps": 222.347620616486
     },
     {
       "model": "Claude Haiku 5.5 (low)",
-      "speed_tps": 222.093401663121
+      "speed_tps": 218.65356615471
     },
     {
       "model": "gpt-oss-120b (high)",
-      "speed_tps": 200.23535849739
+      "speed_tps": 204.658765147196
     },
     {
       "model": "Command A+",
-      "speed_tps": 198.506000346671
+      "speed_tps": 199.247165134151
     },
     {
       "model": "Nemotron 3 Ultra",
-      "speed_tps": 190.3596232833355
-    },
-    {
-      "model": "Muse Spark Open (xhigh)",
-      "speed_tps": 185.874084467746
-    },
-    {
-      "model": "ERNIE 5.5 Flash Preview",
-      "speed_tps": 185.045472504636
-    },
-    {
-      "model": "Gemini 4 Hydrogen (high)",
-      "speed_tps": 184.039629431306
+      "speed_tps": 192.5080466932865
     },
     {
       "model": "Ling 3.0 Tiny",
-      "speed_tps": 183.670502747174
+      "speed_tps": 186.461678114938
     },
     {
-      "model": "DeepSeek V4.1 Flash 1017 (high)",
-      "speed_tps": 181.628142629638
+      "model": "Muse Spark Open (xhigh)",
+      "speed_tps": 184.120653533142
     },
     {
-      "model": "DeepSeek V4.1 Flash 1017 (max)",
-      "speed_tps": 178.551867693369
-    },
-    {
-      "model": "Gemini 4 Hydrogen (xhigh)",
-      "speed_tps": 178.341742355093
-    },
-    {
-      "model": "Ministral 3 3B",
-      "speed_tps": 177.244617637144
+      "model": "Gemini 4 Hydrogen (high)",
+      "speed_tps": 181.708066695994
     },
     {
       "model": "gpt-oss-120b (low)",
-      "speed_tps": 176.9825653628815
+      "speed_tps": 180.131703493403
     },
     {
-      "model": "Inkling 2 Mini",
-      "speed_tps": 174.85825257612
+      "model": "DeepSeek V4.1 Flash 1017 (high)",
+      "speed_tps": 179.835870612682
+    },
+    {
+      "model": "Ministral 3 3B",
+      "speed_tps": 179.277728482566
+    },
+    {
+      "model": "ERNIE 5.5 Flash Preview",
+      "speed_tps": 177.088475953331
+    },
+    {
+      "model": "Gemini 4 Hydrogen (xhigh)",
+      "speed_tps": 175.38922482907
+    },
+    {
+      "model": "DeepSeek V4.1 Flash 1017 (max)",
+      "speed_tps": 175.216344999177
     },
     {
       "model": "DeepSeek V4 Flash Vision (max)",
-      "speed_tps": 174.520240236821
+      "speed_tps": 173.662407670033
     },
     {
-      "model": "Gemini 4 Hydrogen (medium)",
-      "speed_tps": 171.530205630233
-    },
-    {
-      "model": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
-      "speed_tps": 170.510545156146
+      "model": "Inkling 2 Mini",
+      "speed_tps": 170.914020824924
     },
     {
       "model": "Nemotron 3 Nano",
-      "speed_tps": 168.527366859384
+      "speed_tps": 170.13852150455
+    },
+    {
+      "model": "Gemini 4 Hydrogen (medium)",
+      "speed_tps": 168.172276154385
+    },
+    {
+      "model": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
+      "speed_tps": 165.124135677066
     },
     {
       "model": "gpt-oss-20b (low)",
-      "speed_tps": 155.6795218338
+      "speed_tps": 155.768585471892
     },
     {
       "model": "Claude Sonnet 5.5 (max)",
-      "speed_tps": 153.646436516986
+      "speed_tps": 153.164715284581
     },
     {
       "model": "Mistral Small 4",
-      "speed_tps": 151.917769407777
+      "speed_tps": 151.983014356993
     },
     {
       "model": "Agnes 2.5 Pro Theta",
-      "speed_tps": 151.68426561529
+      "speed_tps": 151.331934974634
     },
     {
       "model": "Gemini 4 Hydrogen (low)",
-      "speed_tps": 151.601230056799
+      "speed_tps": 151.233917050765
     },
     {
       "model": "Claude Sonnet 5.5 (xhigh)",
-      "speed_tps": 148.938732848067
-    },
-    {
-      "model": "Qwen3.5 Omni Flash",
-      "speed_tps": 148.407190692169
+      "speed_tps": 147.977902799005
     },
     {
       "model": "NVIDIA Nemotron Nano 9B V2 (non-reasoning)",
-      "speed_tps": 146.272493339701
+      "speed_tps": 146.476529047547
     },
     {
       "model": "Apodex 1.1",
-      "speed_tps": 143.004481948888
-    },
-    {
-      "model": "Claude Sonnet 5.5 (high)",
-      "speed_tps": 142.489537685377
+      "speed_tps": 143.220035639722
     },
     {
       "model": "GPT-5.5 Instant (June 2026)",
-      "speed_tps": 142.335070849413
+      "speed_tps": 141.692639305627
+    },
+    {
+      "model": "Claude Sonnet 5.5 (high)",
+      "speed_tps": 141.08607040454
     },
     {
       "model": "Claude Sonnet 5.5 (medium)",
-      "speed_tps": 140.391964501462
-    },
-    {
-      "model": "Nova 2.0 Lite (high)",
-      "speed_tps": 139.151787137708
+      "speed_tps": 139.21273694483
     },
     {
       "model": "Mistral Medium 3.5",
-      "speed_tps": 138.071756517821
+      "speed_tps": 137.715334771912
+    },
+    {
+      "model": "Nova 2.0 Lite (high)",
+      "speed_tps": 135.980222334594
     },
     {
       "model": "Nova 2.0 Lite (low)",
-      "speed_tps": 136.832722611271
+      "speed_tps": 135.922922735126
     },
     {
-      "model": "Claude Sonnet 5.5 (low)",
-      "speed_tps": 136.159505450594
-    },
-    {
-      "model": "MiniMax-M3.1-Flash",
-      "speed_tps": 132.727583514185
+      "model": "Qwen3.5 Omni Flash",
+      "speed_tps": 134.961851933291
     },
     {
       "model": "NVIDIA Nemotron Nano 9B V2",
-      "speed_tps": 132.075150654336
+      "speed_tps": 134.556912602368
+    },
+    {
+      "model": "Claude Sonnet 5.5 (low)",
+      "speed_tps": 134.397940658867
+    },
+    {
+      "model": "MiniMax-M3.1-Flash",
+      "speed_tps": 131.234930748117
     },
     {
       "model": "Tiny Aya Global",
-      "speed_tps": 130.881737926498
-    },
-    {
-      "model": "Mistral Small 4 (non-reasoning)",
-      "speed_tps": 130.300754721299
+      "speed_tps": 130.986577134163
     },
     {
       "model": "GPT-6 Luna (max)",
-      "speed_tps": 129.131213313198
+      "speed_tps": 129.891896887366
+    },
+    {
+      "model": "Mistral Small 4 (non-reasoning)",
+      "speed_tps": 129.792887463322
     },
     {
       "model": "NVIDIA Nemotron Nano 12B v2 VL (non-reasoning)",
-      "speed_tps": 129.012699903128
+      "speed_tps": 128.879341046167
     },
     {
-      "model": "Nova 2.0 Lite (medium)",
-      "speed_tps": 125.435766936543
+      "model": "Quasar 1.2 358B (max)",
+      "speed_tps": 124.834007712847
     },
     {
       "model": "GPT-6 Luna (high)",
-      "speed_tps": 123.735830920085
-    },
-    {
-      "model": "GPT-6 Luna (xhigh)",
-      "speed_tps": 122.29476427349
-    },
-    {
-      "model": "o3",
-      "speed_tps": 121.894768134678
+      "speed_tps": 123.028567896954
     },
     {
       "model": "gpt-oss-20b (high)",
-      "speed_tps": 121.5204369517951
+      "speed_tps": 122.61126266068425
+    },
+    {
+      "model": "GPT-6 Luna (xhigh)",
+      "speed_tps": 122.33095896135
+    },
+    {
+      "model": "o3",
+      "speed_tps": 121.43991799007
+    },
+    {
+      "model": "Nova 2.0 Lite (medium)",
+      "speed_tps": 121.255991824757
     },
     {
       "model": "Solar Mini 4",
-      "speed_tps": 119.757752259941
+      "speed_tps": 119.189273584748
     },
     {
       "model": "Claude Opus 5.5 (max)",
-      "speed_tps": 117.226906903835
-    },
-    {
-      "model": "GPT-6 Luna (medium)",
-      "speed_tps": 115.793717038323
+      "speed_tps": 116.658648409466
     },
     {
       "model": "Nemotron 3 Nano (non-reasoning)",
-      "speed_tps": 114.98730059428465
+      "speed_tps": 116.11454089319065
     },
     {
-      "model": "Qwen3.5 9B (non-reasoning)",
-      "speed_tps": 114.929028454612
-    },
-    {
-      "model": "Nova 2.0 Pro Preview (non-reasoning)",
-      "speed_tps": 113.865169909241
-    },
-    {
-      "model": "MiniMax-M3",
-      "speed_tps": 113.597153272082
+      "model": "GPT-6 Luna (medium)",
+      "speed_tps": 115.625985686578
     },
     {
       "model": "Claude Fable 5.2 (max)",
-      "speed_tps": 113.096172159449
+      "speed_tps": 112.76718941402
     },
     {
       "model": "Claude Fable 5.2 (xhigh)",
-      "speed_tps": 112.84345841005
+      "speed_tps": 112.474875845617
+    },
+    {
+      "model": "MiniMax-M3",
+      "speed_tps": 112.321871622444
+    },
+    {
+      "model": "Qwen3.5 9B (non-reasoning)",
+      "speed_tps": 111.895435906349
+    },
+    {
+      "model": "Nova 2.0 Pro Preview (non-reasoning)",
+      "speed_tps": 111.703579002244
     },
     {
       "model": "Claude Fable 5.2 (high)",
-      "speed_tps": 112.166450051398
-    },
-    {
-      "model": "Qwen4 Max",
-      "speed_tps": 112.078329001795
-    },
-    {
-      "model": "Claude Fable 5.2 (low)",
-      "speed_tps": 112.03425535195
+      "speed_tps": 111.562967563515
     },
     {
       "model": "Claude Opus 5.5 (xhigh)",
-      "speed_tps": 111.799443200253
+      "speed_tps": 111.255321093208
     },
     {
-      "model": "Qwen3.5 122B A10B",
-      "speed_tps": 111.505398084005
-    },
-    {
-      "model": "Claude Opus 5.5 (high)",
-      "speed_tps": 111.364170910539
-    },
-    {
-      "model": "Nova 2.0 Lite (non-reasoning)",
-      "speed_tps": 111.345960403584
-    },
-    {
-      "model": "Claude Fable 5.2 (medium)",
-      "speed_tps": 110.222483070304
+      "model": "Claude Fable 5.2 (low)",
+      "speed_tps": 111.102947096677
     },
     {
       "model": "Gemini 3.1 Pro Preview",
-      "speed_tps": 110.206350041776
+      "speed_tps": 110.737798656939
+    },
+    {
+      "model": "Claude Opus 5.5 (high)",
+      "speed_tps": 110.502021225995
+    },
+    {
+      "model": "Claude Fable 5.2 (medium)",
+      "speed_tps": 109.116582534316
     },
     {
       "model": "Claude Opus 5.5 (low)",
-      "speed_tps": 109.631917071857
+      "speed_tps": 108.701783783735
     },
     {
       "model": "Claude Opus 5.5 (medium)",
-      "speed_tps": 108.386741079815
+      "speed_tps": 107.486867094454
     },
     {
-      "model": "Qwen3.5 122B A10B (non-reasoning)",
-      "speed_tps": 107.088661050099
+      "model": "Qwen3.5 122B A10B",
+      "speed_tps": 107.261640168116
     },
     {
-      "model": "GPT-6 Luna (low)",
-      "speed_tps": 104.719270775298
+      "model": "Qwen4 Max",
+      "speed_tps": 106.924774168955
     },
     {
-      "model": "Nova 2.0 Pro Preview (medium)",
-      "speed_tps": 103.662128398675
-    },
-    {
-      "model": "Inkling 2 Small",
-      "speed_tps": 103.573394825305
-    },
-    {
-      "model": "Gemini 4 Neon (high)",
-      "speed_tps": 102.221710767336
-    },
-    {
-      "model": "Inkling (xhigh)",
-      "speed_tps": 102.22042363324
+      "model": "Nova 2.0 Lite (non-reasoning)",
+      "speed_tps": 106.210442379407
     },
     {
       "model": "Qwen3 Next 80B A3B Instruct",
-      "speed_tps": 101.887806077974
+      "speed_tps": 104.863054142098
+    },
+    {
+      "model": "GPT-6 Luna (low)",
+      "speed_tps": 104.472423674993
+    },
+    {
+      "model": "Qwen3.5 122B A10B (non-reasoning)",
+      "speed_tps": 104.34010269881
+    },
+    {
+      "model": "Inkling 2 Small",
+      "speed_tps": 103.774953957663
+    },
+    {
+      "model": "Nova 2.0 Pro Preview (medium)",
+      "speed_tps": 102.574640461495
     },
     {
       "model": "GPT-6 Luna (non-reasoning)",
-      "speed_tps": 101.474351405345
+      "speed_tps": 102.131826568078
+    },
+    {
+      "model": "Gemini 4 Neon (high)",
+      "speed_tps": 100.548639612612
     },
     {
       "model": "Qwen3.6 35B A3B",
-      "speed_tps": 99.0140868011093
+      "speed_tps": 99.2058586901465
     },
     {
-      "model": "Ministral 3 14B",
-      "speed_tps": 98.1901271922861
+      "model": "Inkling (xhigh)",
+      "speed_tps": 98.6806905159245
     },
     {
       "model": "Tencent Hy4",
-      "speed_tps": 98.1234569053383
+      "speed_tps": 97.744441414931
     },
     {
-      "model": "Gemini 4 Neon (low)",
-      "speed_tps": 96.3940073914383
-    },
-    {
-      "model": "Gemini 4 Neon (medium)",
-      "speed_tps": 95.0868850528188
-    },
-    {
-      "model": "Llama 4 Scout",
-      "speed_tps": 94.2313470633731
-    },
-    {
-      "model": "Ministral 3 8B",
-      "speed_tps": 93.8965810119517
+      "model": "Ministral 3 14B",
+      "speed_tps": 97.2328378364645
     },
     {
       "model": "Inkling (high)",
-      "speed_tps": 93.605165404714
+      "speed_tps": 95.5658742509273
     },
     {
-      "model": "Qwen3.6 35B A3B (non-reasoning)",
-      "speed_tps": 92.083710163741
+      "model": "Gemini 4 Neon (low)",
+      "speed_tps": 94.6785257670154
+    },
+    {
+      "model": "Gemini 4 Neon (medium)",
+      "speed_tps": 94.3929864008615
+    },
+    {
+      "model": "Llama 4 Scout",
+      "speed_tps": 93.7874880294301
+    },
+    {
+      "model": "Ministral 3 8B",
+      "speed_tps": 92.5490169280962
     },
     {
       "model": "Nova 2.0 Pro Preview (low)",
-      "speed_tps": 90.6956190850988
+      "speed_tps": 90.309343513108
     },
     {
-      "model": "GPT-5.3 Codex (xhigh)",
-      "speed_tps": 89.9742209705118
+      "model": "Qwen3.6 35B A3B (non-reasoning)",
+      "speed_tps": 90.0517854107027
     },
     {
       "model": "Muse Glimmer (high)",
-      "speed_tps": 88.0907394751065
+      "speed_tps": 89.7122270206505
+    },
+    {
+      "model": "GPT-5.3 Codex (xhigh)",
+      "speed_tps": 89.1107394171378
     },
     {
       "model": "Mistral Large 4 (high)",
-      "speed_tps": 87.4507199247445
-    },
-    {
-      "model": "Gemma 4 26B A4B",
-      "speed_tps": 86.49661490902079
-    },
-    {
-      "model": "Muse Wonder (high)",
-      "speed_tps": 86.0441610376087
-    },
-    {
-      "model": "Qwen3 Omni 30B A3B (Reasoning)",
-      "speed_tps": 85.9224695642827
+      "speed_tps": 87.9986197462323
     },
     {
       "model": "Gemini 4 Neon (xhigh)",
-      "speed_tps": 85.0671804634825
-    },
-    {
-      "model": "Gemma 4 26B A4B (non-reasoning)",
-      "speed_tps": 85.0082220905061
-    },
-    {
-      "model": "Muse Wonder (max)",
-      "speed_tps": 84.6796353510087
-    },
-    {
-      "model": "Mistral Large 4 (medium)",
-      "speed_tps": 84.4283983398372
+      "speed_tps": 86.9780650258735
     },
     {
       "model": "Granite 4.2 8B",
-      "speed_tps": 84.3867457773214
+      "speed_tps": 86.3503426646658
     },
     {
-      "model": "Qwen3.8-Flash-Next",
-      "speed_tps": 83.9813928396057
+      "model": "Gemma 4 26B A4B",
+      "speed_tps": 86.2178159745747
     },
     {
-      "model": "DeepSeek V4 Pro 0813 (high)",
-      "speed_tps": 79.9208483072615
+      "model": "Gemma 4 26B A4B (non-reasoning)",
+      "speed_tps": 85.9531392302536
+    },
+    {
+      "model": "Qwen3 Omni 30B A3B (Reasoning)",
+      "speed_tps": 85.1808204503855
     },
     {
       "model": "Solar Pro 4",
-      "speed_tps": 78.8410630751338
+      "speed_tps": 84.5723262675968
+    },
+    {
+      "model": "Qwen3.8-Flash-Next",
+      "speed_tps": 83.6558596267134
+    },
+    {
+      "model": "Muse Wonder (high)",
+      "speed_tps": 83.3911081024291
+    },
+    {
+      "model": "Mistral Large 4 (medium)",
+      "speed_tps": 82.5372651059929
+    },
+    {
+      "model": "Muse Wonder (max)",
+      "speed_tps": 82.162705859085
+    },
+    {
+      "model": "DeepSeek V4 Pro 0813 (high)",
+      "speed_tps": 78.1458197593987
     },
     {
       "model": "Gemini 4 Argon (high)",
-      "speed_tps": 78.6075418285287
-    },
-    {
-      "model": "DeepSeek V4 Pro 0813 (non-reasoning)",
-      "speed_tps": 78.4660829524618
+      "speed_tps": 78.0270161995919
     },
     {
       "model": "Qwen3 Coder Next",
-      "speed_tps": 78.35284072230641
+      "speed_tps": 77.3205362105551
+    },
+    {
+      "model": "DeepSeek V4 Pro 0813 (non-reasoning)",
+      "speed_tps": 77.2260392943374
     },
     {
       "model": "GLM-5.3 (max)",
-      "speed_tps": 78.1721071866203
+      "speed_tps": 77.1363800207606
     },
     {
       "model": "Grok 4.7 (high)",
-      "speed_tps": 77.9001934162327
-    },
-    {
-      "model": "Grok 4.7 (xhigh)",
-      "speed_tps": 77.2826652134852
-    },
-    {
-      "model": "Step 5 Preview",
-      "speed_tps": 75.8998046704339
-    },
-    {
-      "model": "DeepSeek V4 Pro 0813 (max)",
-      "speed_tps": 75.8639201604956
-    },
-    {
-      "model": "Grok 4.7 (low)",
-      "speed_tps": 75.4527811558154
+      "speed_tps": 76.5313119985947
     },
     {
       "model": "Qwen3.5 9B",
-      "speed_tps": 75.05986733373355
+      "speed_tps": 76.223591023491
+    },
+    {
+      "model": "Step 5 Preview",
+      "speed_tps": 76.1710898932131
+    },
+    {
+      "model": "Grok 4.7 (xhigh)",
+      "speed_tps": 76.0346879322677
+    },
+    {
+      "model": "DeepSeek V4 Pro 0813 (max)",
+      "speed_tps": 74.5653039545773
     },
     {
       "model": "Qwen3 Omni 30B A3B Instruct",
-      "speed_tps": 74.2297285257442
+      "speed_tps": 74.5606708297788
+    },
+    {
+      "model": "Grok 4.7 (low)",
+      "speed_tps": 74.3372623075929
     },
     {
       "model": "GLM-5.3 (low)",
-      "speed_tps": 72.346146939495
-    },
-    {
-      "model": "Qwen3.5 Omni Plus",
-      "speed_tps": 69.0162097197536
-    },
-    {
-      "model": "Magistral Small 1.2",
-      "speed_tps": 68.7334631796934
-    },
-    {
-      "model": "Gemini 4 Argon (medium)",
-      "speed_tps": 67.2406494741818
-    },
-    {
-      "model": "Llama 4 Maverick",
-      "speed_tps": 66.876989033813
+      "speed_tps": 72.2047191115799
     },
     {
       "model": "Reka Flash 3",
-      "speed_tps": 64.342487501869
+      "speed_tps": 70.305079563826
+    },
+    {
+      "model": "Magistral Small 1.2",
+      "speed_tps": 69.1264530191996
+    },
+    {
+      "model": "Qwen3.5 Omni Plus",
+      "speed_tps": 67.7554411461276
+    },
+    {
+      "model": "Gemini 4 Argon (medium)",
+      "speed_tps": 65.7502283817807
+    },
+    {
+      "model": "Llama 4 Maverick",
+      "speed_tps": 65.2206440330329
     },
     {
       "model": "Llama 3.3 70B",
-      "speed_tps": 63.796472884101746
+      "speed_tps": 63.64151397640125
     },
     {
       "model": "GPT-6.1 Terra (max)",
-      "speed_tps": 63.1971033107329
+      "speed_tps": 62.0723474340389
     },
     {
       "model": "GPT-6.1 Terra (xhigh)",
-      "speed_tps": 61.3253243189501
+      "speed_tps": 60.0240946140104
     },
     {
       "model": "GPT-6.1 Terra (high)",
-      "speed_tps": 60.3581838569351
-    },
-    {
-      "model": "GPT-6.2 Sol (max)",
-      "speed_tps": 59.9242648568681
-    },
-    {
-      "model": "GPT-6.1 Terra (medium)",
-      "speed_tps": 59.4504366291934
-    },
-    {
-      "model": "GPT-6.1 Terra (non-reasoning)",
-      "speed_tps": 59.3154950318969
-    },
-    {
-      "model": "Qwen3.8 27B (low)",
-      "speed_tps": 59.2329794233176
+      "speed_tps": 59.7447028827791
     },
     {
       "model": "Gemini 4 Carbon (medium)",
-      "speed_tps": 58.9641018691147
+      "speed_tps": 59.1791404547126
     },
     {
-      "model": "GPT-6.1 Terra (low)",
-      "speed_tps": 58.9270678041258
+      "model": "GPT-6.2 Sol (max)",
+      "speed_tps": 58.6589203219856
     },
     {
-      "model": "Qwen3.8 27B (xhigh)",
-      "speed_tps": 58.6827835905455
+      "model": "GPT-6.1 Terra (medium)",
+      "speed_tps": 58.0754165232694
     },
     {
-      "model": "GPT-6.2 Sol (medium)",
-      "speed_tps": 57.7728318056607
-    },
-    {
-      "model": "GPT-6.2 Sol (xhigh)",
-      "speed_tps": 57.6622810855274
+      "model": "Qwen3.8 27B (low)",
+      "speed_tps": 58.0260365825245
     },
     {
       "model": "Qwen3.8 27B (medium)",
-      "speed_tps": 57.6524120861816
+      "speed_tps": 57.8323045735865
     },
     {
-      "model": "GPT-6.2 Sol (high)",
-      "speed_tps": 56.7962884181845
+      "model": "Qwen3.8 27B (xhigh)",
+      "speed_tps": 57.5719477547237
+    },
+    {
+      "model": "GPT-6.1 Terra (non-reasoning)",
+      "speed_tps": 57.5275157191933
+    },
+    {
+      "model": "GPT-6.1 Terra (low)",
+      "speed_tps": 56.7114239855635
     },
     {
       "model": "Qwen3.7 Plus",
-      "speed_tps": 56.3171299880911
+      "speed_tps": 56.3478211387039
     },
     {
-      "model": "GPT-6.2 Sol (low)",
-      "speed_tps": 55.2760321671157
+      "model": "GPT-6.2 Sol (medium)",
+      "speed_tps": 56.3150146841526
     },
     {
-      "model": "Qwen3.5 397B A17B",
-      "speed_tps": 54.504272148898
+      "model": "GPT-6.2 Sol (xhigh)",
+      "speed_tps": 56.1194646279044
     },
     {
-      "model": "Qwen3.8 27B (non-reasoning)",
-      "speed_tps": 53.7761770753655
-    },
-    {
-      "model": "LongCat 2.0",
-      "speed_tps": 52.9678470626999
+      "model": "GPT-6.2 Sol (high)",
+      "speed_tps": 55.5787750669087
     },
     {
       "model": "Kimi K2.7 Code",
-      "speed_tps": 52.87622182877
+      "speed_tps": 54.8780976936795
+    },
+    {
+      "model": "Qwen3.5 397B A17B",
+      "speed_tps": 54.5506589482216
+    },
+    {
+      "model": "Qwen3.8 27B (non-reasoning)",
+      "speed_tps": 54.1627895790265
+    },
+    {
+      "model": "GPT-6.2 Sol (low)",
+      "speed_tps": 54.0786013563751
+    },
+    {
+      "model": "LongCat 2.0",
+      "speed_tps": 52.2025270146745
     },
     {
       "model": "GLM-5.3-Flash (max)",
-      "speed_tps": 52.7201322507079
+      "speed_tps": 51.9576912001168
     },
     {
       "model": "Gemini 4 Carbon (high)",
-      "speed_tps": 51.3604724043709
+      "speed_tps": 49.3783957456514
     },
     {
       "model": "Gemini 4 Carbon (low)",
-      "speed_tps": 49.5598845403835
+      "speed_tps": 48.5754487798565
     },
     {
       "model": "Qwen3.5 397B A17B (non-reasoning)",
-      "speed_tps": 48.1234965379551
+      "speed_tps": 48.1717398470273
     },
     {
       "model": "Gemma 4 31B (non-reasoning)",
-      "speed_tps": 45.1736290716516
+      "speed_tps": 44.4846260456223
     },
     {
       "model": "GPT-6.2 Astra (high)",
-      "speed_tps": 43.921545765021
+      "speed_tps": 43.1332897845176
     },
     {
       "model": "MiMo-V2.6-Pro",
-      "speed_tps": 43.0987530301965
-    },
-    {
-      "model": "GPT-6.2 Astra (medium)",
-      "speed_tps": 42.6085413347361
+      "speed_tps": 42.4002956744964
     },
     {
       "model": "GPT-6.2 Astra (max)",
-      "speed_tps": 42.539087705723
+      "speed_tps": 42.1434091081739
+    },
+    {
+      "model": "GPT-6.2 Astra (medium)",
+      "speed_tps": 41.6515599761412
     },
     {
       "model": "GPT-6.2 Astra (xhigh)",
-      "speed_tps": 42.0323918456246
+      "speed_tps": 41.2924346792889
     },
     {
       "model": "Qwen3.8 2.4T A95B",
-      "speed_tps": 40.199504884146
+      "speed_tps": 40.3297744236694
     },
     {
       "model": "GPT-6.2 Astra (low)",
-      "speed_tps": 39.946152666959
+      "speed_tps": 39.4037034063254
     },
     {
       "model": "Phi-4",
-      "speed_tps": 38.4251021913564
+      "speed_tps": 38.6064336287303
     },
     {
       "model": "MiMo-V2.6-Flash",
-      "speed_tps": 37.8901674240207
-    },
-    {
-      "model": "Kimi K3.1 Pro",
-      "speed_tps": 36.8502027808926
+      "speed_tps": 37.750798369393
     },
     {
       "model": "Hermes 4 405B",
-      "speed_tps": 36.7805273711589
+      "speed_tps": 36.727202406353
+    },
+    {
+      "model": "Kimi K3.1 Pro",
+      "speed_tps": 36.584445591671
     },
     {
       "model": "Gemma 4 31B",
-      "speed_tps": 35.7922240602685
+      "speed_tps": 35.8042803943296
     },
     {
       "model": "Hermes 4 405B (non-reasoning)",
-      "speed_tps": 32.7804477334724
+      "speed_tps": 32.587728940337
     },
     {
       "model": "Phi-4 Multimodal",
-      "speed_tps": 20.2225820376275
+      "speed_tps": 20.1368197656684
     },
     {
       "model": "Phi-4 Mini",
-      "speed_tps": 14.4144630070376
+      "speed_tps": 14.9710511386509
     }
   ],
   "cost_per_task_usd": [
@@ -2878,6 +2890,10 @@
     {
       "model": "MiMo-V2.6-Flash",
       "cost_usd": 0.12852987084014672
+    },
+    {
+      "model": "Quasar 1.2 358B (max)",
+      "cost_usd": 0.13104090127418705
     },
     {
       "model": "Muse Ember (max)",
@@ -3429,6 +3445,12 @@
     },
     "o3": {
       "creator": "OpenAI",
+      "is_reasoning": true,
+      "is_open_weights": false,
+      "deprecated": false
+    },
+    "Quasar 1.2 358B (max)": {
+      "creator": "Multiverse Computing",
       "is_reasoning": true,
       "is_open_weights": false,
       "deprecated": false
@@ -4900,77 +4922,77 @@
   },
   "recent_updates": [
     {
-      "date": "2026-11-27",
-      "title": "取消抓取与后端过滤限制，全量同步官网所有大模型（272 款，含 Non-reasoning 与全厂商）及全部编码 Agent 组合（66 组）；并在页面新增多维手动筛选面板",
+      "date": "2026-11-28",
+      "title": "取消抓取与后端过滤限制，全量同步官网所有大模型（273 款，含 Non-reasoning 与全厂商）及全部编码 Agent 组合（66 组）；并在页面新增多维手动筛选面板",
       "type": "Feature"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "调整模型过滤规则：取消对 GPT-6 Astra 的特别排除，重新纳入模型榜与 Coding Agent 榜对比",
       "type": "Filter"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "修复 Coding Agent 榜 RSC 拆分解析：合并 rows 与 benchmarkRows 全量实测数据，恢复同步全部 66 组符合规范的官方组合",
       "type": "Fix"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "新增 xAI Grok 系列支持（Grok ≥ 4.6，动态兼容 4.7、5.x 及以上），且默认不再局限于仅活跃模型列表",
       "type": "Feature"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "调整模型过滤规则：移除 Claude Fable 5.1 及 GPT-6 Astra，后续若有新版本（Fable > 5.1、Astra > 6）将自动保留纳入",
       "type": "Filter"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "调整模型过滤规则：所有 Non-reasoning（非思考/无思维链）模型及各思考级别全局不再显示",
       "type": "Filter"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "调整 OpenAI 模型过滤规则：GPT-5.6 及以下型号全局不再显示，仅保留 GPT-5.7 / GPT-6 及以上旗舰版本",
       "type": "Filter"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "调整 DeepSeek 模型过滤规则：仅保留 V4.1 及以上版本（过滤低于 4.1 的历史型号）",
       "type": "Filter"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "调整通义千问模型过滤规则：仅保留 Qwen 3.8 及以上版本（过滤低于 3.8 的历史型号）",
       "type": "Filter"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "模型白名单新增小米 MiMo 系列支持（MiMo-V2.6 及以上旗舰版本、MiMo Flash 系列全系），全量同步官方最新实测指标（含 MiMo-V2.6-Pro 及 MiMo-V2.6-Flash）",
       "type": "Feature"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "升级编程能力指数评测基准为官方最新高难评测 Terminal-Bench 4.0，全面展现最新旗舰大模型（GPT-6.1 Sol, Claude Opus 5.5 等）的断代代码能力与深层思考梯度，避免旧版 v2.1 饱和引发的档位微小方差倒挂",
       "type": "Update"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "重新纳入 Meta (Muse 系列) 与阿里通义千问 Qwen（>= 3.0）系列评测，编码 Agent 榜新增 Muse Code 框架及 Qwen3.8 Max 组合",
       "type": "Feature"
     },
     {
-      "date": "2026-11-27",
-      "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 126 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 66 组组合）",
+      "date": "2026-11-28",
+      "title": "实时全量同步 Artificial Analysis 官方最新评测数据：更新 127 款精选模型综合指标（智商指数、代码能力、吞吐速度、单任务成本）与官方实测编码 Agent 排行榜（共 66 组组合）",
       "type": "Update"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "编码 Agent 榜新增 Devin Fusion 框架支持，同步 Cognition 官方最新评测组合",
       "type": "Feature"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "title": "编码 Agent 榜新增 Antigravity（Google Antigravity SDK）框架，同步官方最新实测组合",
       "type": "Feature"
     },
